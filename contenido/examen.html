@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulacro · AWS Cloud Practitioner CLF-C02</title>
+<meta name="description" content="Simulacro cronometrado de 65 preguntas en español para el AWS Certified Cloud Practitioner CLF-C02, con banco de 195 preguntas, rotación por dominio y revisión.">
+<link rel="stylesheet" href="assets/estilo.css?v=20261027d">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AWS</span>
+      <span>CLF-C02<span class="brand-sub">Centro de estudio</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="estudio.html">Estudiar</a>
+      <a href="flashcards.html">Flashcards</a>
+      <a href="examen.html">Simulacro</a>
+      <a href="repaso.html">Repaso</a>
+    </div>
+  </div>
+</nav>
+
+<main id="contenido">
+<section class="section tight">
+  <div class="container">
+
+    <div class="exam-start card" id="startScreen">
+      <span class="eyebrow orange" id="startEyebrow">Simulacro completo · opcional y de diagnóstico</span>
+      <h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)" id="startTitle">Simulacro de 65 preguntas</h1>
+      <p class="lead" style="color:var(--muted)" id="startLead">Banco de 195 preguntas originales en español, organizado por los dominios oficiales CLF-C02. Cada intento toma 65 preguntas distintas y baraja también las opciones.</p>
+      <div class="facts" id="startFacts">
+        <div><b>65</b><span>preguntas por intento</span></div>
+        <div><b>90 min</b><span>cronometrado con pausa</span></div>
+        <div><b>195</b><span>preguntas en el banco</span></div>
+      </div>
+      <div class="callout info" id="startHow">
+        <b>Cómo funciona</b>
+        <ul style="margin-bottom:0" id="startHowList">
+          <li>Es un simulacro de estudio. Puedes hacerlo cuando quieras: después del bloque 7 es un diagnóstico opcional; al final, una práctica recomendada.</li>
+          <li>Cada intento usa 16 de Conceptos, 20 de Seguridad, 22 de Tecnología y 7 de Costos y soporte.</li>
+          <li>Las preguntas y las opciones se barajan. Después de tres intentos sin repetir, la rotación vuelve a empezar.</li>
+          <li>Hay preguntas de opción múltiple con 4 opciones y de respuesta múltiple con 5 opciones. En las de respuesta múltiple, la respuesta solo cuenta si eliges exactamente las correctas.</li>
+          <li>No hay penalización por adivinar: las preguntas en blanco cuentan como incorrectas.</li>
+          <li>El examen real usa un puntaje escalado de 100 a 1000 con mínimo 700. Aquí usamos <strong>70%</strong> como referencia práctica, no como equivalencia oficial.</li>
+        </ul>
+      </div>
+      <div class="resume-box hidden" id="resumeBox">
+        <h3>Hay un simulacro guardado</h3>
+        <p id="resumeInfo"></p>
+        <div class="resume-actions">
+          <button class="btn btn-primary btn-sm" id="btnResume" type="button">Reanudar simulacro</button>
+          <button class="btn btn-outline btn-sm" id="btnDiscard" type="button">Descartar intento</button>
+        </div>
+      </div>
+      <p class="small muted" id="rotationInfo" style="margin:14px 0 0"></p>
+      <div class="flex" style="margin-top:18px">
+        <button class="btn btn-primary" id="btnStart" type="button">Empezar simulacro nuevo →</button>
+        <a class="btn btn-outline" id="btnStartRepaso" href="repaso.html">Abrir repaso</a>
+        <a class="btn btn-outline" id="btnStartFlash" href="flashcards.html">Ir a flashcards</a>
+      </div>
+      <p class="small muted" style="margin:14px 0 0" id="startNote">Puedes pausar el cronómetro con el botón <strong>Pausar</strong>. Si cierras o recargas la página, el intento queda guardado y puedes reanudarlo donde lo dejaste. Las preguntas ya vistas siguen contando para la rotación.</p>
+    </div>
+
+    <div class="exam-shell hidden" id="examScreen">
+      <div class="exam-top">
+        <div>
+          <span class="q-num" id="topProgress">Pregunta 1 de 65</span>
+          <div class="small muted" id="topDomain">Conceptos de la nube</div>
+        </div>
+        <div class="timer-wrap">
+          <div class="timer" id="timer">1:30:00</div>
+          <button class="pause-btn" id="btnPause" type="button" aria-pressed="false">Pausar</button>
+        </div>
+        <button class="btn btn-danger btn-sm" id="btnFinishTop" type="button">Finalizar</button>
+      </div>
+
+      <div class="pause-banner hidden" id="pauseBanner">
+        <div><strong>Simulacro en pausa</strong><span>El cronómetro está detenido. Puedes seguir leyendo; el tiempo no corre.</span></div>
+        <button class="btn btn-primary btn-sm" id="btnResumeBanner" type="button">Reanudar</button>
+      </div>
+
+      <div class="exam-layout">
+        <div class="q-card">
+          <div class="q-meta">
+            <span class="chip sky" id="qDomain">Conceptos de la nube</span>
+            <span class="chip orange hidden" id="qMulti">Selecciona DOS</span>
+            <button class="flag-btn" id="btnFlag" type="button">⚑ Marcar para revisar</button>
+          </div>
+          <div class="q-text" id="qText"></div>
+          <div class="opts" id="opts"></div>
+          <div class="exam-nav">
+            <button class="btn btn-outline" id="btnPrevQ" type="button">← Anterior</button>
+            <button class="btn btn-primary" id="btnNextQ" type="button">Siguiente →</button>
+          </div>
+        </div>
+
+        <aside class="palette">
+          <h4>Navegación</h4>
+          <div class="palette-grid" id="palette"></div>
+          <div class="legend">
+            <span><i class="a"></i> Respondida</span>
+            <span><i class="f"></i> Marcada</span>
+            <span><i class="c"></i> Actual</span>
+          </div>
+          <button class="btn btn-danger btn-sm" id="btnFinish" type="button" style="width:100%;margin-top:12px">Finalizar simulacro</button>
+        </aside>
+      </div>
+    </div>
+
+    <div class="exam-shell hidden" id="resultScreen">
+      <div class="exam-result">
+        <span class="badge" id="resultBadge">Resultado</span>
+        <div class="score-big" id="scorePct">0%</div>
+        <p id="scoreMsg" style="max-width:640px;margin:0 auto 8px"></p>
+        <div class="result-grid">
+          <div><b id="rCorrect">0</b><span>Correctas</span></div>
+          <div><b id="rWrong">0</b><span>Falladas</span></div>
+          <div><b id="rBlank">0</b><span>En blanco</span></div>
+          <div><b id="rTime">0:00</b><span>Tiempo usado</span></div>
+        </div>
+
+        <div class="table-wrap" style="text-align:left;margin-top:8px">
+          <table>
+            <thead><tr><th>Dominio</th><th style="width:45%">Resultado</th><th>Aciertos</th><th>%</th></tr></thead>
+            <tbody id="domainTable"></tbody>
+          </table>
+        </div>
+
+        <div class="review-tools" id="reviewFilters">
+          <button class="filter-btn" id="btnFAll" type="button">Todas (0)</button>
+          <button class="filter-btn" id="btnFCorrect" type="button">Correctas (0)</button>
+          <button class="filter-btn active" id="btnFWrong" type="button">Falladas (0)</button>
+          <button class="filter-btn" id="btnFBlank" type="button">En blanco (0)</button>
+          <button class="filter-btn" id="btnFFlagged" type="button">Marcadas (0)</button>
+        </div>
+        <p class="review-summary" id="reviewSummary"></p>
+        <p class="small muted" style="margin:0 0 6px">Falladas = respondidas que no son exactamente correctas (incluye respuestas múltiples incompletas). En blanco = sin responder. Marcadas = las que marcaste durante el intento, aunque estén correctas.</p>
+        <div class="review-list" id="reviewList"></div>
+
+        <div class="flex" style="justify-content:center;margin-top:24px">
+          <button class="btn btn-primary" id="btnRestart" type="button">Repetir simulacro</button>
+          <a class="btn btn-outline" href="index.html">Volver al inicio</a>
+          <a class="btn btn-outline" href="repaso.html">Abrir repaso</a>
+        </div>
+        <p class="small muted" style="margin-top:16px" id="resultNote">Este resultado es una referencia de estudio. El examen oficial usa 50 preguntas puntuables y un puntaje escalado; no existe una conversión lineal pública.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div><strong style="color:#fff">Simulacro CLF-C02</strong><br><span class="small" id="footerInfo">65 preguntas por intento · Banco de 195 · No afiliado a AWS.</span></div>
+    <div class="small"><a href="index.html">Volver al centro de estudio</a></div>
+  </div>
+</footer>
+
+<script src="assets/comun.js?v=20261027d"></script>
+<script src="assets/banco-preguntas.js?v=20261027d"></script>
+<script>
+(function () {
+  const BANCO = window.BANCO_PREGUNTAS || [];
+  const QUOTAS = [
+    {d:'Conceptos', single:14, multi:2},
+    {d:'Seguridad', single:18, multi:2},
+    {d:'Tecnología', single:19, multi:3},
+    {d:'Costos', single:6, multi:1}
+  ];
+  const DOMAINS = [
+    {key:'Conceptos', label:'Conceptos de la nube', weight:'24%'},
+    {key:'Seguridad', label:'Seguridad y cumplimiento', weight:'30%'},
+    {key:'Tecnología', label:'Tecnología y servicios', weight:'34%'},
+    {key:'Costos', label:'Facturación, precios y soporte', weight:'12%'}
+  ];
+  const requestedBlock = parseInt(new URLSearchParams(location.search).get('bloque'), 10);
+  const MINI_BLOCK = (requestedBlock && typeof CLF !== 'undefined' && CLF.blockFor)
+    ? CLF.blockFor(requestedBlock)
+    : null;
+  const MINI = !!MINI_BLOCK;
+  const MINI_DOMAIN = MINI ? CLF.miniDomain(MINI_BLOCK) : null;
+  const MINI_LABEL = MINI ? DOMAINS.find(d => d.key === MINI_DOMAIN).label : '';
+  const TOTAL_QUESTIONS = MINI ? 10 : 65;
+  const TOTAL_SECONDS = MINI ? 10 * 60 : 90 * 60;
+  const KEY_ATTEMPT = MINI ? 'clf-exam-attempt-mini-v1' : 'clf-exam-attempt-v1';
+  const KEY_SEEN = 'clf-exam-seen';
+  const FILTER_LABELS = {all:'todas', correct:'correctas', wrong:'falladas', blank:'en blanco', flagged:'marcadas'};
+
+  let QUESTIONS = [];
+  let answers = [];
+  const flagged = new Set();
+  let current = 0;
+  let remaining = TOTAL_SECONDS;
+  let runningSince = null;
+  let paused = true;
+  let timerId = null;
+  let active = false;
+  let autoSubmitted = false;
+  let reviewFilter = 'wrong';
+  let lastSave = 0;
+
+  const el = id => document.getElementById(id);
+  const startScreen = el('startScreen');
+  const examScreen = el('examScreen');
+  const resultScreen = el('resultScreen');
+  const optsEl = el('opts');
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function isCorrect(q, a) {
+    return Array.isArray(a) && a.length === q.c.length && q.c.every(x => a.includes(x));
+  }
+
+  function statusOf(i) {
+    const a = answers[i] || [];
+    if (!a.length) return 'blank';
+    return isCorrect(QUESTIONS[i], a) ? 'correct' : 'wrong';
+  }
+
+  function loadAttempt() {
+    const a = CLF.get(KEY_ATTEMPT, null);
+    if (!a || (a.v !== 2 && a.v !== 3)) return null;
+    if (a.mode === 'mini') {
+      if (!MINI || a.block !== MINI_BLOCK.n) return null;
+    } else if (MINI) {
+      return null;
+    }
+    if (!Array.isArray(a.questions) || a.questions.length !== TOTAL_QUESTIONS) return null;
+    if (!Array.isArray(a.answers) || a.answers.length !== a.questions.length) return null;
+    if (typeof a.remaining !== 'number' || !isFinite(a.remaining)) return null;
+    return a;
+  }
+
+  let savedAttempt = loadAttempt();
+
+  function currentRemaining() {
+    if (paused || runningSince === null) return Math.max(0, remaining);
+    return Math.max(0, remaining - (Date.now() - runningSince) / 1000);
+  }
+
+  function saveAttempt() {
+    if (!active) return;
+    if (!paused && runningSince !== null) {
+      remaining = Math.max(0, remaining - (Date.now() - runningSince) / 1000);
+      runningSince = Date.now();
+    }
+    CLF.set(KEY_ATTEMPT, {
+      v: 3,
+      mode: MINI ? 'mini' : 'full',
+      block: MINI ? MINI_BLOCK.n : null,
+      createdAt: savedAttempt && savedAttempt.createdAt ? savedAttempt.createdAt : Date.now(),
+      updatedAt: Date.now(),
+      questions: QUESTIONS,
+      answers: answers,
+      flagged: Array.from(flagged),
+      current: current,
+      remaining: Math.max(0, Math.ceil(remaining)),
+      paused: paused
+    });
+    lastSave = Date.now();
+  }
+
+  function buildAttempt() {
+    if (!BANCO.length) throw new Error('No se cargó el banco de preguntas.');
+    let picked = [];
+    if (MINI) {
+      const exactBlock = shuffle(BANCO.filter(x => x.b === MINI_BLOCK.n));
+      const multiExact = exactBlock.filter(x => x.m).slice(0, 2);
+      const singleExact = exactBlock.filter(x => !x.m).slice(0, TOTAL_QUESTIONS - multiExact.length);
+      picked.push(...multiExact, ...singleExact);
+      if (picked.length < TOTAL_QUESTIONS) {
+        const usedIds = new Set(picked.map(x => x.id));
+        for (const q of exactBlock) {
+          if (picked.length < TOTAL_QUESTIONS && !usedIds.has(q.id)) {
+            picked.push(q);
+            usedIds.add(q.id);
+          }
+        }
+      }
+      if (picked.length < TOTAL_QUESTIONS) {
+        const usedIds = new Set(picked.map(x => x.id));
+        const prevStudied = [
+          ...shuffle(BANCO.filter(x => x.b < MINI_BLOCK.n && x.d === MINI_DOMAIN && !usedIds.has(x.id))),
+          ...shuffle(BANCO.filter(x => x.b < MINI_BLOCK.n && !usedIds.has(x.id)))
+        ];
+        for (const q of prevStudied) {
+          if (picked.length < TOTAL_QUESTIONS && !usedIds.has(q.id)) {
+            picked.push(q);
+            usedIds.add(q.id);
+          }
+        }
+      }
+    } else {
+      let seen = CLF.get(KEY_SEEN, []);
+      if (!Array.isArray(seen)) seen = [];
+      const seenSet = new Set(seen);
+      const needReset = QUOTAS.some(q => {
+        const unseen = BANCO.filter(x => x.d === q.d && !seenSet.has(x.id));
+        return unseen.filter(x => x.m).length < q.multi || unseen.filter(x => !x.m).length < q.single;
+      });
+      if (needReset) {
+        seenSet.clear();
+        seen = [];
+      }
+      QUOTAS.forEach(q => {
+        const pool = BANCO.filter(x => x.d === q.d && !seenSet.has(x.id));
+        picked.push(...shuffle(pool.filter(x => x.m)).slice(0, q.multi));
+        picked.push(...shuffle(pool.filter(x => !x.m)).slice(0, q.single));
+      });
+      picked.forEach(q => seenSet.add(q.id));
+      CLF.set(KEY_SEEN, Array.from(seenSet));
+    }
+    if (picked.length !== TOTAL_QUESTIONS) throw new Error('No se pudieron seleccionar ' + TOTAL_QUESTIONS + ' preguntas.');
+    QUESTIONS = shuffle(picked).map(q => {
+      const opts = shuffle(q.o.map((text, i) => ({text, i})));
+      const c = q.c.map(orig => opts.findIndex(o => o.i === orig)).sort((a, b) => a - b);
+      return {id:q.id, b:q.b, d:q.d, m:q.m, q:q.q, o:opts.map(o => o.text), c, e:q.e};
+    });
+    answers = QUESTIONS.map(() => []);
+    flagged.clear();
+    current = 0;
+    renderRotation();
+  }
+
+  function renderRotation() {
+    const box = el('rotationInfo');
+    if (!box) return;
+    if (MINI) {
+      box.textContent = 'Test rápido del Bloque ' + MINI_BLOCK.n + ' (' + MINI_BLOCK.title + ') · 10 preguntas sin spoilers de bloques futuros. No consume la rotación del simulacro completo.';
+      return;
+    }
+    const seen = CLF.get(KEY_SEEN, []);
+    const n = Array.isArray(seen) ? seen.length : 0;
+    if (n >= 195) {
+      box.textContent = 'Banco de 195 preguntas. Ciclo completo: el próximo intento reinicia la rotación.';
+      return;
+    }
+    const cycle = Math.min(3, Math.floor(n / 65) + 1);
+    box.textContent = 'Banco de 195 preguntas. Intento ' + cycle + ' de 3 del ciclo · ' + n + ' preguntas vistas.';
+  }
+
+  function selected(i) {
+    return (answers[i] || []).length > 0;
+  }
+
+  function updatePalette() {
+    const wrap = el('palette');
+    wrap.innerHTML = '';
+    QUESTIONS.forEach((q, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pbtn';
+      if (selected(i)) b.classList.add('answered');
+      if (flagged.has(i)) b.classList.add('flagged');
+      if (i === current) b.classList.add('current');
+      b.textContent = i + 1;
+      b.title = 'Pregunta ' + (i + 1) + (selected(i) ? ' · respondida' : ' · sin responder') + (flagged.has(i) ? ' · marcada' : '');
+      b.addEventListener('click', () => goTo(i));
+      wrap.appendChild(b);
+    });
+  }
+
+  function updateFlagButton() {
+    const b = el('btnFlag');
+    const on = flagged.has(current);
+    b.classList.toggle('on', on);
+    b.textContent = on ? '⚑ Marcada para revisar' : '⚑ Marcar para revisar';
+  }
+
+  function renderQuestion() {
+    const q = QUESTIONS[current];
+    el('topProgress').textContent = 'Pregunta ' + (current + 1) + ' de ' + QUESTIONS.length;
+    el('topDomain').textContent = DOMAINS.find(d => d.key === q.d).label;
+    el('qDomain').textContent = DOMAINS.find(d => d.key === q.d).label;
+    el('qMulti').classList.toggle('hidden', !q.m);
+    el('qMulti').textContent = 'Selecciona ' + (q.c.length === 3 ? 'TRES' : 'DOS');
+    el('qText').textContent = q.q;
+    updateFlagButton();
+
+    optsEl.innerHTML = '';
+    q.o.forEach((text, i) => {
+      const label = document.createElement('label');
+      label.className = 'opt';
+      if ((answers[current] || []).includes(i)) label.classList.add('selected');
+      const input = document.createElement('input');
+      input.type = q.m ? 'checkbox' : 'radio';
+      input.name = 'q' + current;
+      input.value = String(i);
+      input.checked = (answers[current] || []).includes(i);
+      const letter = document.createElement('span');
+      letter.className = 'letter';
+      letter.textContent = String.fromCharCode(65 + i);
+      const span = document.createElement('span');
+      span.textContent = text;
+      label.appendChild(input);
+      label.appendChild(letter);
+      label.appendChild(span);
+      optsEl.appendChild(label);
+    });
+
+    el('btnPrevQ').disabled = current === 0;
+    el('btnNextQ').disabled = current === QUESTIONS.length - 1;
+    el('btnNextQ').textContent = current === QUESTIONS.length - 1 ? 'Última pregunta' : 'Siguiente →';
+    updatePalette();
+  }
+
+  function goTo(i) {
+    current = Math.max(0, Math.min(QUESTIONS.length - 1, i));
+    renderQuestion();
+    saveAttempt();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  optsEl.addEventListener('change', e => {
+    if (!e.target.matches('input')) return;
+    const i = Number(e.target.value);
+    const q = QUESTIONS[current];
+    if (q.m) {
+      const set = new Set(answers[current] || []);
+      if (set.has(i)) set.delete(i);
+      else set.add(i);
+      answers[current] = Array.from(set).sort((a, b) => a - b);
+    } else {
+      answers[current] = [i];
+    }
+    Array.from(optsEl.querySelectorAll('.opt')).forEach((label, idx) => {
+      label.classList.toggle('selected', (answers[current] || []).includes(idx));
+    });
+    updatePalette();
+    saveAttempt();
+  });
+
+  el('btnPrevQ').addEventListener('click', () => goTo(current - 1));
+  el('btnNextQ').addEventListener('click', () => goTo(current + 1));
+  el('btnFlag').addEventListener('click', () => {
+    if (flagged.has(current)) flagged.delete(current);
+    else flagged.add(current);
+    updateFlagButton();
+    updatePalette();
+    saveAttempt();
+  });
+
+  function renderClock() {
+    const left = Math.ceil(currentRemaining());
+    el('timer').textContent = CLF.clock(left);
+    el('timer').classList.toggle('warn', left <= 300 && left > 0);
+    el('timer').classList.toggle('paused', paused);
+    if (left <= 0 && active) finishExam(true);
+  }
+
+  function startTimer() {
+    if (timerId) clearInterval(timerId);
+    renderClock();
+    timerId = setInterval(() => {
+      if (!active) return;
+      renderClock();
+      if (!paused && Date.now() - lastSave > 5000) saveAttempt();
+    }, 1000);
+  }
+
+  function updatePauseUI() {
+    const b = el('btnPause');
+    b.textContent = paused ? 'Reanudar' : 'Pausar';
+    b.classList.toggle('on', paused);
+    b.setAttribute('aria-pressed', paused ? 'true' : 'false');
+    el('pauseBanner').classList.toggle('hidden', !paused);
+    el('timer').classList.toggle('paused', paused);
+  }
+
+  function setPaused(next) {
+    if (!active || next === paused) return;
+    if (next) {
+      remaining = currentRemaining();
+      runningSince = null;
+      paused = true;
+    } else {
+      paused = false;
+      runningSince = Date.now();
+    }
+    updatePauseUI();
+    renderClock();
+    saveAttempt();
+  }
+
+  function beginRun() {
+    active = true;
+    autoSubmitted = false;
+    paused = false;
+    runningSince = Date.now();
+    startScreen.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    examScreen.classList.remove('hidden');
+    updatePauseUI();
+    renderQuestion();
+    startTimer();
+    saveAttempt();
+    window.scrollTo(0, 0);
+  }
+
+  function startExam() {
+    const savedMsg = MINI
+      ? 'Hay un mini simulacro guardado. Si empiezas de nuevo, se descarta el intento anterior. ¿Continuar?'
+      : 'Hay un simulacro guardado. Si empiezas de nuevo, se descarta el intento anterior. ¿Continuar?';
+    if (savedAttempt && !confirm(savedMsg)) return;
+    try { buildAttempt(); }
+    catch (err) { alert(err.message); return; }
+    savedAttempt = null;
+    CLF.del(KEY_ATTEMPT);
+    remaining = TOTAL_SECONDS;
+    lastSave = 0;
+    beginRun();
+  }
+
+  function resumeAttempt() {
+    if (!savedAttempt) return;
+    const left = Math.max(0, Math.min(TOTAL_SECONDS, Number(savedAttempt.remaining) || 0));
+    if (left <= 0) {
+      alert('El intento guardado ya no tiene tiempo. Empieza un simulacro nuevo.');
+      discardAttempt(true);
+      return;
+    }
+    QUESTIONS = savedAttempt.questions;
+    answers = savedAttempt.answers.map(a => Array.isArray(a) ? a.slice() : []);
+    flagged.clear();
+    (savedAttempt.flagged || []).forEach(i => flagged.add(i));
+    current = Math.max(0, Math.min(QUESTIONS.length - 1, Number(savedAttempt.current) || 0));
+    remaining = left;
+    lastSave = 0;
+    beginRun();
+  }
+
+  function discardAttempt(silent) {
+    if (!savedAttempt) return;
+    const msg = MINI
+      ? '¿Descartar el mini simulacro guardado?'
+      : '¿Descartar el simulacro guardado? Las preguntas ya vistas seguirán contando para la rotación.';
+    if (!silent && !confirm(msg)) return;
+    CLF.del(KEY_ATTEMPT);
+    savedAttempt = null;
+    renderResumeBox();
+  }
+
+  function renderResumeBox() {
+    const box = el('resumeBox');
+    const start = el('btnStart');
+    if (!savedAttempt) {
+      box.classList.add('hidden');
+      start.textContent = MINI ? 'Empezar mini simulacro →' : 'Empezar simulacro nuevo →';
+      return;
+    }
+    const answered = savedAttempt.answers.filter(a => Array.isArray(a) && a.length).length;
+    const marked = (savedAttempt.flagged || []).length;
+    const when = new Date(savedAttempt.updatedAt || Date.now()).toLocaleString('es-ES', {
+      day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
+    });
+    el('resumeInfo').textContent = 'Pregunta ' + ((Number(savedAttempt.current) || 0) + 1) + ' de ' + TOTAL_QUESTIONS + ' · ' +
+      answered + ' respondidas · ' + marked + ' marcadas · quedan ' + CLF.clock(savedAttempt.remaining) + '. Guardado el ' + when + '.';
+    box.classList.remove('hidden');
+    start.textContent = 'Empezar de nuevo';
+  }
+
+  function answerLetters(arr) {
+    if (!arr || !arr.length) return 'Sin responder';
+    return arr.map(i => String.fromCharCode(65 + i)).join(', ');
+  }
+
+  function correctLetters(q) {
+    return q.c.map(i => String.fromCharCode(65 + i)).join(', ');
+  }
+
+  function finishExam(auto) {
+    if (!active) return;
+    const left = currentRemaining();
+    if (!auto) {
+      const blanks = answers.filter(a => !a.length).length;
+      const msg = blanks
+        ? 'Tienes ' + blanks + ' pregunta(s) sin responder. ¿Finalizar de todas formas?'
+        : '¿Finalizar el simulacro y ver el resultado?';
+      if (!confirm(msg)) return;
+    }
+    remaining = left;
+    active = false;
+    paused = true;
+    runningSince = null;
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    CLF.del(KEY_ATTEMPT);
+    savedAttempt = null;
+    autoSubmitted = !!auto;
+    examScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
+    reviewFilter = QUESTIONS.some((q, i) => statusOf(i) === 'wrong') ? 'wrong' : 'all';
+    renderResult();
+    window.scrollTo(0, 0);
+  }
+
+  function counts() {
+    let correct = 0;
+    let wrong = 0;
+    let blank = 0;
+    QUESTIONS.forEach((q, i) => {
+      const st = statusOf(i);
+      if (st === 'correct') correct++;
+      else if (st === 'blank') blank++;
+      else wrong++;
+    });
+    return {all: QUESTIONS.length, correct, wrong, blank, flagged: flagged.size};
+  }
+
+  function updateReviewButtons() {
+    const c = counts();
+    el('btnFAll').textContent = 'Todas (' + c.all + ')';
+    el('btnFCorrect').textContent = 'Correctas (' + c.correct + ')';
+    el('btnFWrong').textContent = 'Falladas (' + c.wrong + ')';
+    el('btnFBlank').textContent = 'En blanco (' + c.blank + ')';
+    el('btnFFlagged').textContent = 'Marcadas (' + c.flagged + ')';
+    const map = {all:'btnFAll', correct:'btnFCorrect', wrong:'btnFWrong', blank:'btnFBlank', flagged:'btnFFlagged'};
+    Object.keys(map).forEach(k => {
+      const b = el(map[k]);
+      b.classList.toggle('active', reviewFilter === k);
+      b.setAttribute('aria-pressed', reviewFilter === k ? 'true' : 'false');
+    });
+  }
+
+  function applyModeCopy() {
+    if (!MINI) return;
+    const blockCount = BANCO.filter(q => q.b === MINI_BLOCK.n).length;
+    document.title = 'Test rápido · Bloque ' + MINI_BLOCK.n + ' · AWS CLF-C02';
+    el('startEyebrow').textContent = 'Test rápido del Bloque ' + MINI_BLOCK.n + ' · Sin spoilers de bloques futuros';
+    el('startTitle').textContent = 'Test de 10 preguntas · Bloque ' + MINI_BLOCK.n;
+    el('startLead').textContent = 'Evalúa lo aprendido en el Bloque ' + MINI_BLOCK.n + ' (' + MINI_BLOCK.title + '). Prioriza las preguntas propias de este bloque (y si requiere completar el cupo de 10, solo toma de bloques anteriores ya estudiados).';
+    el('startFacts').innerHTML =
+      '<div><b>10</b><span>preguntas</span></div>' +
+      '<div><b>10 min</b><span>cronometrado con pausa</span></div>' +
+      '<div><b>' + blockCount + '</b><span>preguntas del Bloque ' + MINI_BLOCK.n + '</span></div>';
+    el('startHowList').innerHTML =
+      '<li>Evalúa los conceptos explicados en el <strong>Bloque ' + MINI_BLOCK.n + ': ' + MINI_BLOCK.title + '</strong> sin adelantar preguntas de bloques que aún no has visto.</li>' +
+      '<li>Combina preguntas de opción única (4 opciones) y de respuesta múltiple (5 opciones, <em>Selecciona DOS</em> o <em>Selecciona TRES</em>).</li>' +
+      '<li>Las preguntas y las opciones se barajan en cada intento, sin consumir la rotación de tres intentos del simulacro completo de 65 preguntas.</li>' +
+      '<li>La pausa, el cierre y la reanudación funcionan igual que en el simulacro completo.</li>' +
+      '<li>El 70% es la referencia recomendada antes de avanzar al siguiente bloque.</li>';
+    el('resumeBox').querySelector('h3').textContent = 'Hay un mini simulacro guardado';
+    el('btnStartRepaso').href = CLF.repasoHref(MINI_BLOCK);
+    el('btnStartRepaso').textContent = 'Repaso del bloque';
+    el('btnStartFlash').href = CLF.flashHref(MINI_BLOCK);
+    el('btnStartFlash').textContent = 'Flashcards del bloque';
+    el('startNote').textContent = 'El cronómetro es de 10 minutos. Puedes pausarlo; si cierras o recargas, el mini simulacro queda guardado para reanudarlo.';
+    el('btnRestart').textContent = 'Repetir mini simulacro';
+    el('resultNote').textContent = 'Este mini simulacro es una práctica de bloque. El examen oficial usa 50 preguntas puntuables y un puntaje escalado; no existe una conversión lineal pública.';
+    el('footerInfo').textContent = 'Mini simulacro · 10 preguntas · Bloque ' + MINI_BLOCK.n + ' · No afiliado a AWS.';
+  }
+
+  function renderResult() {
+    const c = counts();
+    const stats = {};
+    DOMAINS.forEach(d => { stats[d.key] = {ok: 0, total: 0}; });
+    QUESTIONS.forEach((q, i) => {
+      const st = statusOf(i);
+      stats[q.d].total++;
+      if (st === 'correct') stats[q.d].ok++;
+    });
+
+    const pct = Math.round((c.correct / QUESTIONS.length) * 100);
+    const passed = pct >= 70;
+    el('scorePct').textContent = pct + '%';
+    el('scorePct').className = 'score-big ' + (passed ? 'pass' : 'fail');
+    el('rCorrect').textContent = c.correct;
+    el('rWrong').textContent = c.wrong;
+    el('rBlank').textContent = c.blank;
+    el('rTime').textContent = CLF.clock(TOTAL_SECONDS - remaining);
+
+    const badge = el('resultBadge');
+    badge.textContent = autoSubmitted
+      ? 'Tiempo agotado'
+      : (MINI ? (passed ? 'Mini · sobre 70%' : 'Mini · bajo 70%') : (passed ? 'Sobre la referencia' : 'Bajo la referencia'));
+    badge.className = 'badge ' + (passed ? 'green' : 'red');
+
+    let msg;
+    if (autoSubmitted) {
+      msg = 'Se agotó el tiempo. Las preguntas en blanco y los temas con menor porcentaje son el punto de partida para la siguiente sesión.';
+    } else if (MINI) {
+      if (pct >= 80) msg = 'Buen resultado para una segunda pasada. Revisa igualmente las falladas y vuelve a las diapositivas del bloque si alguna te sorprendió.';
+      else if (pct >= 70) msg = 'Has superado la referencia del 70%. Repasa las falladas y las flashcards del bloque para consolidarlo.';
+      else if (pct >= 50) msg = 'Base parcial. Repasa las preguntas falladas, las flashcards del bloque y repite el mini simulacro en otro momento.';
+      else msg = 'Todavía hay margen en este bloque. Vuelve a las diapositivas y a las flashcards antes de repetir el mini simulacro.';
+    } else if (pct >= 85) msg = 'Base sólida. Conviene mantener el repaso de las trampas y de los servicios fallados.';
+    else if (pct >= 70) msg = 'Por encima del 70% de referencia. Los dominios con menor porcentaje siguen siendo los que más margen tienen.';
+    else if (pct >= 55) msg = 'Resultado cercano al 70%. Los bloques 1–5 y 14 concentran la mayoría de los errores en este rango; conviene revisarlos antes del siguiente intento.';
+    else msg = 'El resultado indica que aún falta base. El orden con más retorno es responsabilidad compartida, IAM y servicios núcleo antes de repetir el simulacro.';
+    el('scoreMsg').textContent = msg;
+
+    const table = el('domainTable');
+    table.innerHTML = '';
+    DOMAINS.filter(d => stats[d.key].total > 0).forEach(d => {
+      const s = stats[d.key];
+      const p = s.total ? Math.round((s.ok / s.total) * 100) : 0;
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td><strong>' + d.label + '</strong><br><span class="small muted">Peso oficial ' + d.weight + '</span></td>' +
+        '<td><div class="bar"><span style="width:' + p + '%"></span></div></td>' +
+        '<td>' + s.ok + ' / ' + s.total + '</td>' +
+        '<td><strong>' + p + '%</strong></td>';
+      table.appendChild(tr);
+    });
+
+    updateReviewButtons();
+    renderReview();
+  }
+
+  function renderReview() {
+    const wrap = el('reviewList');
+    wrap.innerHTML = '';
+    let shown = 0;
+    QUESTIONS.forEach((q, i) => {
+      const st = statusOf(i);
+      if (reviewFilter !== 'all') {
+        if (reviewFilter === 'flagged' && !flagged.has(i)) return;
+        if (reviewFilter === 'correct' && st !== 'correct') return;
+        if (reviewFilter === 'wrong' && st !== 'wrong') return;
+        if (reviewFilter === 'blank' && st !== 'blank') return;
+      }
+      shown++;
+      const a = answers[i] || [];
+      const domain = DOMAINS.find(d => d.key === q.d).label;
+      const cls = st === 'correct' ? 'good' : (st === 'blank' ? 'blank' : 'bad');
+      const tag = st === 'correct' ? 'Correcta' : (st === 'blank' ? 'En blanco' : 'Fallada');
+      const flagTag = flagged.has(i) ? '<span class="tag">Marcada</span>' : '';
+      const blk = q.b && typeof CLF !== 'undefined' && CLF.blockFor ? CLF.blockFor(q.b) : null;
+      const blkTag = blk
+        ? '<a class="tag tag-link" href="estudio.html#' + blk.start + '" title="Repasar Bloque ' + blk.n + ': ' + blk.title + '">Bloque ' + blk.n + ' ↗</a>'
+        : '';
+      const div = document.createElement('div');
+      div.className = 'review-item ' + cls;
+      div.innerHTML = '<div class="rq">' + (i + 1) + '. ' + q.q +
+        '<span class="tag">' + domain + '</span>' +
+        blkTag +
+        '<span class="tag">' + tag + '</span>' + flagTag + '</div>' +
+        '<div class="ra">Tu respuesta: <strong>' + answerLetters(a) + '</strong> · Correcta: <strong>' + correctLetters(q) + '</strong></div>' +
+        '<div class="rx"><strong>Por qué:</strong> ' + q.e + '</div>';
+      wrap.appendChild(div);
+    });
+
+    const label = FILTER_LABELS[reviewFilter] || 'todas';
+    el('reviewSummary').textContent = 'Mostrando ' + shown + ' de ' + QUESTIONS.length + ' · ' + label;
+    if (!shown) {
+      const extra = reviewFilter === 'flagged'
+        ? 'No marcaste preguntas durante este intento.'
+        : (reviewFilter === 'wrong' ? 'No hay preguntas falladas en este intento.' : 'Cambia de filtro para revisar otro grupo.');
+      wrap.innerHTML = '<div class="flash-empty"><h3>Sin preguntas en este filtro</h3><p>' + extra + '</p></div>';
+    }
+  }
+
+  applyModeCopy();
+  renderRotation();
+  renderResumeBox();
+  el('btnStart').addEventListener('click', startExam);
+  el('btnResume').addEventListener('click', resumeAttempt);
+  el('btnDiscard').addEventListener('click', () => discardAttempt(false));
+  el('btnFinish').addEventListener('click', () => finishExam(false));
+  el('btnFinishTop').addEventListener('click', () => finishExam(false));
+  el('btnPause').addEventListener('click', () => setPaused(!paused));
+  el('btnResumeBanner').addEventListener('click', () => setPaused(false));
+  el('btnRestart').addEventListener('click', () => location.reload());
+
+  [['all','btnFAll'], ['correct','btnFCorrect'], ['wrong','btnFWrong'], ['blank','btnFBlank'], ['flagged','btnFFlagged']].forEach(pair => {
+    el(pair[1]).addEventListener('click', () => {
+      reviewFilter = pair[0];
+      updateReviewButtons();
+      renderReview();
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!active) return;
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    else if (e.key.toLowerCase() === 'f') {
+      e.preventDefault();
+      if (flagged.has(current)) flagged.delete(current);
+      else flagged.add(current);
+      updateFlagButton();
+      updatePalette();
+      saveAttempt();
+    } else if (e.key.toLowerCase() === 'p') {
+      e.preventDefault();
+      setPaused(!paused);
+    }
+  });
+
+  function freezeOnExit() {
+    if (!active) return;
+    remaining = currentRemaining();
+    paused = true;
+    runningSince = null;
+    saveAttempt();
+    updatePauseUI();
+    renderClock();
+  }
+
+  window.addEventListener('pagehide', freezeOnExit);
+  window.addEventListener('pageshow', e => {
+    if (!active || !e.persisted) return;
+    updatePauseUI();
+    renderClock();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden' && active && !paused) saveAttempt();
+  });
+
+  el('btnPause').title = 'Pausar o reanudar el cronómetro (P)';
+})();
+</script>
+</body>
+</html>

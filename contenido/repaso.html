@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repaso · AWS Cloud Practitioner CLF-C02</title>
+<meta name="description" content="Repaso del AWS Certified Cloud Practitioner CLF-C02: responsabilidad compartida, IAM, servicios, precios, soporte, trampas, cifras clave y glosario de siglas.">
+<link rel="stylesheet" href="assets/estilo.css?v=20261027d">
+</head>
+<body>
+
+<nav class="topnav no-print">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AWS</span>
+      <span>CLF-C02<span class="brand-sub">Centro de estudio</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="estudio.html">Estudiar</a>
+      <a href="flashcards.html">Flashcards</a>
+      <a href="examen.html">Simulacro</a>
+      <a href="repaso.html">Repaso</a>
+    </div>
+  </div>
+</nav>
+
+<header class="cheat-hero">
+  <div class="container flex between">
+    <div>
+      <span class="eyebrow">Repaso final · imprimible</span>
+      <h1 style="font-size:clamp(1.8rem,4vw,2.7rem)">Repaso CLF-C02</h1>
+      <p>Tablas, cifras y trampas para las últimas 48 horas. El contenido se limita a los temas de mayor peso en el examen.</p>
+    </div>
+    <div class="flex no-print">
+      <button class="btn btn-primary" onclick="window.print()" type="button">Imprimir / Guardar PDF</button>
+      <a class="btn btn-outline" href="examen.html">Hacer simulacro</a>
+    </div>
+  </div>
+</header>
+
+<main class="container cheat">
+
+  <nav class="chips no-print" aria-label="Índice rápido de repaso" style="margin:0 0 18px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)">
+    <strong class="small" style="margin-right:4px;align-self:center">Saltar a:</strong>
+    <a class="chip" href="#examen">01 · Examen</a>
+    <a class="chip" href="#fundamentos">02 · Fundamentos</a>
+    <a class="chip" href="#srm">03 · SRM</a>
+    <a class="chip" href="#iam">04 · IAM</a>
+    <a class="chip" href="#seguridad">05 · Seguridad</a>
+    <a class="chip" href="#computo">06 · Cómputo</a>
+    <a class="chip" href="#almacenamiento">07 · Almacenamiento</a>
+    <a class="chip" href="#bases">08 · Bases de datos</a>
+    <a class="chip" href="#redes">09 · Redes</a>
+    <a class="chip" href="#global">10 · Global</a>
+    <a class="chip" href="#monitoreo">11 · Monitoreo</a>
+    <a class="chip" href="#costos">12 · Costos</a>
+    <a class="chip" href="#soporte">13 · Soporte</a>
+    <a class="chip" href="#caf">14 · CAF y 7R</a>
+    <a class="chip" href="#ia">15 · IA y Datos</a>
+    <a class="chip" href="#adicionales">16 · Adicionales</a>
+    <a class="chip" href="#numeros">17 · Cifras</a>
+    <a class="chip" href="#trampas">18 · 20 Trampas</a>
+    <a class="chip" href="#estrategia">19 · Estrategia</a>
+    <a class="chip" href="#siglas">20 · Siglas</a>
+  </nav>
+
+  <section class="cheat-section" id="examen">
+    <h2><span class="n">01</span>Datos del examen y dominios</h2>
+    <div class="grid grid-2">
+      <table>
+        <tbody>
+          <tr><th>Preguntas</th><td><strong>65</strong> (50 puntúan + 15 no)</td></tr>
+          <tr><th>Duración</th><td><strong>90 minutos</strong></td></tr>
+          <tr><th>Aprobación</th><td><strong>700 / 1000</strong> (escala)</td></tr>
+          <tr><th>Costo</th><td><strong>USD 100</strong></td></tr>
+          <tr><th>Vigencia</th><td><strong>3 años</strong></td></tr>
+          <tr><th>Formato</th><td>Opción múltiple y respuesta múltiple</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Dominio</th><th>Peso</th><th>Qué estudiar</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Conceptos</strong></td><td>24%</td><td>Beneficios, diseño, CAF, Well-Architected, migración</td></tr>
+          <tr><td><strong>Seguridad</strong></td><td>30%</td><td>SRM, IAM, servicios de seguridad, cifrado</td></tr>
+          <tr><td><strong>Tecnología</strong></td><td>34%</td><td>Cómputo, almacenamiento, BD, redes, IA</td></tr>
+          <tr><td><strong>Costos y soporte</strong></td><td>12%</td><td>Precios, herramientas, planes de soporte</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cheat-section" id="fundamentos">
+    <h2><span class="n">02</span>Fundamentos de la nube y AWS (Bloque 1)</h2>
+    <div class="grid grid-2">
+      <table>
+        <thead><tr><th>Las 6 ventajas de la nube</th><th>Qué significa en el examen</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. CapEx → Gasto variable (OpEx)</strong></td><td>Pagas solo por lo que consumes en lugar de invertir en servidores por adelantado.</td></tr>
+          <tr><td><strong>2. Economías de escala</strong></td><td>Precios unitarios más bajos gracias a la escala global agregada de AWS.</td></tr>
+          <tr><td><strong>3. Dejar de adivinar capacidad</strong></td><td>Escalas hacia arriba o abajo según la demanda real sin sobreaprovisionar.</td></tr>
+          <tr><td><strong>4. Velocidad y agilidad</strong></td><td>Aprovisionas recursos en minutos para experimentar e innovar más rápido.</td></tr>
+          <tr><td><strong>5. Dejar de mantener datacenters</strong></td><td>Te enfocas en tus clientes y aplicaciones, no en cablear ni refrigerar racks.</td></tr>
+          <tr><td><strong>6. Alcance global en minutos</strong></td><td>Despliegas en múltiples Regiones y Edge Locations alrededor del mundo en clics.</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Concepto / Modelo</th><th>Distinción clave</th></tr></thead>
+        <tbody>
+          <tr><td><strong>IaaS / PaaS / SaaS</strong></td><td><strong>IaaS:</strong> EC2/VPC · <strong>PaaS:</strong> Elastic Beanstalk/RDS · <strong>SaaS:</strong> software final listo.</td></tr>
+          <tr><td><strong>Nube / Híbrida / On-prem</strong></td><td><strong>Nube:</strong> 100% AWS · <strong>Híbrida:</strong> datacenter + AWS (DX/VPN/Outposts) · <strong>On-prem:</strong> nube privada local.</td></tr>
+          <tr><td><strong>Escalado Vertical vs Horizontal</strong></td><td><strong>Vertical (Up/Down):</strong> instancia más grande · <strong>Horizontal (Out/In):</strong> añadir/quitar instancias.</td></tr>
+          <tr><td><strong>Elasticidad vs Agilidad</strong></td><td><strong>Elasticidad:</strong> ajuste automático a la demanda · <strong>Agilidad:</strong> rapidez para crear y experimentar.</td></tr>
+          <tr><td><strong>HA vs Tolerancia a fallos vs Durabilidad</strong></td><td><strong>HA:</strong> Multi-AZ con mínima caída · <strong>Tolerancia:</strong> cero caída · <strong>Durabilidad:</strong> no perder datos (S3 11 nueves).</td></tr>
+          <tr><td><strong>Formas de acceso a AWS</strong></td><td><strong>Consola web</strong> (visual), <strong>AWS CLI</strong> (terminal), <strong>AWS CloudShell</strong> (terminal en navegador) y <strong>AWS SDK</strong> (código).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cheat-section" id="srm">
+    <h2><span class="n">03</span>Responsabilidad compartida</h2>
+    <div class="grid grid-2">
+      <table>
+        <thead><tr><th>AWS · “de” la nube</th><th>Cliente · “en” la nube</th></tr></thead>
+        <tbody>
+          <tr><td>Instalaciones y seguridad física</td><td>Datos y su clasificación</td></tr>
+          <tr><td>Hardware, red y virtualización</td><td>Identidades, usuarios, roles y permisos</td></tr>
+          <tr><td>Software base de servicios gestionados</td><td>Configuración de red, security groups, bucket policies</td></tr>
+          <tr><td>Disponibilidad de la infraestructura</td><td>Parches del SO invitado en EC2</td></tr>
+          <tr><td>Cumplimiento de la infraestructura</td><td>Cumplimiento del uso y de los datos</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Servicio</th><th>Quién hace qué</th></tr></thead>
+        <tbody>
+          <tr><td><strong>EC2</strong></td><td>Cliente: SO, parches, apps, SG. AWS: hardware e hipervisor.</td></tr>
+          <tr><td><strong>RDS</strong></td><td>AWS: motor, SO y backups gestionados. Cliente: datos, usuarios, SG.</td></tr>
+          <tr><td><strong>S3</strong></td><td>AWS: infraestructura y durabilidad. Cliente: policies, cifrado, versionado.</td></tr>
+          <tr><td><strong>Lambda</strong></td><td>AWS: servidores y runtime. Cliente: código, rol, datos, configuración.</td></tr>
+          <tr><td><strong>IAM</strong></td><td>AWS: servicio. Cliente: usuarios, roles, políticas y MFA.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout trap"><b>Trampa</b><p>“AWS parchea el SO de EC2” es falso. “Serverless elimina mi responsabilidad” también. La línea se mueve, no desaparece.</p></div>
+  </section>
+
+  <section class="cheat-section" id="iam">
+    <h2><span class="n">04</span>IAM en una página</h2>
+    <div class="grid grid-2">
+      <table>
+        <thead><tr><th>Pieza</th><th>Qué es</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Usuario</strong></td><td>Identidad permanente de persona o aplicación.</td></tr>
+          <tr><td><strong>Grupo</strong></td><td>Colección de usuarios para permisos en bloque. No es login.</td></tr>
+          <tr><td><strong>Rol</strong></td><td>Identidad que se asume; credenciales temporales.</td></tr>
+          <tr><td><strong>Política</strong></td><td>JSON con Effect, Action, Resource, Condition.</td></tr>
+          <tr><td><strong>SCP</strong></td><td>Límite para cuentas de Organizations; no concede permisos.</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Necesidad</th><th>Respuesta</th></tr></thead>
+        <tbody>
+          <tr><td>EC2 accede a S3</td><td><strong>Rol de IAM</strong></td></tr>
+          <tr><td>Varios usuarios, mismos permisos</td><td><strong>Grupo</strong></td></tr>
+          <tr><td>SSO de empleados multi-cuenta</td><td><strong>IAM Identity Center</strong></td></tr>
+          <tr><td>Login de clientes de una app</td><td><strong>Cognito</strong></td></tr>
+          <tr><td>Auditar quién hizo qué</td><td><strong>CloudTrail</strong></td></tr>
+          <tr><td>CSV con estado de MFA y claves de todos los usuarios</td><td><strong>IAM Credential Report</strong></td></tr>
+          <tr><td>Ver servicios no usados de un rol / recursos públicos</td><td><strong>Access Advisor</strong> / <strong>Access Analyzer</strong></td></tr>
+          <tr><td>Límite máximo al delegar creación de roles</td><td><strong>Permissions Boundary</strong></td></tr>
+          <tr><td>Active Directory gestionado en AWS</td><td><strong>AWS Directory Service</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="kbd-list mt2">
+      <li><strong>Deny explícito</strong> siempre gana.</li>
+      <li>Por defecto, todo está denegado.</li>
+      <li>Mínimo privilegio: solo lo necesario, cuando se necesita.</li>
+      <li>Root: MFA, sin access keys, sin uso diario.</li>
+      <li>Las access keys no se embeben en el código.</li>
+      <li>CloudTrail audita; IAM autoriza.</li>
+    </ul>
+  </section>
+
+  <section class="cheat-section" id="seguridad">
+    <h2><span class="n">05</span>Servicios de seguridad</h2>
+    <table class="table-compact">
+      <thead><tr><th>Servicio</th><th>Función</th><th>Palabra clave</th></tr></thead>
+      <tbody>
+        <tr><td><strong>GuardDuty</strong></td><td>Detección de amenazas y comportamiento anómalo.</td><td>Amenaza</td></tr>
+        <tr><td><strong>Inspector</strong></td><td>Vulnerabilidades en EC2, Lambda y ECR.</td><td>CVE, vulnerabilidad</td></tr>
+        <tr><td><strong>Macie</strong></td><td>Datos sensibles/PII en S3.</td><td>PII, S3</td></tr>
+        <tr><td><strong>Detective</strong></td><td>Investigación y causa raíz.</td><td>Investigar</td></tr>
+        <tr><td><strong>Security Hub</strong></td><td>Agrega hallazgos y evalúa postura.</td><td>Panel central</td></tr>
+        <tr><td><strong>Shield</strong></td><td>Mitigación DDoS; Advanced añade respuesta y protección de costos.</td><td>DDoS</td></tr>
+        <tr><td><strong>WAF</strong></td><td>Filtro HTTP capa 7: SQL injection, XSS, bots.</td><td>Capa 7</td></tr>
+        <tr><td><strong>Firewall Manager</strong></td><td>Políticas de firewall centralizadas en Organizations.</td><td>Multi-cuenta</td></tr>
+        <tr><td><strong>Network Firewall</strong></td><td>Inspección de tráfico dentro de la VPC.</td><td>VPC, IDS/IPS</td></tr>
+        <tr><td><strong>KMS</strong></td><td>Claves gestionadas y multitenant.</td><td>Claves</td></tr>
+        <tr><td><strong>CloudHSM</strong></td><td>HSM dedicado de un solo inquilino.</td><td>Dedicado</td></tr>
+        <tr><td><strong>ACM</strong></td><td>Certificados TLS y renovación.</td><td>Certificado</td></tr>
+        <tr><td><strong>Secrets Manager</strong></td><td>Secretos y rotación de credenciales.</td><td>Rotación</td></tr>
+        <tr><td><strong>Artifact</strong></td><td>Descargar reportes SOC, ISO, PCI de AWS bajo demanda.</td><td>Certificados AWS</td></tr>
+        <tr><td><strong>Audit Manager</strong></td><td>Recopila evidencia continua de tu cuenta para auditorías.</td><td>Evidencia auditoría</td></tr>
+        <tr><td><strong>Parameter Store</strong></td><td>Parámetros de configuración jerárquicos (gratis en nivel estándar).</td><td>Parámetros</td></tr>
+        <tr><td><strong>Config</strong></td><td>Historial de configuración y reglas.</td><td>Cumple o no</td></tr>
+        <tr><td><strong>CloudTrail</strong></td><td>Registro de llamadas API.</td><td>Quién hizo qué</td></tr>
+      </tbody>
+    </table>
+    <div class="grid grid-2 mt2">
+      <div class="callout memo"><b>Cifrado</b><p><strong>En reposo:</strong> SSE-S3, SSE-KMS, SSE-C o del lado del cliente. <strong>En tránsito:</strong> TLS/HTTPS con ACM.</p></div>
+      <div class="callout trap"><b>Trampa</b><p>GuardDuty detecta, no bloquea. WAF no es DDoS. Macie es S3, no RDS. KMS no es un HSM dedicado.</p></div>
+    </div>
+  </section>
+
+  <section class="cheat-section" id="computo">
+    <h2><span class="n">06</span>Cómputo y contenedores</h2>
+    <div class="grid grid-2">
+      <table>
+        <thead><tr><th>Compra EC2</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>On-Demand</strong></td><td>Variable, sin compromiso, pruebas.</td></tr>
+          <tr><td><strong>Reserved</strong></td><td>Constante, 1–3 años, hasta ~72%.</td></tr>
+          <tr><td><strong>Savings Plans</strong></td><td>Compromiso USD/hora, flexible.</td></tr>
+          <tr><td><strong>Spot</strong></td><td>Tolerante a interrupciones, hasta ~90%.</td></tr>
+          <tr><td><strong>Dedicated Host vs Instance</strong></td><td><strong>Host:</strong> control de sockets/cores físicos (BYOL). <strong>Instance:</strong> hardware aislado sin ver sockets.</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Servicio</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lambda</strong></td><td>Eventos, serverless, máximo 15 min.</td></tr>
+          <tr><td><strong>Fargate</strong></td><td>Contenedores sin administrar servidores.</td></tr>
+          <tr><td><strong>ECS / EKS</strong></td><td>Orquestación; EKS = Kubernetes gestionado.</td></tr>
+          <tr><td><strong>ECR</strong></td><td>Registro de imágenes de contenedor.</td></tr>
+          <tr><td><strong>Beanstalk</strong></td><td>PaaS para aplicaciones tradicionales.</td></tr>
+          <tr><td><strong>Batch</strong></td><td>Trabajos por lotes.</td></tr>
+          <tr><td><strong>Lightsail</strong></td><td>VPS simple a precio fijo.</td></tr>
+          <tr><td><strong>CodeCommit / Build / Deploy / Pipeline</strong></td><td>Git privado / compilar y tests / desplegar en EC2-Lambda-ECS / orquestar CI/CD.</td></tr>
+          <tr><td><strong>AWS X-Ray</strong></td><td>Trazabilidad distribuida y mapa de latencias en microservicios.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info"><b>Árbol rápido</b><p>¿Controlas el SO? → EC2. ¿Evento corto? → Lambda. ¿Contenedor? → Fargate/ECS/EKS. ¿App tradicional? → Beanstalk. ¿Lotes? → Batch. ¿Kubernetes? → EKS.</p></div>
+  </section>
+
+  <section class="cheat-section" id="almacenamiento">
+    <h2><span class="n">07</span>Almacenamiento</h2>
+    <table class="table-compact">
+      <thead><tr><th>Clase / servicio</th><th>Acceso</th><th>Recuperación</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S3 Standard</strong></td><td>Frecuente</td><td>ms</td><td>Contenido activo</td></tr>
+        <tr><td><strong>Intelligent-Tiering</strong></td><td>Variable</td><td>ms</td><td>Patrones desconocidos; automático</td></tr>
+        <tr><td><strong>Standard-IA</strong></td><td>Infrecuente</td><td>ms</td><td>Backups, datos poco consultados</td></tr>
+        <tr><td><strong>One Zone-IA</strong></td><td>Infrecuente</td><td>ms</td><td>Datos reproducibles, una AZ</td></tr>
+        <tr><td><strong>Glacier Instant</strong></td><td>Archivo</td><td>ms</td><td>Archivo con consultas ocasionales</td></tr>
+        <tr><td><strong>Glacier Flexible</strong></td><td>Archivo</td><td>min–horas</td><td>Retención a largo plazo</td></tr>
+        <tr><td><strong>Glacier Deep Archive</strong></td><td>Archivo</td><td>~12 h</td><td>7–10 años al menor costo</td></tr>
+      </tbody>
+    </table>
+    <div class="grid grid-2 mt2">
+      <table>
+        <thead><tr><th>Servicio</th><th>Tipo / uso</th></tr></thead>
+        <tbody>
+          <tr><td><strong>S3</strong></td><td>Objetos; durabilidad 11 nueves; versionado, lifecycle, replicación.</td></tr>
+          <tr><td><strong>EBS</strong></td><td>Bloque para una EC2; atado a una AZ; snapshots.</td></tr>
+          <tr><td><strong>EFS</strong></td><td>Archivos NFS Linux, elástico, multizona.</td></tr>
+          <tr><td><strong>FSx</strong></td><td>Windows/SMB, Lustre, NetApp, OpenZFS.</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Servicio</th><th>Tipo / uso</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Storage Gateway</strong></td><td>Híbrido on-premise con S3/FSx.</td></tr>
+          <tr><td><strong>Snow Family</strong></td><td>Transferencia física de petabytes.</td></tr>
+          <tr><td><strong>DataSync</strong></td><td>Transferencia de datos por red.</td></tr>
+          <tr><td><strong>Backup</strong></td><td>Backups centralizados y políticas.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout memo"><b>Regla</b><p>Objeto → S3. Bloque → EBS. Archivo → EFS/FSx. “Compartido entre varias EC2 Linux” → EFS. “11 nueves” → S3.</p></div>
+  </section>
+
+  <section class="cheat-section" id="bases">
+    <h2><span class="n">08</span>Bases de datos</h2>
+    <table class="table-compact">
+      <thead><tr><th>Servicio</th><th>Tipo</th><th>Palabra clave</th></tr></thead>
+      <tbody>
+        <tr><td><strong>RDS</strong></td><td>Relacional gestionado: MySQL, PostgreSQL, MariaDB, Oracle, SQL Server.</td><td>SQL gestionado</td></tr>
+        <tr><td><strong>Aurora</strong></td><td>Compatible MySQL/PostgreSQL; 6 copias en 3 AZ; hasta 15 réplicas.</td><td>Alto rendimiento</td></tr>
+        <tr><td><strong>DynamoDB</strong></td><td>NoSQL clave-valor/documentos, serverless, ms, Global Tables.</td><td>Serverless NoSQL</td></tr>
+        <tr><td><strong>Redshift</strong></td><td>Data warehouse columnar.</td><td>Analítica</td></tr>
+        <tr><td><strong>ElastiCache / DAX</strong></td><td><strong>ElastiCache:</strong> Redis/Memcached. <strong>DAX:</strong> caché en microsegundos específica para DynamoDB.</td><td>Caché</td></tr>
+        <tr><td><strong>Keyspaces / MemoryDB</strong></td><td><strong>Keyspaces:</strong> compatible Apache Cassandra. <strong>MemoryDB:</strong> Redis en memoria con durabilidad Multi-AZ.</td><td>NoSQL / Memoria</td></tr>
+        <tr><td><strong>Neptune</strong></td><td>Base de datos de grafos.</td><td>Grafos</td></tr>
+        <tr><td><strong>DocumentDB</strong></td><td>Documentos compatible MongoDB.</td><td>MongoDB</td></tr>
+        <tr><td><strong>OpenSearch</strong></td><td>Búsqueda y análisis de logs.</td><td>Buscar</td></tr>
+      </tbody>
+    </table>
+    <div class="grid grid-2 mt2">
+      <div class="callout memo"><b>Multi-AZ</b><p>Réplica síncrona, failover automático, alta disponibilidad. <strong>No</strong> es para escalar lecturas.</p></div>
+      <div class="callout info"><b>Read replica</b><p>Replicación asíncrona, escala lecturas, se puede promover manualmente. No reemplaza Multi-AZ.</p></div>
+    </div>
+  </section>
+
+  <section class="cheat-section" id="redes">
+    <h2><span class="n">09</span>Redes</h2>
+    <div class="grid grid-2">
+      <table>
+        <thead><tr><th>Componente</th><th>Función</th></tr></thead>
+        <tbody>
+          <tr><td><strong>VPC</strong></td><td>Red aislada en una región.</td></tr>
+          <tr><td><strong>Subred</strong></td><td>Segmento dentro de una AZ.</td></tr>
+          <tr><td><strong>Route table</strong></td><td>Decide el destino del tráfico.</td></tr>
+          <tr><td><strong>IGW</strong></td><td>Entrada/salida a internet.</td></tr>
+          <tr><td><strong>NAT Gateway</strong></td><td>Salida a internet desde subred privada.</td></tr>
+          <tr><td><strong>Transit Gateway</strong></td><td>Hub para muchas VPC.</td></tr>
+          <tr><td><strong>PrivateLink</strong></td><td>Acceso privado a servicios.</td></tr>
+          <tr><td><strong>Direct Connect</strong></td><td>Enlace privado dedicado.</td></tr>
+          <tr><td><strong>Site-to-Site VPN</strong></td><td>Túnel cifrado por internet.</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Aspecto</th><th>Security group</th><th>NACL</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Nivel</th><td>Instancia/ENI</td><td>Subred</td></tr>
+          <tr><th scope="row">Estado</th><td>Stateful</td><td>Stateless</td></tr>
+          <tr><th scope="row">Reglas</th><td>Solo allow</td><td>Allow y deny</td></tr>
+          <tr><th scope="row">Orden</th><td>Todas</td><td>Numérico</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <table class="table-compact mt2">
+      <thead><tr><th>Servicio</th><th>Uso</th><th>Palabra clave</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Route 53</strong></td><td>DNS; simple, ponderado, latencia, failover, geolocalización, multivalor.</td><td>DNS</td></tr>
+        <tr><td><strong>CloudFront</strong></td><td>CDN con caché en edge locations.</td><td>Contenido estático</td></tr>
+        <tr><td><strong>Global Accelerator</strong></td><td>Red global anycast, sin caché.</td><td>TCP/UDP, failover</td></tr>
+        <tr><td><strong>ALB / NLB / GWLB</strong></td><td><strong>ALB:</strong> Capa 7 HTTP/HTTPS · <strong>NLB:</strong> Capa 4 TCP/UDP ultrarrápido · <strong>GWLB:</strong> Capa 3 appliances seguridad.</td><td>Balanceadores</td></tr>
+        <tr><td><strong>EC2 Auto Scaling</strong></td><td>Añade o termina instancias EC2 automáticamente según políticas de demanda.</td><td>Scale Out/In</td></tr>
+        <tr><td><strong>API Gateway</strong></td><td>Publicar, limitar tasa (throttling) y proteger APIs REST/HTTP/WebSocket.</td><td>API</td></tr>
+      </tbody>
+    </table>
+    <div class="callout trap"><b>Trampa</b><p>Una subred es pública por su <strong>route table</strong>, no por su nombre. El security group no puede denegar; la NACL sí.</p></div>
+  </section>
+
+  <section class="cheat-section" id="global">
+    <h2><span class="n">10</span>Infraestructura global</h2>
+    <table class="table-compact">
+      <thead><tr><th>Concepto</th><th>Qué es</th><th>Para qué</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Región</strong></td><td>Área geográfica con 2+ AZ.</td><td>Latencia, cumplimiento, servicios, costo.</td></tr>
+        <tr><td><strong>AZ</strong></td><td>1+ datacenters aislados en una región.</td><td>Multi-AZ, alta disponibilidad.</td></tr>
+        <tr><td><strong>Edge location</strong></td><td>Punto de presencia.</td><td>CloudFront, Route 53, Global Accelerator.</td></tr>
+        <tr><td><strong>Local Zones</strong></td><td>Cómputo cerca de una ciudad.</td><td>Latencia ultrabaja.</td></tr>
+        <tr><td><strong>Wavelength</strong></td><td>Cómputo en el borde 5G.</td><td>Apps móviles de baja latencia.</td></tr>
+        <tr><td><strong>Outposts</strong></td><td>AWS en tu datacenter.</td><td>Híbrido, residencia, baja latencia local.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout memo"><b>HA vs DR</b><p><strong>Multi-AZ</strong> = alta disponibilidad dentro de una región. <strong>Multi-Región</strong> = continuidad/DR y cercanía global. No son sinónimos.</p></div>
+  </section>
+
+  <section class="cheat-section" id="monitoreo">
+    <h2><span class="n">11</span>Monitoreo y gobernanza</h2>
+    <table class="table-compact">
+      <thead><tr><th>Servicio</th><th>Responde</th><th>Uso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CloudWatch</strong></td><td>¿Cómo funciona?</td><td>Métricas, logs, alarmas, dashboards.</td></tr>
+        <tr><td><strong>CloudTrail</strong></td><td>¿Quién lo hizo?</td><td>Auditoría de llamadas API.</td></tr>
+        <tr><td><strong>Config</strong></td><td>¿Cómo está configurado?</td><td>Historial y reglas de cumplimiento.</td></tr>
+        <tr><td><strong>Trusted Advisor</strong></td><td>¿Qué puedo mejorar?</td><td>6 categorías, incluida excelencia operativa.</td></tr>
+        <tr><td><strong>Systems Manager</strong></td><td>¿Cómo opero?</td><td>Parches, inventario, Run Command, Session Manager.</td></tr>
+        <tr><td><strong>Organizations</strong></td><td>¿Cómo administro cuentas?</td><td>Facturación consolidada y SCP.</td></tr>
+        <tr><td><strong>Control Tower</strong></td><td>¿Cómo creo una landing zone?</td><td>Guardrails multi-cuenta.</td></tr>
+        <tr><td><strong>CloudFormation</strong></td><td>¿Cómo automatizo IaC?</td><td>Plantillas JSON/YAML de Infraestructura como Código.</td></tr>
+        <tr><td><strong>Service Catalog</strong></td><td>¿Qué productos apruebo?</td><td>Catálogo de productos preaprobados sin dar permisos amplios.</td></tr>
+        <tr><td><strong>Health Dashboard</strong></td><td>¿AWS está bien?</td><td>Estado de servicios e impacto.</td></tr>
+        <tr><td><strong>Compute Optimizer</strong></td><td>¿Qué tamaño elijo?</td><td>Rightsizing.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout trap"><b>No confundir</b><p>CloudTrail = auditoría. CloudWatch = rendimiento. Config = configuración. Trusted Advisor = recomendaciones. Security Hub = hallazgos.</p></div>
+  </section>
+
+  <section class="cheat-section" id="costos">
+    <h2><span class="n">12</span>Precios y herramientas de costo</h2>
+    <div class="grid grid-2">
+      <table>
+        <thead><tr><th>Concepto</th><th>Idea</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Pago por uso</strong></td><td>Sin inversión inicial; pagas por consumo.</td></tr>
+          <tr><td><strong>Compromiso</strong></td><td>Reserved/Savings Plans bajan el precio.</td></tr>
+          <tr><td><strong>Volumen</strong></td><td>Precio por unidad baja al consumir más.</td></tr>
+          <tr><td><strong>Economías de escala</strong></td><td>AWS traslada parte de su escala a precios.</td></tr>
+          <tr><td><strong>Egress</strong></td><td>Salida a internet se cobra; entrada normalmente no.</td></tr>
+          <tr><td><strong>TCO</strong></td><td>Incluye energía, espacio, personal, hardware y mantenimiento.</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Herramienta</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Pricing Calculator</strong></td><td>Antes de desplegar.</td></tr>
+          <tr><td><strong>Cost Explorer</strong></td><td>Analizar y pronosticar.</td></tr>
+          <tr><td><strong>Budgets</strong></td><td>Alertas y límites.</td></tr>
+          <tr><td><strong>Cost and Usage Report</strong></td><td>Detalle línea a línea.</td></tr>
+          <tr><td><strong>Cost Optimization Hub</strong></td><td>Recomendaciones de ahorro.</td></tr>
+          <tr><td><strong>Cost Allocation Tags</strong></td><td>Etiquetas clave-valor para separar costos por proyecto/departamento.</td></tr>
+          <tr><td><strong>AWS Marketplace</strong></td><td>Catálogo de software de terceros facturado junto a tu cuenta AWS.</td></tr>
+          <tr><td><strong>AWS Free Tier</strong></td><td>3 tipos: <strong>12 meses gratis</strong>, <strong>Siempre gratis</strong> y <strong>Pruebas a corto plazo</strong>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout trap"><b>Costos menos visibles</b><p>NAT Gateway, balanceadores, snapshots, volúmenes EBS huérfanos, tráfico entre AZ, logs sin retención y recursos ociosos. Apagar una EC2 no elimina el costo de su EBS.</p></div>
+  </section>
+
+  <section class="cheat-section" id="soporte">
+    <h2><span class="n">13</span>Planes de soporte 2026</h2>
+    <table class="table-compact">
+      <thead><tr><th>Plan vigente (2026)</th><th>Equivalente clásico en examen</th><th>Crítico</th><th>TAM</th><th>Qué incluye</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Basic</strong> (Gratis)</td><td><strong>Basic</strong> (Gratis) / <em>Developer</em> ($29+, horario laboral)</td><td>Sin soporte / &lt;12-24h</td><td>No</td><td>Foros, Health Dashboard, checks básicos de Trusted Advisor.</td></tr>
+        <tr><td><strong>Business Support+</strong> ($29+)</td><td><strong>Business Support</strong> ($100+ · mínimo para <strong>producción</strong>)</td><td><strong>&lt; 30 min</strong> (&lt; 1h clásico)</td><td>No</td><td>Soporte técnico 24/7, Support API y <strong>Trusted Advisor completo (6 categorías)</strong>.</td></tr>
+        <tr><td><strong>Enterprise Support</strong> ($5.000+)</td><td><strong>Enterprise On-Ramp</strong> (pool TAMs, &lt;30m) y <strong>Enterprise</strong> ($15.000)</td><td><strong>&lt; 15 min</strong></td><td><strong>Sí (TAM dedicado)</strong></td><td>Guía proactiva con TAM, equipo de facturación <strong>AWS Concierge</strong> y revisiones arquitectónicas.</td></tr>
+        <tr><td><strong>Unified Operations</strong> ($50.000+)</td><td>Nivel corporativo multi-cuenta</td><td><strong>&lt; 5 min</strong></td><td><strong>Sí</strong></td><td>Operación integrada 24/7 y respuesta en 5 minutos.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout trap"><b>PDFs desactualizados</b><p>Los PDFs de origen muestran Basic/Developer/Business/Enterprise. Developer, Business clásico y Enterprise On-Ramp dejan de venderse el <strong>1 de enero de 2027</strong>. Confirma la página oficial antes de agendar.</p></div>
+  </section>
+
+  <section class="cheat-section" id="caf">
+    <h2><span class="n">14</span>Well-Architected, CAF y migración</h2>
+    <div class="grid grid-2">
+      <div>
+        <h3>6 pilares · Well-Architected</h3>
+        <ul class="kbd-list">
+          <li>Excelencia operativa</li>
+          <li>Seguridad</li>
+          <li>Confiabilidad</li>
+          <li>Eficiencia del rendimiento</li>
+          <li>Optimización de costos</li>
+          <li>Sostenibilidad</li>
+        </ul>
+        <h3 style="margin-top:14px">CAF · 3 fases</h3>
+        <p><strong>Envision</strong> → <strong>Align</strong> → <strong>Launch</strong></p>
+        <h3>CAF · 6 perspectivas</h3>
+        <p>Negocio · Personas · Gobernanza · Plataforma · Seguridad · Operaciones</p>
+      </div>
+      <div>
+        <h3>7 R de migración</h3>
+        <table class="table-compact">
+          <tbody>
+            <tr><td><strong>Retire</strong></td><td>Apagar lo que no se usa.</td></tr>
+            <tr><td><strong>Retain</strong></td><td>Mantener on-premise por ahora.</td></tr>
+            <tr><td><strong>Rehost</strong></td><td>Mover tal cual.</td></tr>
+            <tr><td><strong>Replatform</strong></td><td>Cambio moderado a gestionado.</td></tr>
+            <tr><td><strong>Repurchase</strong></td><td>Reemplazar por SaaS.</td></tr>
+            <tr><td><strong>Refactor</strong></td><td>Reescribir/re-arquitecturar.</td></tr>
+            <tr><td><strong>Relocate</strong></td><td>Mover sin cambiar arquitectura.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <table class="table-compact mt2">
+      <thead><tr><th>Servicio</th><th>Función</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Application Discovery Service</strong></td><td>Inventario y dependencias on-premise.</td></tr>
+        <tr><td><strong>Migration Evaluator</strong></td><td>Estimación de costos y business case.</td></tr>
+        <tr><td><strong>Application Migration Service</strong></td><td>Rehost de servidores.</td></tr>
+        <tr><td><strong>DMS</strong></td><td>Migración de bases de datos.</td></tr>
+        <tr><td><strong>SCT</strong></td><td>Conversión de esquemas.</td></tr>
+        <tr><td><strong>Migration Hub</strong></td><td>Seguimiento central.</td></tr>
+        <tr><td><strong>Well-Architected Tool</strong></td><td>Herramienta gratuita en consola para evaluar cargas contra los 6 pilares.</td></tr>
+        <tr><td><strong>Customer Carbon Footprint Tool</strong></td><td>Estima y rastrea las emisiones de carbono de tu uso en AWS.</td></tr>
+        <tr><td><strong>DataSync / Snow</strong></td><td>Transferencia de datos por red o física.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="cheat-section" id="ia">
+    <h2><span class="n">15</span>IA, analítica e integración</h2>
+    <div class="grid grid-2">
+      <table class="table-compact">
+        <thead><tr><th>Servicio</th><th>Tarea</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Amazon Bedrock</strong></td><td>API gestionada con modelos fundacionales (FMs) para IA generativa.</td></tr>
+          <tr><td><strong>SageMaker AI</strong></td><td>Construir, entrenar y desplegar tus propios modelos ML.</td></tr>
+          <tr><td><strong>Rekognition</strong></td><td>Imagen y video.</td></tr>
+          <tr><td><strong>Textract</strong></td><td>Texto de documentos.</td></tr>
+          <tr><td><strong>Comprehend</strong></td><td>NLP, sentimiento, entidades.</td></tr>
+          <tr><td><strong>Transcribe</strong></td><td>Voz a texto.</td></tr>
+          <tr><td><strong>Polly</strong></td><td>Texto a voz.</td></tr>
+          <tr><td><strong>Translate</strong></td><td>Idiomas.</td></tr>
+          <tr><td><strong>Lex</strong></td><td>Chatbots.</td></tr>
+          <tr><td><strong>Amazon Q / Kendra</strong></td><td><strong>Q:</strong> asistente IA generativa · <strong>Kendra:</strong> búsqueda empresarial inteligente.</td></tr>
+        </tbody>
+      </table>
+      <table class="table-compact">
+        <thead><tr><th>Servicio</th><th>Tarea</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Athena</strong></td><td>SQL sobre S3.</td></tr>
+          <tr><td><strong>Glue / Lake Formation</strong></td><td><strong>Glue:</strong> ETL serverless · <strong>Lake Formation:</strong> construir y asegurar Data Lakes en S3.</td></tr>
+          <tr><td><strong>EMR</strong></td><td>Hadoop/Spark.</td></tr>
+          <tr><td><strong>Kinesis</strong></td><td>Streaming.</td></tr>
+          <tr><td><strong>Redshift</strong></td><td>Data warehouse.</td></tr>
+          <tr><td><strong>QuickSight</strong></td><td>BI y dashboards.</td></tr>
+          <tr><td><strong>OpenSearch</strong></td><td>Búsqueda y logs.</td></tr>
+          <tr><td><strong>SQS / SNS</strong></td><td>Cola / pub-sub.</td></tr>
+          <tr><td><strong>EventBridge / Step Functions</strong></td><td>Eventos / orquestación.</td></tr>
+          <tr><td><strong>API Gateway / SES / Connect</strong></td><td>APIs / correo / contact center.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cheat-section" id="adicionales">
+    <h2><span class="n">16</span>Diccionario exprés de servicios adicionales (Carpeta 23 · 1 palabra clave = 1 respuesta)</h2>
+    <table class="table-compact">
+      <thead><tr><th>Servicio</th><th>Categoría</th><th>Palabra clave que lo delata en el examen</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Amazon WorkSpaces</strong></td><td>Usuario final (EUC)</td><td><strong>Escritorio virtual completo (VDI)</strong> Windows o Linux en la nube para empleados remotos.</td></tr>
+        <tr><td><strong>Amazon AppStream 2.0</strong></td><td>Usuario final (EUC)</td><td><strong>Transmitir (streaming) una aplicación de escritorio</strong> hacia un navegador web sin instalarla.</td></tr>
+        <tr><td><strong>Amazon WorkSpaces Web</strong></td><td>Usuario final (EUC)</td><td>Navegador aislado y seguro para abrir webs internas y SaaS sin VPN.</td></tr>
+        <tr><td><strong>Amazon Connect</strong></td><td>Productividad</td><td><strong>Centro de contacto (Call Center omnicanal)</strong> de voz y chat en la nube.</td></tr>
+        <tr><td><strong>Amazon SES</strong></td><td>Productividad</td><td><strong>Envío y recepción de correos electrónicos</strong> masivos o transaccionales.</td></tr>
+        <tr><td><strong>AWS Activate</strong></td><td>Ecosistema</td><td>Créditos gratuitos, plantillas y soporte técnico para <strong>startups</strong>.</td></tr>
+        <tr><td><strong>AWS IQ</strong></td><td>Ecosistema</td><td>Contratar bajo demanda a <strong>expertos independientes certificados por AWS</strong>.</td></tr>
+        <tr><td><strong>AWS Amplify / AppSync</strong></td><td>Frontend / Móvil</td><td><strong>Amplify:</strong> crear y desplegar apps web/móviles · <strong>AppSync:</strong> APIs <strong>GraphQL</strong> serverless.</td></tr>
+        <tr><td><strong>AWS Device Farm</strong></td><td>Frontend / Móvil</td><td>Probar apps web y móviles en una flota de <strong>teléfonos y tablets físicos reales</strong>.</td></tr>
+        <tr><td><strong>AWS IoT Core / Greengrass</strong></td><td>IoT</td><td><strong>IoT Core:</strong> conectar miles de millones de sensores a AWS · <strong>Greengrass:</strong> cómputo IoT local en el borde.</td></tr>
+        <tr><td><strong>AWS CloudShell / Cloud9</strong></td><td>Desarrolladores</td><td><strong>CloudShell:</strong> terminal CLI preautenticada en navegador · <strong>Cloud9:</strong> IDE de programación en navegador.</td></tr>
+        <tr><td><strong>CodeCommit / Build / Deploy / Pipeline</strong></td><td>CI/CD</td><td><strong>Commit:</strong> Git · <strong>Build:</strong> compilar/tests · <strong>Deploy:</strong> instalar en EC2/Lambda · <strong>Pipeline:</strong> orquestar CI/CD.</td></tr>
+        <tr><td><strong>CodeArtifact / AppConfig</strong></td><td>Desarrolladores</td><td><strong>CodeArtifact:</strong> repositorio de paquetes (npm/pip/Maven) · <strong>AppConfig:</strong> desplegar configuraciones seguras.</td></tr>
+        <tr><td><strong>AWS X-Ray</strong></td><td>Desarrolladores</td><td><strong>Rastrear solicitudes (tracing)</strong> y mapa visual de latencias en microservicios.</td></tr>
+        <tr><td><strong>AWS Launch Wizard</strong></td><td>Gobernanza</td><td>Asistente guiado para dimensionar y desplegar <strong>SAP HANA o SQL Server Always On</strong>.</td></tr>
+        <tr><td><strong>Resource Groups y Tag Editor</strong></td><td>Gobernanza</td><td>Etiquetar cientos de recursos a la vez (<strong>Tag Editor</strong>) y agruparlos por etiquetas.</td></tr>
+        <tr><td><strong>AWS RAM</strong></td><td>Seguridad / Red</td><td><strong>Compartir recursos</strong> (subredes, Transit Gateway) entre cuentas de AWS Organizations.</td></tr>
+        <tr><td><strong>AWS Data Exchange / Amazon MSK</strong></td><td>Analítica</td><td><strong>Data Exchange:</strong> suscribirse a <strong>datasets de terceros</strong> · <strong>MSK:</strong> <strong>Apache Kafka</strong> gestionado.</td></tr>
+        <tr><td><strong>AWS Transfer Family</strong></td><td>Transferencia</td><td>Transferir archivos a S3 o EFS usando protocolos <strong>SFTP, FTPS y FTP</strong>.</td></tr>
+        <tr><td><strong>AWS Elastic Disaster Recovery (DRS)</strong></td><td>Recuperación (DR)</td><td>Replicación continua para <strong>recuperación ante desastres rápida</strong> en AWS.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="cheat-section" id="numeros">
+    <h2><span class="n">17</span>Números que importan</h2>
+    <div class="grid grid-2">
+      <ul class="kbd-list">
+        <li><strong>65</strong> preguntas · <strong>90</strong> minutos.</li>
+        <li><strong>50</strong> puntúan · <strong>15</strong> no puntúan.</li>
+        <li><strong>700/1000</strong> para aprobar.</li>
+        <li><strong>USD 100</strong> · vigencia <strong>3 años</strong>.</li>
+        <li>Pesos: <strong>24 / 30 / 34 / 12</strong>.</li>
+        <li>S3: <strong>11 nueves</strong> de durabilidad.</li>
+      </ul>
+      <ul class="kbd-list">
+        <li>Lambda: máximo <strong>15 min</strong>.</li>
+        <li>Aurora: <strong>6 copias</strong> en <strong>3 AZ</strong>.</li>
+        <li>RDS: backups automáticos hasta <strong>35 días</strong>.</li>
+        <li>Reserved/Savings: hasta <strong>~72%</strong>.</li>
+        <li>Spot: hasta <strong>~90%</strong>.</li>
+        <li>Soporte: <strong>30 / 15 / 5</strong> min.</li>
+      </ul>
+    </div>
+    <p class="small muted" style="margin:10px 0 0">Los descuentos y precios varían por servicio, región y contrato. Úsalos como orden de magnitud, no como verdad absoluta.</p>
+  </section>
+
+  <section class="cheat-section" id="trampas">
+    <h2><span class="n">18</span>20 trampas en 20 líneas</h2>
+    <div class="cheat-cols">
+      <ul>
+        <li><strong>EC2:</strong> el cliente parchea el SO. <strong>RDS:</strong> AWS parchea el motor.</li>
+        <li><strong>Spot</strong> no es para cargas críticas que no toleran interrupciones.</li>
+        <li><strong>Multi-AZ</strong> es disponibilidad, no lectura.</li>
+        <li><strong>CloudTrail</strong> audita; <strong>CloudWatch</strong> mide; <strong>Config</strong> configura.</li>
+        <li><strong>Shield</strong> = DDoS; <strong>WAF</strong> = HTTP; <strong>GuardDuty</strong> = detección.</li>
+        <li><strong>S3</strong> = objetos; <strong>EFS</strong> = NFS; <strong>EBS</strong> = bloque.</li>
+        <li><strong>Reserved</strong> = instancia; <strong>Savings Plans</strong> = gasto/hora.</li>
+        <li>Entrada de datos gratis; <strong>salida</strong> se cobra.</li>
+        <li><strong>Región ≠ AZ ≠ edge location</strong>.</li>
+        <li>Serverless no siempre es Lambda: también Fargate, DynamoDB, Aurora Serverless.</li>
+        <li><strong>Root</strong> no se usa a diario; MFA y sin access keys.</li>
+        <li><strong>Nunca access keys en el código;</strong> usa roles o Secrets Manager.</li>
+        <li>EC2 → S3 = <strong>rol</strong>. Empleados = <strong>Identity Center</strong>. Clientes = <strong>Cognito</strong>.</li>
+        <li><strong>KMS</strong> multitenant; <strong>CloudHSM</strong> dedicado.</li>
+        <li><strong>SG</strong> no deniega; <strong>NACL</strong> sí. SG stateful; NACL stateless.</li>
+        <li><strong>Trusted Advisor</strong> tiene 6 categorías, no 5.</li>
+        <li><strong>Well-Architected</strong> tiene 6 pilares, no 5.</li>
+        <li><strong>TAM</strong> solo en Enterprise y Unified.</li>
+        <li><strong>IA</strong> sigue en ms; <strong>Glacier</strong> puede tardar horas.</li>
+        <li><strong>SCP</strong> limita; no concede permisos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cheat-section" id="estrategia">
+    <h2><span class="n">19</span>Estrategia de examen</h2>
+    <div class="grid grid-2">
+      <ul>
+        <li><strong>Lee la última línea primero:</strong> indica qué se pide.</li>
+        <li>Identifica el sustantivo: servidor, objeto, tabla, red, evento.</li>
+        <li>Busca la palabra clave: “más barato”, “menos operaciones”, “alta disponibilidad”, “temporal”.</li>
+        <li>Elimina opciones absolutas: “siempre”, “nunca”, “todos”.</li>
+        <li>Si dos opciones son válidas, elige la más gestionada y proporcionada al caso.</li>
+      </ul>
+      <ul>
+        <li><strong>65 preguntas / 90 min:</strong> unos 83 segundos por pregunta.</li>
+        <li>Primera pasada: responde lo seguro, marca bandera en lo dudoso.</li>
+        <li>Segunda pasada: revisa banderas y respuestas múltiples.</li>
+        <li>No dejes preguntas en blanco: no hay penalización por adivinar.</li>
+        <li>Último día: repaso, trampas y dormir. Nada de servicios nuevos.</li>
+      </ul>
+    </div>
+    <div class="callout ok"><b>Referencia</b><p>Un 70% o más en simulacros con revisión de errores es una referencia razonable. Conviene entender por qué la opción correcta lo es y volver al bloque correspondiente.</p></div>
+  </section>
+
+  <section class="cheat-section" id="siglas">
+    <h2><span class="n">20</span>Siglas</h2>
+    <div class="grid grid-2">
+      <table>
+        <thead><tr><th>Sigla</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td><strong>API</strong></td><td>Application Programming Interface (interfaz de programación de aplicaciones)</td></tr>
+          <tr><td><strong>AWS</strong></td><td>Amazon Web Services</td></tr>
+          <tr><td><strong>ACM</strong></td><td>AWS Certificate Manager</td></tr>
+          <tr><td><strong>ALB</strong></td><td>Application Load Balancer</td></tr>
+          <tr><td><strong>AMI</strong></td><td>Amazon Machine Image</td></tr>
+          <tr><td><strong>AZ</strong></td><td>Availability Zone (zona de disponibilidad)</td></tr>
+          <tr><td><strong>BI</strong></td><td>Business Intelligence (inteligencia de negocio)</td></tr>
+          <tr><td><strong>CAF</strong></td><td>AWS Cloud Adoption Framework</td></tr>
+          <tr><td><strong>CapEx / OpEx</strong></td><td>Capital Expenditure (gasto de capital) / Operational Expenditure (gasto variable)</td></tr>
+          <tr><td><strong>CI/CD</strong></td><td>Continuous Integration / Continuous Delivery (integración y entrega continuas)</td></tr>
+          <tr><td><strong>CDN</strong></td><td>Content Delivery Network (red de entrega de contenido)</td></tr>
+          <tr><td><strong>CLF-C02</strong></td><td>Código del examen AWS Certified Cloud Practitioner</td></tr>
+          <tr><td><strong>CPU</strong></td><td>Central Processing Unit (unidad central de procesamiento)</td></tr>
+          <tr><td><strong>CUR</strong></td><td>Cost and Usage Report</td></tr>
+          <tr><td><strong>DAX</strong></td><td>Amazon DynamoDB Accelerator (caché en microsegundos para DynamoDB)</td></tr>
+          <tr><td><strong>DRS</strong></td><td>AWS Elastic Disaster Recovery (recuperación ante desastres elástica)</td></tr>
+          <tr><td><strong>DDoS</strong></td><td>Distributed Denial of Service (denegación de servicio distribuida)</td></tr>
+          <tr><td><strong>DMS</strong></td><td>AWS Database Migration Service</td></tr>
+          <tr><td><strong>DNS</strong></td><td>Domain Name System (sistema de nombres de dominio)</td></tr>
+          <tr><td><strong>DX</strong></td><td>AWS Direct Connect</td></tr>
+          <tr><td><strong>EBS</strong></td><td>Amazon Elastic Block Store</td></tr>
+          <tr><td><strong>EC2</strong></td><td>Amazon Elastic Compute Cloud</td></tr>
+          <tr><td><strong>ECS</strong></td><td>Amazon Elastic Container Service</td></tr>
+          <tr><td><strong>EFS</strong></td><td>Amazon Elastic File System</td></tr>
+          <tr><td><strong>EKS</strong></td><td>Amazon Elastic Kubernetes Service</td></tr>
+          <tr><td><strong>ELB</strong></td><td>Elastic Load Balancing</td></tr>
+          <tr><td><strong>ETL</strong></td><td>Extract, Transform, Load (extracción, transformación y carga)</td></tr>
+          <tr><td><strong>HSM</strong></td><td>Hardware Security Module (módulo de seguridad de hardware)</td></tr>
+          <tr><td><strong>HTTP / HTTPS</strong></td><td>Hypertext Transfer Protocol / HTTP Secure</td></tr>
+          <tr><td><strong>IaaS</strong></td><td>Infrastructure as a Service (infraestructura como servicio)</td></tr>
+          <tr><td><strong>IaC</strong></td><td>Infrastructure as Code (infraestructura como código, ej. CloudFormation)</td></tr>
+          <tr><td><strong>IAM</strong></td><td>Identity and Access Management</td></tr>
+          <tr><td><strong>JSON</strong></td><td>JavaScript Object Notation</td></tr>
+          <tr><td><strong>IOPS</strong></td><td>Input/Output Operations Per Second (operaciones de entrada/salida por segundo)</td></tr>
+          <tr><td><strong>KMS</strong></td><td>AWS Key Management Service</td></tr>
+          <tr><td><strong>MFA</strong></td><td>Multi-Factor Authentication (autenticación multifactor)</td></tr>
+          <tr><td><strong>MGN</strong></td><td>AWS Application Migration Service (migración lift-and-shift)</td></tr>
+          <tr><td><strong>ML / FM</strong></td><td>Machine Learning / Foundation Model (modelo fundacional de IA generativa)</td></tr>
+          <tr><td><strong>MSK</strong></td><td>Amazon Managed Streaming for Apache Kafka</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Sigla</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td><strong>NACL</strong></td><td>Network Access Control List (lista de control de acceso de red)</td></tr>
+          <tr><td><strong>NAT</strong></td><td>Network Address Translation</td></tr>
+          <tr><td><strong>NFS</strong></td><td>Network File System</td></tr>
+          <tr><td><strong>NLB / GWLB</strong></td><td>Network Load Balancer (capa 4) / Gateway Load Balancer (capa 3)</td></tr>
+          <tr><td><strong>NoSQL</strong></td><td>Base de datos no relacional</td></tr>
+          <tr><td><strong>OAC</strong></td><td>Origin Access Control (acceso privado de CloudFront a S3)</td></tr>
+          <tr><td><strong>PaaS</strong></td><td>Platform as a Service (plataforma como servicio)</td></tr>
+          <tr><td><strong>RAM</strong></td><td>AWS Resource Access Manager (compartir recursos entre cuentas)</td></tr>
+          <tr><td><strong>RDS</strong></td><td>Amazon Relational Database Service</td></tr>
+          <tr><td><strong>RPO</strong></td><td>Recovery Point Objective (punto de recuperación)</td></tr>
+          <tr><td><strong>RTO</strong></td><td>Recovery Time Objective (tiempo de recuperación)</td></tr>
+          <tr><td><strong>S3</strong></td><td>Amazon Simple Storage Service</td></tr>
+          <tr><td><strong>SaaS</strong></td><td>Software as a Service (software como servicio)</td></tr>
+          <tr><td><strong>SCP</strong></td><td>Service Control Policy (política de control de servicios)</td></tr>
+          <tr><td><strong>SCT</strong></td><td>AWS Schema Conversion Tool</td></tr>
+          <tr><td><strong>SDK</strong></td><td>Software Development Kit (kit de desarrollo)</td></tr>
+          <tr><td><strong>SNS</strong></td><td>Amazon Simple Notification Service</td></tr>
+          <tr><td><strong>SQS</strong></td><td>Amazon Simple Queue Service</td></tr>
+          <tr><td><strong>SO</strong></td><td>Sistema operativo</td></tr>
+          <tr><td><strong>SQL</strong></td><td>Structured Query Language</td></tr>
+          <tr><td><strong>SRM</strong></td><td>Shared Responsibility Model (modelo de responsabilidad compartida)</td></tr>
+          <tr><td><strong>SSO</strong></td><td>Single Sign-On (inicio de sesión único)</td></tr>
+          <tr><td><strong>TAM</strong></td><td>Technical Account Manager</td></tr>
+          <tr><td><strong>TCO</strong></td><td>Total Cost of Ownership (costo total de propiedad)</td></tr>
+          <tr><td><strong>TCP</strong></td><td>Transmission Control Protocol</td></tr>
+          <tr><td><strong>TLS</strong></td><td>Transport Layer Security</td></tr>
+          <tr><td><strong>VPC</strong></td><td>Virtual Private Cloud (nube privada virtual)</td></tr>
+          <tr><td><strong>VPN</strong></td><td>Virtual Private Network (red privada virtual)</td></tr>
+          <tr><td><strong>VPS</strong></td><td>Virtual Private Server (servidor privado virtual)</td></tr>
+          <tr><td><strong>WAF</strong></td><td>Web Application Firewall</td></tr>
+          <tr><td><strong>VDI / EUC</strong></td><td>Virtual Desktop Infrastructure / End-User Computing (ej. WorkSpaces)</td></tr>
+          <tr><td><strong>WORM</strong></td><td>Write Once, Read Many (inmutabilidad en S3 Object Lock)</td></tr>
+          <tr><td><strong>XSS</strong></td><td>Cross-Site Scripting</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="small muted center" style="margin:18px 0 0">Fuentes: 188 PDFs + guía oficial CLF-C02 + documentación pública de AWS (octubre 2026). Preguntas y resúmenes originales; no son dumps. Verifica siempre la guía oficial antes de agendar.</p>
+</main>
+
+<footer class="footer no-print">
+  <div class="container">
+    <div><strong style="color:#fff">Repaso CLF-C02</strong><br><span class="small">Imprime o guarda como PDF · No afiliado a AWS.</span></div>
+    <div class="small"><a href="index.html">Volver al centro de estudio</a> · <a href="examen.html">Simulacro</a></div>
+  </div>
+</footer>
+
+<script src="assets/comun.js?v=20261027d"></script>
+</body>
+</html>
