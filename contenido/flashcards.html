@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flashcards · AWS Cloud Practitioner CLF-C02</title>
+<meta name="description" content="156 flashcards en español alineadas bloque por bloque para memorizar servicios, responsabilidades y conceptos clave del AWS Certified Cloud Practitioner CLF-C02.">
+<link rel="stylesheet" href="assets/estilo.css?v=20261027d">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AWS</span>
+      <span>CLF-C02<span class="brand-sub">Centro de estudio</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="estudio.html">Estudiar</a>
+      <a href="flashcards.html">Flashcards</a>
+      <a href="examen.html">Simulacro</a>
+      <a href="repaso.html">Repaso</a>
+    </div>
+  </div>
+</nav>
+
+<main id="contenido">
+<section class="section tight">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:12px">
+      <div>
+        <span class="eyebrow orange">Recuperación activa · 14 bloques sincronizados</span>
+        <h1 style="font-size:clamp(1.9rem,3.4vw,2.8rem);margin-bottom:6px">156 flashcards CLF-C02</h1>
+        <p>Cada tarjeta corresponde exactamente a lo estudiado en su bloque. Intenta responder en voz alta antes de voltear; marca <strong>Lo sé</strong> solo cuando lo domines sin dudar y <strong>Repasar</strong> para volver sobre ella.</p>
+      </div>
+      <span class="badge sky">Se guarda en este navegador</span>
+    </div>
+
+    <div class="flash-wrap">
+      <div class="flash-scope hidden" id="fscope">
+        <div><b id="fscopeTitle">Mazo del bloque</b><span id="fscopeText"></span></div>
+        <button class="filter-btn" id="btnScopeClear" type="button">Ver los 14 bloques (156)</button>
+      </div>
+      <div class="flash-toolbar" id="filters" aria-label="Filtrar por tema"></div>
+      <div class="flash-toolbar">
+        <button class="filter-btn" id="btnReview" type="button">Solo repasar (0)</button>
+        <button class="filter-btn" id="btnShuffle" type="button">Barajar</button>
+        <button class="filter-btn" id="btnReset" type="button">Reiniciar</button>
+        <div class="flash-stats">
+          <span>Sabidas <b id="statKnown">0</b></span>
+          <span>Repasar <b id="statReview">0</b></span>
+          <span>Sin marcar <b id="statPending">156</b></span>
+        </div>
+      </div>
+
+      <div class="flash-progress" aria-hidden="true"><span id="fbar"></span></div>
+
+      <div class="flash-card" id="card" role="button" tabindex="0">
+        <div class="flash-inner">
+          <div class="flash-face front">
+            <div class="flash-topic" id="ftopic">Tema</div>
+            <div class="flash-q" id="fq">Cargando…</div>
+            <div class="flash-hint">Clic o <kbd>Espacio</kbd> para voltear</div>
+          </div>
+          <div class="flash-face back">
+            <div class="flash-topic" id="btopic">Respuesta</div>
+            <div class="flash-a" id="fa"></div>
+            <div class="flash-hint"><kbd>1</kbd> Repasar · <kbd>2</kbd> Lo sé · <kbd>←</kbd> <kbd>→</kbd> navegar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash-actions" id="factions">
+        <button class="btn btn-outline" id="btnPrev" type="button">← Anterior</button>
+        <button class="btn btn-danger" id="btnReviewCard" type="button">Repasar</button>
+        <button class="btn btn-primary" id="btnKnown" type="button">Lo sé</button>
+        <button class="btn btn-outline" id="btnNextCard" type="button">Siguiente →</button>
+      </div>
+
+      <p class="center small muted" id="fcount" style="margin-top:12px"></p>
+
+      <div class="flash-empty hidden" id="fempty">
+        <h3 id="femptyTitle" style="margin-bottom:6px">¡Mazo completado!</h3>
+        <p id="femptyText">Cambia el filtro o reinicia el progreso.</p>
+        <div id="femptyActions" class="chips" style="justify-content:center;margin-top:12px"></div>
+        <div style="margin-top:10px">
+          <button class="btn btn-outline btn-sm" id="btnEmptyRepeat" type="button">Repetir este mazo</button>
+          <button class="btn btn-outline btn-sm" id="btnEmptyReset" type="button">Ver las 156 tarjetas</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-2 mt4">
+      <div class="card">
+        <h2><span class="card-icon orange">◎</span>Cómo aprovecharlas</h2>
+        <ul style="margin-bottom:0">
+          <li><strong>Estudia primero el bloque:</strong> al terminar cada bloque en <a href="estudio.html">Estudiar</a>, abre el mazo filtrado de ese bloque sin spoilers de temas futuros.</li>
+          <li><strong>Primero intenta:</strong> di la respuesta en voz alta antes de voltear la tarjeta.</li>
+          <li><strong>Sé exigente:</strong> si dudas, marca <strong>Repasar</strong>. “Lo sé a medias” no cuenta en el examen.</li>
+          <li><strong>Mezcla:</strong> usa <strong>Barajar</strong> para no memorizar el orden secuencial.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="card-icon sky">⌨</span>Atajos de teclado</h2>
+        <ul style="margin-bottom:0">
+          <li><kbd>Espacio</kbd> o <kbd>Enter</kbd>: voltear la tarjeta actual.</li>
+          <li><kbd>→</kbd> / <kbd>←</kbd>: pasar a la siguiente o volver a la anterior.</li>
+          <li><kbd>2</kbd>: marcar como <strong>Lo sé</strong> y avanzar automáticamente.</li>
+          <li><kbd>1</kbd>: marcar para <strong>Repasar</strong> y avanzar automáticamente.</li>
+        </ul>
+        <p class="small muted" style="margin:10px 0 0">El progreso se guarda en <code>localStorage</code> de tu navegador.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div><strong style="color:#fff">Flashcards CLF-C02</strong><br><span class="small">156 tarjetas originales alineadas con los 14 bloques · Sin dumps · No afiliado a AWS.</span></div>
+    <div class="small"><a href="examen.html">Siguiente paso: simulacro de 65 preguntas →</a></div>
+  </div>
+</footer>
+
+<script src="assets/comun.js?v=20261027d"></script>
+<script>
+(function () {
+  /* Formato: [bloque (1..14), categoría, pregunta, respuesta] */
+  const RAW = [
+    /* BLOQUE 1 · Fundamentos (10) */
+    [1, 'Fundamentos', '¿Qué es el cloud computing según la definición de AWS?', 'La entrega bajo demanda de potencia de cómputo, bases de datos, almacenamiento y aplicaciones a través de internet con un modelo de <strong>pago por uso</strong>.'],
+    [1, 'Fundamentos', '¿Cuáles son las 6 ventajas oficiales de la computación en la nube?', '1) Cambiar CapEx por gasto variable (OpEx), 2) Economías de escala masivas, 3) Dejar de adivinar la capacidad, 4) Mayor velocidad y agilidad, 5) Dejar de gastar en mantener datacenters físicos y 6) Desplegar globalmente en minutos.'],
+    [1, 'Fundamentos', '¿Qué diferencia hay entre CapEx y Gasto Variable (OpEx) al migrar a AWS?', '<strong>CapEx</strong> es invertir por adelantado en servidores físicos y edificios antes de usarlos; el <strong>gasto variable (OpEx)</strong> es pagar únicamente por los recursos que consumes y el tiempo que están activos.'],
+    [1, 'Fundamentos', '¿Qué diferencia hay entre IaaS, PaaS y SaaS en la nube?', '<strong>IaaS</strong> (ej. EC2) te da servidores y red virtuales; <strong>PaaS</strong> (ej. Elastic Beanstalk, RDS) abstrae el SO y el hardware para que gestiones solo tu código o datos; <strong>SaaS</strong> entrega un software listo para el usuario final.'],
+    [1, 'Fundamentos', '¿Cuáles son los 3 modelos de implementación en la nube?', '<strong>Nube pública (Cloud):</strong> 100% en AWS; <strong>Híbrida (Hybrid):</strong> conecta tu datacenter on-premises con AWS; <strong>On-premises (Nube privada):</strong> dedicada dentro del centro de datos propio.'],
+    [1, 'Fundamentos', '¿Qué diferencia hay entre escalado vertical (Scale Up/Down) y horizontal (Scale Out/In)?', '<strong>Vertical:</strong> cambiar una instancia por otra con más o menos CPU/RAM. <strong>Horizontal:</strong> agregar o quitar instancias para repartir la carga (el preferido en la nube para alta disponibilidad).'],
+    [1, 'Fundamentos', '¿En qué se diferencian la Elasticidad y la Agilidad en el examen CLF-C02?', '<strong>Elasticidad</strong> es que los recursos crezcan y disminuyan automáticamente según la demanda; <strong>Agilidad</strong> es la rapidez del equipo para aprovisionar recursos en minutos e innovar y experimentar más rápido.'],
+    [1, 'Fundamentos', '¿Qué diferencia hay entre Alta Disponibilidad, Tolerancia a Fallos y Durabilidad?', '<strong>Alta disponibilidad:</strong> seguir operativo con mínima interrupción usando varias AZ. <strong>Tolerancia a fallos:</strong> redundancia activa para cero caída perceptible. <strong>Durabilidad:</strong> que los datos no se pierdan con el tiempo (ej. 11 nueves en S3).'],
+    [1, 'Fundamentos', '¿Qué significa el principio de diseño de acoplamiento débil (loose coupling)?', 'Separar los componentes de una aplicación (por ejemplo, usando colas o balanceadores) para que el fallo o pico de carga en un componente no derribe al resto del sistema.'],
+    [1, 'Fundamentos', '¿Cuáles son las formas principales de interactuar con los servicios de AWS?', '1) <strong>AWS Management Console</strong> (interfaz web), 2) <strong>AWS CLI</strong> (comandos en terminal), 3) <strong>AWS CloudShell</strong> (terminal en el navegador preautenticada) y 4) <strong>AWS SDKs</strong> (librerías de código para Python, Java, JS, etc.).'],
+
+    /* BLOQUE 2 · SRM (10) */
+    [2, 'SRM', '¿Qué diferencia la seguridad “de” la nube de la seguridad “en” la nube?', 'AWS es responsable de la seguridad <strong>de</strong> la nube (datacenters físicos, hardware, red global e hipervisor). El cliente es responsable de la seguridad <strong>en</strong> la nube (sus datos, IAM, cifrado y configuración).'],
+    [2, 'SRM', '¿Quién es responsable de la seguridad física, guardias, biometría y destrucción de discos en los centros de datos?', '<strong>AWS</strong> al 100%. Es parte de la seguridad física <em>de</em> la nube.'],
+    [2, 'SRM', '¿Quién parchea el sistema operativo invitado (Guest OS) de una instancia Amazon EC2?', '<strong>El cliente.</strong> En un servicio IaaS como EC2, AWS protege el hipervisor y el hardware físico, pero el cliente administra y parchea el SO y las aplicaciones.'],
+    [2, 'SRM', 'En Amazon RDS, ¿quién aplica los parches del motor de base de datos y del sistema operativo subyacente?', '<strong>AWS.</strong> Como RDS es un servicio gestionado, AWS parchea el SO y el motor DB y ejecuta los backups automáticos; el cliente gestiona sus tablas, datos y permisos de usuario.'],
+    [2, 'SRM', 'En Amazon S3 y DynamoDB, ¿qué responsabilidades conserva siempre el cliente?', 'Clasificar sus datos, configurar quién tiene acceso (políticas de IAM y bucket policies), activar elversionado y habilitar el cifrado.'],
+    [2, 'SRM', '¿La responsabilidad del cliente desaparece al usar un servicio serverless como AWS Lambda?', '<strong>No.</strong> AWS gestiona el servidor, el SO y el entorno de ejecución, pero el cliente sigue siendo responsable de la seguridad de su código, los datos y los permisos del rol de IAM de la función.'],
+    [2, 'SRM', '¿Quién es responsable de configurar las reglas de un Security Group o una NACL?', '<strong>El cliente.</strong> AWS proporciona la infraestructura del firewall virtual, pero abrir o cerrar puertos es configuración <em>en</em> la nube.'],
+    [2, 'SRM', '¿Quién es responsable de capacitar a los empleados de la empresa en buenas prácticas de seguridad en la nube?', '<strong>El cliente.</strong> La formación del personal propio y la gestión de sus contraseñas y MFA siempre recaen en el cliente.'],
+    [2, 'SRM', '¿AWS garantiza automáticamente que la aplicación del cliente cumpla con PCI-DSS o HIPAA por el simple hecho de correr en AWS?', '<strong>No.</strong> El cumplimiento es una responsabilidad compartida: AWS certifica su infraestructura subyacente, pero el cliente debe diseñar y configurar sus cargas cumpliendo la norma.'],
+    [2, 'SRM', '¿Qué tres elementos son SIEMPRE responsabilidad del cliente sin importar si usa IaaS, PaaS o Abstracted Services?', '1) <strong>Los datos del cliente</strong> y su clasificación, 2) <strong>La gestión de identidades y accesos (IAM / MFA)</strong> y 3) <strong>El cifrado del lado del cliente</strong> y la configuración de permisos.'],
+
+    /* BLOQUE 3 · IAM (10) */
+    [3, 'IAM', '¿Cuál es la diferencia entre un Usuario, un Grupo y un Rol de IAM?', 'Un <strong>Usuario</strong> representa a una persona o servicio con credenciales permanentes; un <strong>Grupo</strong> agrupa usuarios para darles permisos en bloque (no puede anidar otros grupos); un <strong>Rol</strong> se asume y entrega <strong>credenciales temporales</strong>.'],
+    [3, 'IAM', '¿Cómo debe una aplicación en Amazon EC2 acceder a un bucket S3 de forma segura sin guardar claves en el código?', 'Asociando un <strong>Rol de IAM</strong> (Instance Profile) a la instancia EC2 para que reciba credenciales temporales rotadas automáticamente.'],
+    [3, 'IAM', 'En la evaluación de políticas de IAM, ¿qué ocurre si una acción tiene tanto un Allow como un Deny explícito?', 'El <strong>Deny explícito gana siempre</strong>. El orden es: 1) Deny explícito → deniega, 2) Allow explícito → permite, 3) Sin Allow → Deny implícito por defecto.'],
+    [3, 'IAM', '¿En qué consiste el principio de mínimo privilegio (least privilege)?', 'En otorgar a cada usuario, grupo o rol <strong>únicamente los permisos indispensables</strong> para realizar su tarea específica y nada más.'],
+    [3, 'IAM', '¿Qué diferencia hay entre AWS IAM Identity Center y Amazon Cognito?', '<strong>IAM Identity Center</strong> ofrece inicio de sesión único (SSO) para <strong>empleados</strong> hacia múltiples cuentas de AWS y apps corporativas. <strong>Amazon Cognito</strong> gestiona el registro y login de <strong>usuarios finales/clientes</strong> en tu aplicación web o móvil.'],
+    [3, 'IAM', '¿Cuáles son las prácticas obligatorias de seguridad para el usuario raíz (Root User) de la cuenta de AWS?', 'Activar <strong>MFA</strong> inmediatamente, <strong>no crear claves de acceso (Access Keys)</strong> para root (o eliminarlas si existen) y usar usuarios/roles de IAM para las tareas administrativas diarias.'],
+    [3, 'IAM', '¿Qué herramienta de IAM genera un archivo CSV con todos los usuarios de la cuenta y el estado de sus contraseñas, MFA y claves de acceso?', '<strong>IAM Credential Report</strong> (Informe de credenciales de IAM). Ideal para auditorías de rotación de claves y verificación de MFA.'],
+    [3, 'IAM', '¿Qué diferencia hay entre IAM Access Advisor e IAM Access Analyzer?', '<strong>IAM Access Advisor</strong> muestra qué servicios ha usado o no un usuario/rol recientemente para recortar permisos sobrantes. <strong>IAM Access Analyzer</strong> detecta recursos (como buckets S3 o roles) compartidos accidentalmente con entidades externas.'],
+    [3, 'IAM', '¿Qué es un límite de permisos (IAM Permissions Boundary)?', 'Una función avanzada que establece el <strong>máximo de permisos</strong> que una política basada en identidad puede otorgar a un usuario o rol. Por sí solo no concede permisos.'],
+    [3, 'IAM', '¿Qué servicio ofrece Active Directory gestionado en AWS para unir instancias Windows a un dominio?', '<strong>AWS Directory Service</strong> (como AWS Managed Microsoft AD).'],
+
+    /* BLOQUE 4 · Seguridad (12) */
+    [4, 'Seguridad', '¿Qué servicio detecta amenazas de forma inteligente analizando CloudTrail, VPC Flow Logs y DNS Logs con machine learning?', '<strong>Amazon GuardDuty.</strong> Detecta comportamientos maliciosos (como minería de criptomonedas o credenciales comprometidas), pero no bloquea tráfico directamente.'],
+    [4, 'Seguridad', '¿Qué servicio escanea automáticamente instancias EC2, imágenes de contenedores en ECR y funciones Lambda en busca de vulnerabilidades CVE?', '<strong>Amazon Inspector.</strong>'],
+    [4, 'Seguridad', '¿Qué servicio utiliza machine learning para descubrir y proteger datos sensibles (PII, tarjetas, documentos) dentro de buckets S3?', '<strong>Amazon Macie.</strong>'],
+    [4, 'Seguridad', '¿Qué diferencia hay entre AWS Security Hub y Amazon Detective?', '<strong>Security Hub</strong> centraliza las alertas de seguridad de varios servicios y evalúa el cumplimiento continuo (CIS, PCI). <strong>Amazon Detective</strong> correlaciona logs en gráficos para investigar la <strong>causa raíz</strong> de un incidente.'],
+    [4, 'Seguridad', '¿Qué diferencia hay entre AWS Shield Standard y AWS Shield Advanced?', '<strong>Shield Standard</strong> protege contra ataques DDoS comunes de capa 3 y 4 sin costo adicional para todos los clientes. <strong>Shield Advanced</strong> es de pago y añade mitigación avanzada, acceso 24/7 al equipo SRT y <strong>protección financiera</strong> contra picos de costo por DDoS.'],
+    [4, 'Seguridad', '¿Qué servicio es un firewall de aplicaciones web (capa 7) que bloquea inyecciones SQL (SQLi) y Cross-Site Scripting (XSS)?', '<strong>AWS WAF</strong> (Web Application Firewall). Se asocia a CloudFront, ALB o API Gateway.'],
+    [4, 'Seguridad', '¿Qué servicio permite administrar centralmente reglas de AWS WAF, Shield Advanced y Security Groups en todas las cuentas de AWS Organizations?', '<strong>AWS Firewall Manager.</strong>'],
+    [4, 'Seguridad', '¿Cuál es la diferencia clave entre AWS KMS y AWS CloudHSM?', '<strong>AWS KMS</strong> es un servicio gestionado y multi-inquilino para crear y controlar claves de cifrado. <strong>AWS CloudHSM</strong> entrega un módulo físico dedicado de un solo inquilino (FIPS 140-2/3 Nivel 3) donde solo el cliente controla las claves.'],
+    [4, 'Seguridad', '¿Cuál es la diferencia entre AWS Certificate Manager (ACM) y AWS Secrets Manager?', '<strong>ACM</strong> aprovisiona y renueva gratuitamente certificados SSL/TLS para cifrar el tráfico en tránsito (HTTPS). <strong>Secrets Manager</strong> almacena y <strong>rota automáticamente contraseñas de bases de datos</strong> y claves API.'],
+    [4, 'Seguridad', '¿En qué se diferencian AWSSecrets Manager y AWS Systems Manager Parameter Store?', 'Ambos guardan parámetros y secretos, pero <strong>Secrets Manager</strong> incluye <strong>rotación automática nativa de credenciales de bases de datos</strong>, mientras que <strong>Parameter Store</strong> ofrece un nivel estándar gratuito para parámetros de configuración.'],
+    [4, 'Seguridad', '¿Qué diferencia hay entre AWS Artifact y AWS Audit Manager?', '<strong>AWS Artifact</strong> es el portal para descargar los informes de cumplimiento de AWS (ISO, SOC, PCI). <strong>AWS Audit Manager</strong> recopila automáticamente evidencia continua del uso de tus propios recursos para preparar tus auditorías.'],
+    [4, 'Seguridad', '¿Qué diferencia hay entre el cifrado en reposo (at rest) y el cifrado en tránsito (in transit)?', 'El <strong>cifrado en reposo</strong> protege los datos guardados en disco (EBS, S3, RDS) usando claves de KMS; el <strong>cifrado en tránsito</strong> protege los datos mientras viajan por la red usando TLS/HTTPS con certificados de ACM.'],
+
+    /* BLOQUE 5 · EC2 (10) */
+    [5, 'EC2', '¿Qué es una AMI (Amazon Machine Image) en Amazon EC2?', 'La plantilla que contiene el sistema operativo, la configuración inicial y el software necesario para lanzar una instancia EC2.'],
+    [5, 'EC2', '¿Cómo se relacionan las 5 familias principales de instancias EC2 con su caso de uso?', '<strong>Propósito general (M/T):</strong> cargas equilibradas. <strong>Cómputo (C):</strong> procesamiento intensivo/lotes. <strong>Memoria (R/X):</strong> bases de datos en memoria y cachés. <strong>Almacenamiento (I/D):</strong> alto IOPS local. <strong>Aceleradas (P/G/Inf):</strong> GPUs y machine learning.'],
+    [5, 'EC2', '¿Cuándo debes elegir instancias EC2 On-Demand?', 'Para cargas de trabajo a corto plazo, con tráfico impredecible o aplicaciones nuevas que se están probando por primera vez y no admiten interrupciones.'],
+    [5, 'EC2', '¿Cuándo debes elegir instancias EC2 Spot y qué gran límite tienen?', 'Para cargas flexibles y <strong>tolerantes a interrupciones</strong> (procesamiento batch, renderizado, análisis de datos). Ofrecen hasta un <strong>90% de descuento</strong>, pero AWS puede reclamarlas con un aviso de 2 minutos. Nunca uses Spot para bases de datos críticas.'],
+    [5, 'EC2', '¿Qué diferencia hay entre Reserved Instances (RI) y Compute Savings Plans?', 'Ambos ofrecen hasta ~66–72% de descuento a cambio de un compromiso de <strong>1 o 3 años</strong>. Los <strong>Compute Savings Plans</strong> son más flexibles porque aplican el descuento aunque cambies de familia de instancia, región, SO o pases a <strong>Fargate o Lambda</strong>.'],
+    [5, 'EC2', '¿Qué diferencia hay entre Standard Reserved Instances y Convertible Reserved Instances?', 'Las <strong>Standard RI</strong> dan mayor descuento (hasta 72%) pero son más rígidas; las <strong>Convertible RI</strong> dan hasta 66% de descuento y permiten cambiar la familia de instancia, el sistema operativo o la tenencia durante el plazo.'],
+    [5, 'EC2', '¿Cuál es la diferencia exacta entre un Dedicated Host y una Dedicated Instance en EC2?', 'Ambos aíslan tus instancias en hardware físico exclusivo para tu cuenta, pero solo el <strong>Dedicated Host</strong> te da visibilidad de los <strong>sockets y núcleos físicos</strong> para reutilizar licencias existentes (BYOL) ligadas al servidor físico.'],
+    [5, 'EC2', '¿Para qué sirve una EC2 Capacity Reservation?', 'Para reservar capacidad de cómputo para tus instancias EC2 en una Zona de Disponibilidad específica durante el tiempo que necesites, asegurando que siempre puedas lanzarlas cuando haya picos.'],
+    [5, 'EC2', '¿Qué procesadores diseñados por AWS ofrecen la mejor relación precio-rendimiento y eficiencia energética en instancias EC2?', 'Los procesadores basados en arquitectura ARM <strong>AWS Graviton</strong>.'],
+    [5, 'EC2', 'Si detienes (Stop) una instancia EC2 durante el fin de semana, ¿qué se deja de cobrar y qué se sigue cobrando?', 'Se deja de cobrar el tiempo de cómputo de la instancia EC2, pero <strong>se sigue cobrando el almacenamiento de los volúmenes Amazon EBS adjuntos</strong> (y cualquier IP elástica reservada no utilizada).'],
+
+    /* BLOQUE 6 · Almacenamiento (10) */
+    [6, 'Almacenamiento', '¿Qué durabilidad ofrece Amazon S3 en todas sus clases de almacenamiento y qué tamaño máximo puede tener un objeto individual?', '<strong>99.999999999% (11 nueves) de durabilidad</strong> y un tamaño máximo de <strong>5 TB</strong> por objeto individual.'],
+    [6, 'Almacenamiento', '¿Qué clase de Amazon S3 debes elegir cuando los patrones de acceso a los datos son desconocidos o cambiantes?', '<strong>S3 Intelligent-Tiering.</strong> Mueve automáticamente los objetos entre capas de acceso frecuente e infrecuente sin cargos de recuperación.'],
+    [6, 'Almacenamiento', '¿Cuál es la diferencia entre S3 Standard-IA y S3 One Zone-IA?', 'Ambas son para datos de acceso poco frecuente con recuperación inmediata en milisegundos, pero <strong>S3 Standard-IA</strong> guarda los datos en múltiples AZ y <strong>S3 One Zone-IA</strong> los guarda en <strong>una sola AZ</strong> (20% más barata, ideal para datos recreables).'],
+    [6, 'Almacenamiento', '¿Cómo se diferencian las 3 clases de archivo S3 Glacier?', '<strong>Glacier Instant Retrieval:</strong> archivo consultado 1 vez por trimestre con recuperación en milisegundos. <strong>Glacier Flexible Retrieval:</strong> recuperación en minutos a horas. <strong>Glacier Deep Archive:</strong> el más barato de S3, para retención legal de 7–10 años con recuperación en hasta 12 horas.'],
+    [6, 'Almacenamiento', '¿Para qué sirven S3 Versioning, S3 Lifecycle Policies y S3 Object Lock?', '<strong>Versioning</strong> conserva múltiples versiones para recuperar borrados accidentales; <strong>Lifecycle Policies</strong> automatizan la transición a clases más baratas o la expiración; <strong>Object Lock</strong> aplica bloqueo WORM (inmutable) por cumplimiento legal.'],
+    [6, 'Almacenamiento', '¿Cuál es la diferencia entre un volumen Amazon EBS y un EC2 Instance Store?', '<strong>Amazon EBS</strong> es almacenamiento en bloques persistente por red que sobrevive al detener la instancia. <strong>Instance Store</strong> está físicamente en el servidor host: es ultrarrápido y temporal (efímero), por lo que sus datos se pierden al detener la instancia.'],
+    [6, 'Almacenamiento', '¿Puede un volumen Amazon EBS estándar adjuntarse en distintas Zonas de Disponibilidad al mismo tiempo?', '<strong>No.</strong> Un volumen EBS vive en <strong>una sola Zona de Disponibilidad (AZ)</strong>. Para moverlo o respaldarlo a otra AZ o Región, se crea un <strong>Snapshot de EBS</strong> en S3.'],
+    [6, 'Almacenamiento', '¿Cuál es la diferencia entre Amazon EFS, Amazon FSx for Windows File Server y Amazon FSx for Lustre?', '<strong>Amazon EFS:</strong> sistema de archivos compartido <strong>NFS para Linux</strong> que escala solo y abarca múltiples AZ. <strong>FSx for Windows:</strong> archivos compartidos nativos Windows (protocolo <strong>SMB</strong> y Active Directory). <strong>FSx for Lustre:</strong> computación de alto rendimiento (HPC) y machine learning.'],
+    [6, 'Almacenamiento', '¿Cuál es la diferencia entre AWS Storage Gateway y AWS DataSync?', '<strong>Storage Gateway</strong> ofrece acceso híbrido continuo conectando tu centro de datos local con almacenamiento en AWS (File, Volume o Tape Gateway). <strong>AWS DataSync</strong> automatiza y acelera transferencias de datos por red entre almacenamiento local y AWS (S3, EFS, FSx).'],
+    [6, 'Almacenamiento', '¿Cuándo se utiliza la familia AWS Snow (Snowcone / Snowball Edge)?', 'Cuando necesitas migrar <strong>terabytes o petabytes de datos físicos fuera de línea</strong> porque el ancho de banda de internet es lento, costoso o inexistente, o para realizar cómputo en el borde (edge computing).'],
+
+    /* BLOQUE 7 · Bases de datos (10) */
+    [7, 'Bases de datos', '¿Qué motores de bases de datos relacionales soporta Amazon RDS?', '6 motores: <strong>Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle y Microsoft SQL Server</strong>.'],
+    [7, 'Bases de datos', '¿Qué ventajas ofrece Amazon Aurora frente a RDS tradicional y cómo replica su almacenamiento?', 'Es compatible con MySQL y PostgreSQL (hasta 5x y 3x más rápido respectivamente) y mantiene automáticamente <strong>6 copias de tus datos distribuidas en 3 Zonas de Disponibilidad</strong>.'],
+    [7, 'Bases de datos', '¿Cuál es la diferencia de examen entre un despliegue RDS Multi-AZ y una Read Replica (Réplica de lectura)?', '<strong>Multi-AZ</strong> mantiene una copia en espera con replicación <strong>síncrona</strong> para <strong>alta disponibilidad y failover automático</strong> (no sirve para leer). Las <strong>Read Replicas</strong> usan replicación <strong>asíncrona</strong> para <strong>descargar el tráfico de lectura</strong> y mejorar el rendimiento.'],
+    [7, 'Bases de datos', '¿Qué es Amazon DynamoDB y por qué se elige en el examen?', 'Una base de datos <strong>NoSQL de clave-valor y documentos totalmente serverless</strong> que escala automáticamente y ofrece latencia constante de un solo dígito de milisegundo a cualquier escala.'],
+    [7, 'Bases de datos', '¿Cuál es la diferencia entre Amazon ElastiCache y Amazon DynamoDB Accelerator (DAX)?', '<strong>Amazon ElastiCache</strong> ofrece caché en memoria gestionada con <strong>Redis o Memcached</strong> delante de cualquier base de datos (como RDS). <strong>DAX</strong> es la caché en memoria específica y nativa para acelerar lecturas de <strong>Amazon DynamoDB</strong> de milisegundos a microsegundos.'],
+    [7, 'Bases de datos', '¿Para qué sirve Amazon Redshift y en qué se diferencia de Amazon RDS?', '<strong>Amazon Redshift</strong> es un <strong>almacén de datos (Data Warehouse) columnar para analítica (OLAP)</strong> e inteligencia de negocio sobre petabytes de datos históricos, mientras que <strong>RDS</strong> es para transacciones operativas diarias (OLTP).'],
+    [7, 'Bases de datos', '¿Qué servicio de base de datos de AWS debes elegir para cargas compatibles con MongoDB?', '<strong>Amazon DocumentDB</strong> (con compatibilidad con MongoDB).'],
+    [7, 'Bases de datos', '¿Qué servicio de base de datos de AWS está diseñado para grafos (redes sociales, detección de fraude, motores de recomendación)?', '<strong>Amazon Neptune</strong> (base de datos de grafos gestionada).'],
+    [7, 'Bases de datos', '¿Qué servicio de base de datos de AWS ofrece compatibilidad gestionada y serverless con Apache Cassandra?', '<strong>Amazon Keyspaces</strong> (for Apache Cassandra).'],
+    [7, 'Bases de datos', '¿Qué servicio combina la velocidad en memoria compatible con Redis con durabilidad transaccional completa en múltiples AZ?', '<strong>Amazon MemoryDB</strong>.'],
+
+    /* BLOQUE 8 · Redes y VPC (10) */
+    [8, 'Redes y VPC', '¿Qué es Amazon VPC y cuál es la diferencia entre una subred pública y una subred privada?', '<strong>Amazon VPC</strong> es tu red virtual aislada dentro de una Región. Una <strong>subred pública</strong> tiene ruta directa hacia un <strong>Internet Gateway (IGW)</strong>; una <strong>subred privada</strong> no tiene ruta entrante desde internet para proteger bases de datos y backends.'],
+    [8, 'Redes y VPC', '¿Para qué sirve un NAT Gateway en una VPC?', 'Permite que las instancias ubicadas en una <strong>subred privada</strong> salgan a internet (por ejemplo, para descargar parches de software) <strong>impidiendo que nadie desde internet inicie conexiones hacia ellas</strong>.'],
+    [8, 'Redes y VPC', '¿Cuáles son las 3 diferencias clave entre un Security Group y una Network ACL (NACL)?', '1) <strong>Nivel:</strong> el Security Group actúa a nivel de <strong>instancia</strong> y la NACL a nivel de <strong>subred</strong>. 2) <strong>Estado:</strong> el Security Group es <strong>stateful</strong> (con estado) y la NACL es <strong>stateless</strong> (sin estado). 3) <strong>Reglas:</strong> el Security Group solo admite reglas <strong>Allow</strong>; la NACL admite reglas <strong>Allow y Deny</strong>.'],
+    [8, 'Redes y VPC', '¿Cómo se diferencian los 3 tipos de Elastic Load Balancing (ALB, NLB y GWLB)?', '<strong>ALB (Application Load Balancer):</strong> capa 7 (HTTP/HTTPS), enruta por URL o cabeceras. <strong>NLB (Network Load Balancer):</strong> capa 4 (TCP/UDP), millones de peticiones por segundo con latencia ultrabaja e IP estática. <strong>GWLB (Gateway Load Balancer):</strong> capa 3 para insertar appliances virtuales de seguridad/inspección.'],
+    [8, 'Redes y VPC', '¿Cómo trabajan juntos Elastic Load Balancing (ELB) y Amazon EC2 Auto Scaling?', '<strong>EC2 Auto Scaling</strong> lanza o termina instancias EC2 automáticamente según la demanda (<em>Scale Out / Scale In</em>) y <strong>ELB</strong> reparte el tráfico entrante únicamente entre las instancias sanas en múltiples AZ.'],
+    [8, 'Redes y VPC', '¿Cuál es la diferencia entre VPC Peering y AWS Transit Gateway?', '<strong>VPC Peering</strong> conecta dos VPC de forma directa punto a punto (no es transitivo). <strong>AWS Transit Gateway</strong> actúa como un <strong>concentrador central (hub-and-spoke)</strong> para interconectar decenas o cientos de VPCs y redes on-premises sin una malla compleja.'],
+    [8, 'Redes y VPC', '¿Para qué sirven los VPC Endpoints y AWS PrivateLink?', 'Permiten que los recursos de tu VPC se conecten de forma <strong>totalmente privada a servicios de AWS</strong> (como S3 o DynamoDB mediante un Gateway Endpoint, o a otros servicios mediante Interface Endpoints/PrivateLink) <strong>sin salir nunca a la internet pública</strong>.'],
+    [8, 'Redes y VPC', '¿Qué funcionalidad captura información sobre el tráfico IP aceptado y rechazado en las interfaces de red de una VPC?', '<strong>VPC Flow Logs</strong>. Ayuda a diagnosticar por qué no llega tráfico o a auditar la red.'],
+    [8, 'Redes y VPC', 'Si necesitas bloquear explícitamente una dirección IP atacante específica para toda una subred, ¿usas un Security Group o una NACL?', 'Una <strong>Network ACL (NACL)</strong>, porque permite crear reglas de denegación explícita (<strong>Deny</strong>), mientras que un Security Group solo tiene reglas Allow.'],
+    [8, 'Redes y VPC', '¿A qué ámbito geográfico pertenece una VPC y a qué ámbito pertenece una Subred?', 'Una <strong>VPC</strong> abarca toda una <strong>Región de AWS</strong>, mientras que cada <strong>Subred</strong> reside dentro de <strong>una única Zona de Disponibilidad (AZ)</strong>.'],
+
+    /* BLOQUE 9 · DNS y Global (8) */
+    [9, 'DNS y Global', '¿Cuáles son las 3 funciones principales de Amazon Route 53?', '1) Registro de nombres de dominio, 2) Servicio de DNS autoritativo altamente disponible (100% SLA) y 3) Comprobaciones de estado (<em>Health Checks</em>) para redirigir tráfico fuera de endpoints caídos.'],
+    [9, 'DNS y Global', 'En Route 53, ¿qué diferencia hay entre las políticas de enrutamiento Simple, Weighted (Ponderada) y Failover?', '<strong>Simple:</strong> un solo recurso sin lógica especial. <strong>Weighted:</strong> envía porcentajes del tráfico (ej. 10% / 90%) para pruebas A/B o despliegues canary. <strong>Failover:</strong> conmutación por error activa-pasiva hacia un sitio de respaldo cuando falla el principal.'],
+    [9, 'DNS y Global', 'En Route 53, ¿cuál es la diferencia entre el enrutamiento por Latencia (Latency) y por Geolocalización (Geolocation)?', '<strong>Latency</strong> dirige al usuario a la Región de AWS que le responda en <strong>menos milisegundos</strong>. <strong>Geolocation</strong> dirige según el <strong>país o continente desde donde se conecta el usuario</strong> (útil para derechos de contenido o idioma local).'],
+    [9, 'DNS y Global', '¿Qué es Amazon CloudFront y cómo protege un bucket S3 de origen para que no sea público?', 'Es la <strong>red de entrega de contenido (CDN)</strong> de AWS que almacena en caché contenido web en las <strong>Edge Locations</strong>. Usando <strong>Origin Access Control (OAC)</strong>, el bucket S3 permanece privado y solo acepta lecturas provenientes de CloudFront.'],
+    [9, 'DNS y Global', '¿Cuál es la diferencia clave entre Amazon CloudFront y AWS Global Accelerator?', '<strong>CloudFront</strong> acelera contenido <strong>HTTP/HTTPS cacheable</strong> en Edge Locations. <strong>Global Accelerator</strong> proporciona <strong>2 direcciones IP anycast estáticas</strong> y enruta tráfico <strong>TCP/UDP</strong> no cacheable (juegos, VoIP, APIs) por la red troncal privada de AWS hasta la región más cercana.'],
+    [9, 'DNS y Global', '¿Cuál es la diferencia entre AWS Site-to-Site VPN y AWS Direct Connect?', '<strong>Site-to-Site VPN</strong> crea un túnel cifrado IPsec sobre la <strong>internet pública</strong> en minutos (rápido y económico, pero sujeto a la congestión de internet). <strong>Direct Connect (DX)</strong> es una conexión de <strong>fibra óptica física dedicada y privada</strong> con ancho de banda alto y latencia constante (tarda semanas en instalarse).'],
+    [9, 'DNS y Global', '¿AWS Direct Connect cifra el tráfico de forma predeterminada?', '<strong>No.</strong> Direct Connect es una línea privada dedicada, pero no cifra en tránsito por defecto. Si el examen pide una conexión dedicada <strong>y además cifrada</strong>, la respuesta es combinar <strong>AWS Direct Connect + AWS Site-to-Site VPN</strong>.'],
+    [9, 'DNS y Global', '¿Qué servicio de VPN permite que empleados remotos se conecten desde sus portátiles a la VPC o a la red corporativa usando OpenVPN?', '<strong>AWS Client VPN.</strong> (Mientras que Site-to-Site VPN conecta un centro de datos entero con una VPC).'],
+
+    /* BLOQUE 10 · Serverless y Contenedores (10) */
+    [10, 'Serverless y Contenedores', '¿Qué es AWS Lambda, cómo se factura y cuál es su tiempo máximo de ejecución por invocación?', 'Es cómputo <strong>serverless basado en eventos</strong>: ejecutas código sin aprovisionar servidores. Se factura solo por <strong>número de solicitudes y milisegundos de ejecución</strong> (0 costo inactivo) y su límite máximo es de <strong>15 minutos por invocación</strong>.'],
+    [10, 'Serverless y Contenedores', '¿Cuál es la diferencia entre Amazon ECS, Amazon EKS y Amazon ECR?', '<strong>Amazon ECS</strong> es el orquestador de contenedores propio de AWS; <strong>Amazon EKS</strong> es el servicio de <strong>Kubernetes</strong> gestionado; y <strong>Amazon ECR</strong> es el registro privado para almacenar y escanear las imágenes de contenedor Docker/OCI.'],
+    [10, 'Serverless y Contenedores', '¿Qué es AWS Fargate y cómo cambia la administración de contenedores en ECS o EKS?', 'Es el motor de <strong>cómputo serverless para contenedores</strong>: ejecuta tus contenedores de ECS o EKS sin que tengas que aprovisionar, escalar ni parchear instancias EC2 subyacentes.'],
+    [10, 'Serverless y Contenedores', '¿Para qué sirve AWS Elastic Beanstalk y qué nivel de control ofrece?', 'Es un servicio <strong>PaaS</strong> donde subes tu código web (Java, Python, Node, .NET, etc.) y Beanstalk aprovisiona automáticamente EC2, Auto Scaling, ELB y monitoreo. El servicio es gratuito; solo pagas por los recursos subyacentes.'],
+    [10, 'Serverless y Contenedores', '¿Cuál es la diferencia entre Amazon Lightsail y AWS Batch?', '<strong>Amazon Lightsail</strong> ofrece servidores virtuales privados (VPS), bases de datos y DNS a un <strong>precio mensual fijo y predecible</strong> para proyectos simples. <strong>AWS Batch</strong> planifica y ejecuta miles de <strong>trabajos de cómputo por lotes</strong> aprovisionando recursos automáticamente.'],
+    [10, 'Serverless y Contenedores', '¿Para qué sirve Amazon API Gateway?', 'Es un servicio totalmente gestionado para crear, publicar, asegurar (autenticación, throttling/límites de tasa) y monitorear APIs REST, HTTP y WebSocket que suelen conectar clientes con AWS Lambda o backends.'],
+    [10, 'Serverless y Contenedores', '¿Cómo se reparten las funciones de CI/CD entre AWS CodeCommit, CodeBuild, CodeDeploy y CodePipeline?', '<strong>CodeCommit:</strong> repositorio Git privado. <strong>CodeBuild:</strong> compila el código y ejecuta tests. <strong>CodeDeploy:</strong> despliega automáticamente en EC2, Lambda o ECS. <strong>CodePipeline:</strong> orquesta el flujo continuo completo de extremo a extremo.'],
+    [10, 'Serverless y Contenedores', '¿Qué servicio de AWS permite realizar trazabilidad distribuida (distributed tracing) para encontrar cuellos de botella y errores entre microservicios?', '<strong>AWS X-Ray.</strong> Genera un mapa visual de servicios para depurar latencias en arquitecturas con Lambda, API Gateway, ECS y EC2.'],
+    [10, 'Serverless y Contenedores', '¿Qué servicio combina herramientas de desarrollo en un entorno unificado para configurar rápidamente un proyecto con su pipeline CI/CD?', '<strong>AWS CodeStar</strong> / herramientas de desarrollo integradas con CodePipeline y AWS Cloud9 (IDE en navegador).'],
+    [10, 'Serverless y Contenedores', '¿Qué servicio acelera el desarrollo de aplicaciones web y móviles front-end conectándolas fácilmente con backends de AWS (Auth, GraphQL, hosting)?', '<strong>AWS Amplify.</strong>'],
+
+    /* BLOQUE 11 · Infraestructura Global (8) */
+    [11, 'Infraestructura Global', '¿Qué es una Región de AWS y qué la compone?', 'Un área geográfica física independiente del mundo que consta de un mínimo de <strong>tres Zonas de Disponibilidad (AZ)</strong> aisladas y conectadas entre sí mediante fibra de baja latencia.'],
+    [11, 'Infraestructura Global', '¿Cuáles son los 4 factores oficiales para elegir una Región de AWS en el examen CLF-C02?', '1) <strong>Cumplimiento normativo y soberanía de datos</strong> (el factor prioritario si las leyes exigen que los datos no salgan del país), 2) <strong>Proximidad a los usuarios (latencia)</strong>, 3) <strong>Disponibilidad de servicios</strong> en esa región y 4) <strong>Precios</strong> (varían por región).'],
+    [11, 'Infraestructura Global', '¿Los datos almacenados en una Región de AWS se replican automáticamente a otras Regiones por defecto?', '<strong>No.</strong> AWS nunca mueve ni replica tus datos fuera de la Región que elegiste a menos que tú lo configures explícitamente (por ejemplo, con S3 Cross-Region Replication o Aurora Global Database).'],
+    [11, 'Infraestructura Global', '¿Qué es exactamente una Zona de Disponibilidad (Availability Zone · AZ)?', '<strong>Uno o más centros de datos físicos discretos</strong> dentro de una Región, con alimentación eléctrica, refrigeración y seguridad independientes, separados por varios kilómetros para que un incidente local no afecte a las demás AZ.'],
+    [11, 'Infraestructura Global', '¿Cuál es el mínimo de Zonas de Disponibilidad en que debes desplegar tus instancias para lograr Alta Disponibilidad?', 'Al menos <strong>dos Zonas de Disponibilidad (Multi-AZ)</strong> dentro de la misma Región.'],
+    [11, 'Infraestructura Global', '¿Para qué sirven los Puntos de Presencia (Edge Locations y Regional Edge Caches)?', 'Son sitios distribuidos en las principales ciudades del mundo que utilizan <strong>Amazon CloudFront, Amazon Route 53, AWS WAF y AWS Shield</strong> para entregar contenido y responder consultas DNS con la menor latencia posible.'],
+    [11, 'Infraestructura Global', '¿Cuál es la diferencia entre AWS Outposts, AWS Local Zones y AWS Wavelength?', '<strong>AWS Outposts</strong> instala racks físicos de hardware AWS <strong>dentro de tu propio centro de datos</strong>. <strong>AWS Local Zones</strong> acerca cómputo y almacenamiento a grandes áreas metropolitanas. <strong>AWS Wavelength</strong> integra servicios AWS dentro de las <strong>redes 5G de telecomunicaciones</strong> para latencia ultrabaja móvil.'],
+    [11, 'Infraestructura Global', '¿Qué diferencia de objetivo hay entre una arquitectura Multi-AZ y una arquitectura Multi-Región?', '<strong>Multi-AZ</strong> protege contra el fallo de un centro de datos dentro de la misma región. <strong>Multi-Región</strong> protege ante desastres regionales a gran escala (Disaster Recovery) y reduce la latencia para usuarios distribuidos en distintos continentes.'],
+
+    /* BLOQUE 12 · Monitoreo y Gobernanza + IA y Analítica (14) */
+    [12, 'Monitoreo y Gobernanza', '¿Cuál es la diferencia exacta entre Amazon CloudWatch, AWS CloudTrail y AWS Config?', '<strong>CloudWatch:</strong> monitorea el <strong>rendimiento</strong> (métricas como CPU, logs y alarmas). <strong>CloudTrail:</strong> audita las <strong>llamadas a la API y actividad de usuarios</strong> (“quién hizo qué y desde qué IP”). <strong>AWS Config:</strong> registra el <strong>historial de configuración de los recursos</strong> y evalúa si cumplen reglas.'],
+    [12, 'Monitoreo y Gobernanza', '¿Cuáles son las 6 categorías que inspecciona AWS Trusted Advisor?', '1) <strong>Optimización de costos</strong>, 2) <strong>Rendimiento</strong>, 3) <strong>Seguridad</strong>, 4) <strong>Tolerancia a fallos</strong>, 5) <strong>Límites de servicio (Service Quotas)</strong> y 6) <strong>Excelencia operativa</strong>.'],
+    [12, 'Monitoreo y Gobernanza', '¿Qué diferencia hay entre AWS Systems Manager (SSM), AWS Compute Optimizer y AWS Health Dashboard?', '<strong>Systems Manager:</strong> gestiona flotas de servidores (parches con Patch Manager, acceso sin SSH con Session Manager, comandos con Run Command). <strong>Compute Optimizer:</strong> recomienda con ML el tamaño óptimo (right-sizing) de EC2/EBS/Lambda. <strong>Health Dashboard:</strong> muestra el estado de los servicios de AWS y alertas personalizadas de tu cuenta.'],
+    [12, 'Monitoreo y Gobernanza', '¿Qué ofrece AWS Organizations y qué es una Service Control Policy (SCP)?', '<strong>AWS Organizations</strong> agrupa múltiples cuentas con <strong>facturación consolidada</strong> (sumando uso para descuentos por volumen) y Unidades Organizativas (OUs). Las <strong>SCP</strong> son filtros que definen los permisos máximos permitidos en las cuentas miembro (incluyendo al usuario root de la cuenta miembro).'],
+    [12, 'Monitoreo y Gobernanza', '¿Para qué sirve AWS Control Tower?', 'Es la forma más sencilla de configurar y gobernar un <strong>entorno multi-cuenta seguro y bien arquitecturado (Landing Zone)</strong> automatizando AWS Organizations, IAM Identity Center y controles preventivos/detectivos (<em>guardrails</em>).'],
+    [12, 'Monitoreo y Gobernanza', '¿Cuál es la diferencia entre AWS CloudFormation y AWS Service Catalog?', '<strong>AWS CloudFormation</strong> es el servicio de <strong>Infraestructura como Código (IaC)</strong> para aprovisionar recursos mediante plantillas JSON/YAML repetibles. <strong>AWS Service Catalog</strong> permite a los administradores publicar catálogos de productos preaprobados para que los usuarios los desplieguen sin necesitar permisos amplios.'],
+    [12, 'IA y Analítica', '¿Cuál es la diferencia entre Amazon Athena, AWS Glue y AWS Lake Formation?', '<strong>Amazon Athena:</strong> ejecuta consultas <strong>SQL estándar directamente sobre archivos en Amazon S3</strong> de forma serverless (pagas por TB escaneado). <strong>AWS Glue:</strong> servicio <strong>ETL serverless</strong> y catálogo de datos para preparar y transformar datos. <strong>AWS Lake Formation:</strong> permite construir, asegurar y gobernar un <strong>Data Lake en S3</strong> en días.'],
+    [12, 'IA y Analítica', '¿Para qué sirven Amazon EMR, Amazon QuickSight y Amazon OpenSearch Service?', '<strong>Amazon EMR:</strong> procesa grandes volúmenes de Big Data con frameworks como <strong>Apache Spark y Hadoop</strong>. <strong>Amazon QuickSight:</strong> servicio de <strong>Business Intelligence (BI)</strong> para crear paneles y visualizaciones interactivas con ML. <strong>OpenSearch:</strong> búsqueda y análisis de logs en tiempo real.'],
+    [12, 'IA y Analítica', '¿Cuál es la diferencia entre Amazon SQS y Amazon SNS para desacoplar aplicaciones?', '<strong>Amazon SQS</strong> es un servicio de <strong>cola de mensajes (pull/polling)</strong> donde los consumidores extraen y procesan los mensajes uno por uno. <strong>Amazon SNS</strong> es un servicio de <strong>publicación/suscripción (push)</strong> que envía una notificación simultáneamente a múltiples suscriptores (email, SMS, Lambda, colas SQS).'],
+    [12, 'IA y Analítica', '¿Para qué sirven Amazon Kinesis, Amazon EventBridge y AWS Step Functions?', '<strong>Amazon Kinesis:</strong> ingiere y procesa <strong>flujos de datos en tiempo real (streaming)</strong> como clics, video o telemetría IoT. <strong>EventBridge:</strong> bus de eventos serverless que conecta aplicaciones y SaaS. <strong>Step Functions:</strong> orquesta flujos de trabajo visuales coordinando múltiples funciones Lambda.'],
+    [12, 'IA y Analítica', '¿Qué es Amazon Bedrock y por qué es clave para IA generativa en el examen CLF-C02?', 'Es un servicio totalmente gestionado que ofrece acceso mediante <strong>una única API a modelos fundacionales (Foundation Models · FMs)</strong> líderes de terceros y de Amazon para construir aplicaciones de <strong>IA generativa</strong> de forma privada y sin gestionar infraestructura.'],
+    [12, 'IA y Analítica', '¿Qué diferencia hay entre Amazon Q y Amazon SageMaker?', '<strong>Amazon Q</strong> es el <strong>asistente impulsado por IA generativa</strong> para desarrolladores (código y arquitectura AWS) y empresas. <strong>Amazon SageMaker</strong> es la plataforma completa para que científicos de datos e ingenieros <strong>construyan, entrenen y desplieguen sus propios modelos de Machine Learning</strong>.'],
+    [12, 'IA y Analítica', '¿Qué hacen Amazon Rekognition, Amazon Textract y Amazon Comprehend?', '<strong>Rekognition:</strong> analiza <strong>imágenes y videos</strong> (objetos, rostros, moderación). <strong>Textract:</strong> extrae texto, escritura a mano, formularios y <strong>tablas de documentos escaneados</strong> (más allá de un OCR simple). <strong>Comprehend:</strong> procesamiento de lenguaje natural (NLP) para extraer <strong>sentimiento, entidades y frases clave</strong> de textos.'],
+    [12, 'IA y Analítica', '¿Qué hacen Amazon Transcribe, Amazon Polly, Amazon Translate, Amazon Lex y Amazon Kendra?', '<strong>Transcribe:</strong> convierte voz a texto (Speech-to-Text). <strong>Polly:</strong> convierte texto a voz realista (Text-to-Speech). <strong>Translate:</strong> traducción automática de idiomas. <strong>Lex:</strong> motor de chatbots conversacionales. <strong>Kendra:</strong> búsqueda empresarial inteligente con lenguaje natural.'],
+    [12, 'Monitoreo y Gobernanza', '¿Cuál es la diferencia entre Amazon WorkSpaces, Amazon AppStream 2.0 y Amazon WorkSpaces Web?', '<strong>Amazon WorkSpaces:</strong> escritorio virtual completo (VDI) Windows o Linux en la nube. <strong>Amazon AppStream 2.0:</strong> transmite una aplicación de escritorio hacia cualquier navegador web sin instalarla. <strong>WorkSpaces Web:</strong> navegador aislado para acceder a sitios internos y SaaS sin VPN.'],
+    [12, 'Monitoreo y Gobernanza', '¿Para qué sirven Amazon Connect y Amazon Simple Email Service (Amazon SES)?', '<strong>Amazon Connect</strong> es el servicio de <strong>centro de contacto (call center omnicanal por voz y chat)</strong> en la nube. <strong>Amazon SES</strong> es la plataforma para <strong>enviar y recibir correos electrónicos</strong> transaccionales y de marketing a gran escala.'],
+    [12, 'Monitoreo y Gobernanza', '¿Cuál es la diferencia entre AWS Activate y AWS IQ?', '<strong>AWS Activate</strong> entrega créditos, plantillas y capacitación para que las <strong>startups</strong> crezcan en AWS. <strong>AWS IQ</strong> es un marketplace para buscar y contratar bajo demanda a <strong>expertos freelancers certificados por AWS</strong>.'],
+    [12, 'Monitoreo y Gobernanza', '¿Qué hacen AWS AppSync, AWS Device Farm, AWS IoT Core y AWS IoT Greengrass?', '<strong>AppSync:</strong> crea APIs <strong>GraphQL</strong> serverless en tiempo real. <strong>Device Farm:</strong> prueba apps web y móviles en <strong>dispositivos físicos reales</strong> en la nube. <strong>IoT Core:</strong> conecta miles de millones de dispositivos IoT a AWS. <strong>IoT Greengrass:</strong> ejecuta cómputo IoT localmente en el borde (edge).'],
+    [12, 'Monitoreo y Gobernanza', '¿Qué hacen AWS Launch Wizard, AWS Resource Access Manager (RAM) y Tag Editor?', '<strong>Launch Wizard:</strong> asistente guiado para dimensionar y desplegar apps empresariales como <strong>SAP HANA o SQL Server Always On</strong>. <strong>AWS RAM:</strong> comparte recursos (como subredes o Transit Gateways) entre cuentas de AWS Organizations. <strong>Tag Editor:</strong> etiqueta cientos de recursos a la vez.'],
+    [12, 'IA y Analítica', '¿Qué hacen AWS Transfer Family, AWS Elastic Disaster Recovery (DRS), AWS Data Exchange y Amazon MSK?', '<strong>Transfer Family:</strong> transfiere archivos a S3/EFS por <strong>SFTP/FTPS/FTP</strong>. <strong>AWS DRS:</strong> recuperación ante desastres continua hacia AWS en minutos. <strong>Data Exchange:</strong> suscripción a <strong>datasets de terceros</strong>. <strong>Amazon MSK:</strong> Apache Kafka gestionado para streaming.'],
+
+    /* BLOQUE 13 · Marcos y Migración (10) */
+    [13, 'Marcos y Migración', '¿Cuáles son los 6 pilares del AWS Well-Architected Framework?', '1) <strong>Excelencia operativa</strong>, 2) <strong>Seguridad</strong>, 3) <strong>Confiabilidad</strong>, 4) <strong>Eficiencia del rendimiento</strong>, 5) <strong>Optimización de costos</strong> y 6) <strong>Sostenibilidad</strong>.'],
+    [13, 'Marcos y Migración', '¿Cómo distingues rápidamente a qué pilar del Well-Architected Framework pertenece un requisito?', '<strong>Excelencia operativa:</strong> cambios pequeños/reversibles, IaC y aprender de fallos. <strong>Seguridad:</strong> mínimo privilegio, trazabilidad y cifrado. <strong>Confiabilidad:</strong> recuperación automática y escalado horizontal. <strong>Eficiencia del rendimiento:</strong> tecnologías avanzadas y alcance global. <strong>Optimización de costos:</strong> modelo de consumo. <strong>Sostenibilidad:</strong> reducir impacto energético.'],
+    [13, 'Marcos y Migración', '¿Qué herramienta gratuita en la consola permite evaluar tus arquitecturas frente a los 6 pilares, y qué herramienta mide tus emisiones de carbono?', '<strong>AWS Well-Architected Tool</strong> evalúa tus cargas de trabajo contra los 6 pilares; <strong>AWS Customer Carbon Footprint Tool</strong> estima y rastrea las emisiones de carbono asociadas a tu uso de AWS.'],
+    [13, 'Marcos y Migración', '¿Para qué sirve el AWS Cloud Adoption Framework (CAF) y cuáles son sus 6 perspectivas?', 'Guía la transformación organizacional hacia la nube a través de <strong>6 perspectivas</strong>: 3 de negocio (<strong>Negocio, Personas, Gobernanza</strong>) y 3 técnicas (<strong>Plataforma, Seguridad, Operaciones</strong>).'],
+    [13, 'Marcos y Migración', 'En el AWS CAF, ¿qué perspectiva gestiona la capacitación, la cultura y la gestión del cambio, y cuál controla los riesgos y finanzas?', 'La perspectiva <strong>Personas (People)</strong> gestiona el cambio cultural, nuevos roles y capacitación; la perspectiva <strong>Gobernanza (Governance)</strong> controla los riesgos, el cumplimiento y la gestión financiera en la nube.'],
+    [13, 'Marcos y Migración', 'En las 7 R de migración, ¿cuál es la diferencia entre Rehost, Replatform y Refactor?', '<strong>Rehost (Lift and shift):</strong> mover al servidor en la nube tal cual sin cambios. <strong>Replatform (Lift, tinker and shift):</strong> hacer optimizaciones puntuales hacia servicios gestionados (ej. pasar una BD local a Amazon RDS) sin cambiar la arquitectura base. <strong>Refactor:</strong> rediseñar la app a microservicios/serverless.'],
+    [13, 'Marcos y Migración', 'En las 7 R de migración, ¿qué significan Repurchase, Relocate, Retain y Retire?', '<strong>Repurchase (Drop and shop):</strong> cambiar a un producto SaaS comercial. <strong>Relocate:</strong> mover VMs (ej. VMware) a la nube sin cambiar hipervisor ni SO. <strong>Retain:</strong> mantener en on-premises por ahora. <strong>Retire:</strong> apagar aplicaciones obsoletas que ya nadie usa.'],
+    [13, 'Marcos y Migración', '¿Cuál es la diferencia entre AWS Migration Evaluator y AWS Application Discovery Service?', '<strong>AWS Migration Evaluator</strong> construye el <strong>caso de negocio financiero (proyección de ahorro y TCO)</strong> antes de migrar. <strong>AWS Application Discovery Service</strong> recopila el inventario técnico y las <strong>dependencias entre los servidores on-premises</strong>.'],
+    [13, 'Marcos y Migración', '¿Qué servicio es la herramienta principal de AWS para realizar migraciones Lift-and-Shift (Rehost) de servidores hacia EC2?', '<strong>AWS Application Migration Service (AWS MGN).</strong> Replica continuamente los servidores de origen con un tiempo de corte mínimo.'],
+    [13, 'Marcos y Migración', '¿Cuál es la diferencia entre AWS Database Migration Service (DMS), AWS Schema Conversion Tool (SCT) y AWS Migration Hub?', '<strong>AWS DMS</strong> migra bases de datos manteniendo la base de datos de origen activa. <strong>AWS SCT</strong> convierte el esquema y código SQL cuando migras entre motores distintos (ej. Oracle a Aurora). <strong>AWS Migration Hub</strong> es el panel único para seguir el progreso de toda la migración.'],
+
+    /* BLOQUE 14 · Costos, Soporte y Trampas (18) */
+    [14, 'Costos', '¿Cuáles son los 3 generadores fundamentales de costo en AWS y qué ocurre con la transferencia de entrada?', 'Los 3 generadores son: <strong>1) Cómputo, 2) Almacenamiento y 3) Transferencia de datos de salida (Outbound)</strong>. La transferencia de datos de <strong>entrada desde internet hacia AWS (Inbound) es gratuita</strong>.'],
+    [14, 'Costos', '¿Qué servicios de AWS son gratuitos por sí mismos (solo pagas por los recursos subyacentes que crean)?', '<strong>AWS IAM, Amazon VPC (su creación), Amazon EC2 Auto Scaling, AWS CloudFormation, AWS Elastic Beanstalk y la Facturación Consolidada</strong> de AWS Organizations.'],
+    [14, 'Costos', '¿Cuáles son las 3 modalidades de la Capa Gratuita de AWS (AWS Free Tier)?', '1) <strong>12 meses gratis</strong> desde la creación de la cuenta (ej. 750 h/mes de EC2 t2/t3.micro, 5 GB en S3), 2) <strong>Siempre gratis (Always Free)</strong> que no caduca (ej. 1 millón de peticiones/mes en Lambda, 25 GB en DynamoDB) y 3) <strong>Pruebas a corto plazo (Short-term Trials)</strong> al activar un servicio (ej. Inspector o GuardDuty por 30 días).'],
+    [14, 'Costos', '¿Cuál es la diferencia entre AWS Pricing Calculator y AWS Cost Explorer?', '<strong>AWS Pricing Calculator</strong> sirve para <strong>estimar cuánto costará una arquitectura futura antes de desplegarla</strong>. <strong>AWS Cost Explorer</strong> sirve para <strong>visualizar y analizar el gasto histórico</strong> de los últimos meses y proyectar el gasto futuro de tu cuenta activa.'],
+    [14, 'Costos', '¿Cuál es la diferencia entre AWS Budgets y AWS Cost and Usage Report (CUR)?', '<strong>AWS Budgets</strong> permite fijar presupuestos y <strong>enviar alertas por email/SNS</strong> cuando tu gasto real o proyectado supera un límite. <strong>AWS CUR</strong> entrega en un bucket S3 el <strong>informe contable más granular y detallado línea por línea</strong>.'],
+    [14, 'Costos', '¿Para qué sirven las Etiquetas de asignación de costos (Cost Allocation Tags) y AWS Marketplace?', 'Las <strong>Cost Allocation Tags</strong> son pares clave-valor que asignas a tus recursos para <strong>separar y atribuir la factura por departamento, proyecto o entorno</strong>. <strong>AWS Marketplace</strong> es el catálogo digital para comprar software de terceros (ISV) e integrarlo en tu factura de AWS.'],
+    [14, 'Costos', '¿Qué elementos directos e indirectos incluye un análisis de Costo Total de Propiedad (TCO) frente a un centro de datos propio?', 'Además del precio de servidores, almacenamiento y red, incluye los gastos de <strong>instalaciones físicas (alquiler de espacio, electricidad, refrigeración/aire acondicionado, UPS)</strong> y el personal de administración de hardware.'],
+    [14, 'Soporte', '¿Qué ofrece el plan Basic Support y en qué se diferencia del plan clásico Developer Support?', '<strong>Basic Support</strong> es gratuito para todas las cuentas, incluye acceso a foros, Health Dashboard y solo checks básicos de Trusted Advisor, pero <strong>sin soporte técnico para abrir casos</strong>. El plan clásico <strong>Developer</strong> añade soporte por email en horario laboral para entornos de prueba.'],
+    [14, 'Soporte', '¿Cuál es el plan mínimo recomendado para cargas de trabajo en producción con soporte técnico 24/7 y todos los checks de Trusted Advisor?', '<strong>Business Support / Business Support+</strong>. Desbloquea las <strong>6 categorías completas de AWS Trusted Advisor</strong>, acceso a la API de soporte y atención 24/7 por teléfono, chat y web (sin incluir TAM).'],
+    [14, 'Soporte', '¿Qué planes de soporte incluyen un Technical Account Manager (TAM) y acceso al equipo de facturación AWS Concierge?', 'Los planes de nivel <strong>Enterprise</strong>: en el esquema clásico, <strong>Enterprise On-Ramp</strong> ofrece acceso a un <em>pool</em> compartido de TAMs (respuesta &lt; 30 min) y <strong>Enterprise Support</strong> incluye un <strong>TAM dedicado designado</strong> y respuesta en <strong>&lt; 15 minutos</strong> para caídas críticas (y <strong>Unified Operations</strong> responde en &lt; 5 min).'],
+    [14, 'Soporte', '¿Cuál es la diferencia entre el rol del Technical Account Manager (TAM), el equipo AWS Concierge y AWS Partner Network (APN)?', 'El <strong>TAM</strong> da orientación arquitectónica proactiva y revisiones técnicas en Enterprise. El equipo <strong>AWS Concierge</strong> resuelve consultas ejecutivas de <strong>facturación y cuentas</strong>. <strong>AWS Partner Network (APN)</strong> y <strong>AWS Professional Services</strong> ayudan a diseñar e implementar proyectos cuando no tienes personal suficiente.'],
+    [14, 'Trampas', 'Trampa clásica: ¿Para qué sirve RDS Multi-AZ frente a RDS Read Replicas?', '<strong>Multi-AZ</strong> es para <strong>alta disponibilidad y failover automático</strong> (replicación síncrona en espera, no atiende lecturas). <strong>Read Replicas</strong> son para <strong>escalar el rendimiento de lectura</strong> (replicación asíncrona).'],
+    [14, 'Trampas', 'Trampa clásica: ¿Cómo distingues AWS Shield, AWS WAF, Amazon GuardDuty y Amazon Inspector?', '<strong>Shield</strong> mitiga ataques DDoS. <strong>WAF</strong> filtra ataques web HTTP (SQLi/XSS). <strong>GuardDuty</strong> detecta amenazas en logs con ML. <strong>Inspector</strong> escanea vulnerabilidades de software en EC2, ECR y Lambda.'],
+    [14, 'Trampas', 'Trampa clásica: ¿Cómo distingues AWS Artifact de AWS Audit Manager y AWS Config?', '<strong>Artifact</strong> descarga los certificados e informes ISO/SOC/PCI de AWS. <strong>Audit Manager</strong> recolecta evidencia automática de tu cuenta para auditorías. <strong>AWS Config</strong> audita el historial de cambios de configuración de tus recursos.'],
+    [14, 'Trampas', 'Trampa clásica: ¿Otorgan permisos por sí mismas las SCP de AWS Organizations o los Permissions Boundaries de IAM?', '<strong>Nunca.</strong> Tanto las SCP como los Permissions Boundaries solo definen el <strong>límite máximo de permisos permitidos</strong>; para que alguien pueda actuar necesita además una política de IAM con un <code>Allow</code> explícito.'],
+    [14, 'Trampas', 'Trampa clásica: ¿Qué diferencia hay entre AWS WAF, el marco AWS Well-Architected y el marco AWS CAF?', '<strong>AWS WAF</strong> es el firewall web de capa 7. <strong>AWS Well-Architected</strong> evalúa la arquitectura técnica de tus cargas de trabajo con <strong>6 pilares</strong>. <strong>AWS CAF</strong> guía la transformación organizacional de toda la empresa con <strong>6 perspectivas</strong>.'],
+    [14, 'Trampas', 'Trampa clásica: ¿Cuándo elegir Amazon S3, Amazon EBS, Amazon EFS o Amazon FSx for Windows?', '<strong>S3:</strong> objetos sin jerarquía por HTTP con 11 nueves de durabilidad. <strong>EBS:</strong> disco en bloques para 1 instancia EC2 en 1 AZ. <strong>EFS:</strong> archivos NFS compartidos entre varias instancias EC2 Linux. <strong>FSx for Windows:</strong> archivos compartidos SMB para Windows.'],
+    [14, 'Trampas', 'Trampa clásica: ¿Cómo distingues Amazon Rekognition, Amazon Textract, Amazon Comprehend, Amazon Transcribe y Amazon Polly?', '<strong>Rekognition:</strong> imágenes/video. <strong>Textract:</strong> documentos escaneados y tablas. <strong>Comprehend:</strong> sentimiento y entidades en texto. <strong>Transcribe:</strong> voz a texto. <strong>Polly:</strong> texto a voz.']
+  ];
+
+  const CARDS = RAW.map(([b, t, q, a], i) => ({ id: i + 1, b, t, q, a }));
+  const KEY = 'clf-flashcards-v2';
+  const state = {
+    filter: 'Todas',
+    topics: [],
+    blockN: null,
+    onlyReview: false,
+    shuffled: false,
+    pos: 0,
+    known: {},
+    review: {}
+  };
+
+  const saved = CLF.get(KEY, null) || CLF.get('clf-flashcards-v1', null);
+  if (saved && typeof saved === 'object') {
+    state.known = saved.known && typeof saved.known === 'object' ? saved.known : {};
+    state.review = saved.review && typeof saved.review === 'object' ? saved.review : {};
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const themeParam = params.get('tema');
+  const topicsParam = params.get('temas');
+  const blockParam = parseInt(params.get('bloque'), 10);
+
+  if (blockParam && typeof CLF !== 'undefined' && CLF.blockFor(blockParam)) {
+    state.blockN = blockParam;
+  }
+
+  function matchTopics(list) {
+    return Array.from(new Set(list
+      .map(name => CARDS.find(c => c.t.toLowerCase() === name.trim().toLowerCase()))
+      .filter(Boolean)
+      .map(c => c.t)));
+  }
+
+  if (state.blockN) {
+    const b = CLF.blockFor(state.blockN);
+    if (b) state.topics = b.flash.slice();
+  } else if (topicsParam) {
+    state.topics = matchTopics(topicsParam.split(','));
+  }
+
+  if (!state.blockN && !state.topics.length && themeParam) {
+    const match = CARDS.find(c => c.t.toLowerCase() === themeParam.toLowerCase());
+    if (match) state.filter = match.t;
+  }
+
+  const el = id => document.getElementById(id);
+  const card = el('card');
+  const empty = el('fempty');
+  const actions = el('factions');
+  const bar = el('fbar');
+  let deck = [];
+
+  function persist() {
+    CLF.set(KEY, { known: state.known, review: state.review });
+  }
+
+  function categories() {
+    return ['Todas', ...Array.from(new Set(CARDS.map(c => c.t)))];
+  }
+
+  function updateUrl() {
+    const url = new URL(window.location.href);
+    url.search = '';
+    if (state.blockN) {
+      url.searchParams.set('bloque', state.blockN);
+      if (state.topics.length) url.searchParams.set('temas', state.topics.join(','));
+    } else if (state.topics.length) {
+      url.searchParams.set('temas', state.topics.join(','));
+    } else if (state.filter !== 'Todas') {
+      url.searchParams.set('tema', state.filter);
+    }
+    try { history.replaceState(null, '', 'flashcards.html' + url.search); } catch (e) {}
+  }
+
+  function clearScope() {
+    state.topics = [];
+    state.blockN = null;
+    state.filter = 'Todas';
+    state.pos = 0;
+    updateUrl();
+    buildFilters();
+    buildDeck();
+  }
+
+  function buildFilters() {
+    const wrap = el('filters');
+    wrap.innerHTML = '';
+    if (state.blockN || state.topics.length) {
+      const scope = document.createElement('button');
+      scope.type = 'button';
+      scope.className = 'filter-btn active';
+      scope.textContent = (state.blockN ? 'Bloque ' + state.blockN + ' · ' : '') + state.topics.join(' + ');
+      scope.title = 'Estás viendo únicamente las tarjetas de este bloque. Haz clic en otro tema para cambiar.';
+      scope.addEventListener('click', () => {
+        state.pos = 0;
+        buildDeck();
+      });
+      wrap.appendChild(scope);
+    }
+    categories().forEach(cat => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'filter-btn' + (!state.blockN && !state.topics.length && state.filter === cat ? ' active' : '');
+      b.textContent = cat;
+      b.title = cat === 'Todas' ? 'Ver las ' + CARDS.length + ' tarjetas' : 'Ver solo las tarjetas de ' + cat;
+      b.addEventListener('click', () => {
+        state.topics = [];
+        state.blockN = null;
+        state.filter = cat;
+        state.pos = 0;
+        updateUrl();
+        buildFilters();
+        buildDeck();
+      });
+      wrap.appendChild(b);
+    });
+
+    const scope = el('fscope');
+    if (state.blockN || state.topics.length) {
+      const block = state.blockN && typeof CLF !== 'undefined' ? CLF.blockFor(state.blockN) : null;
+      const countInBlock = state.blockN ? CARDS.filter(c => c.b === state.blockN).length : CARDS.filter(c => state.topics.includes(c.t)).length;
+      el('fscopeTitle').textContent = block ? 'Mazo del Bloque ' + block.n + ' (' + countInBlock + ' tarjetas)' : 'Mazo filtrado';
+      el('fscopeText').textContent = block ? block.title + ' · 100% alineado con las diapositivas de este bloque' : state.topics.join(' + ');
+      scope.classList.remove('hidden');
+    } else {
+      scope.classList.add('hidden');
+    }
+  }
+
+  function buildDeck(resetPos) {
+    let base;
+    if (state.blockN) {
+      base = CARDS.filter(c => c.b === state.blockN);
+    } else if (state.topics.length) {
+      base = CARDS.filter(c => state.topics.includes(c.t));
+    } else {
+      base = CARDS.filter(c => state.filter === 'Todas' || c.t === state.filter);
+    }
+    deck = state.onlyReview ? base.filter(c => state.review[c.id]) : base;
+    deck = state.shuffled ? CLF.shuffle(deck) : deck.slice().sort((a, b) => a.id - b.id);
+    if (resetPos !== false) state.pos = 0;
+    render();
+  }
+
+  function stats() {
+    const known = Object.keys(state.known).length;
+    const review = Object.keys(state.review).length;
+    el('statKnown').textContent = known;
+    el('statReview').textContent = review;
+    el('statPending').textContent = Math.max(0, CARDS.length - known - review);
+    el('btnReview').textContent = 'Solo repasar (' + review + ')';
+    el('btnReview').classList.toggle('active', state.onlyReview);
+  }
+
+  function render() {
+    stats();
+    if (!deck.length || state.pos >= deck.length) {
+      card.classList.add('hidden');
+      actions.classList.add('hidden');
+      empty.classList.remove('hidden');
+      el('fcount').textContent = '';
+      bar.style.width = deck.length ? '100%' : '0%';
+      if (state.onlyReview && !deck.length) {
+        el('femptyTitle').textContent = 'Sin tarjetas pendientes de repaso';
+        el('femptyText').textContent = 'No tienes tarjetas marcadas para repasar en ' + (state.blockN ? 'este bloque' : 'este tema') + '. Cambia el filtro o marca algunas.';
+      } else if (!deck.length) {
+        el('femptyTitle').textContent = 'No hay tarjetas en este mazo';
+        el('femptyText').textContent = 'Este filtro no tiene tarjetas.';
+      } else {
+        el('femptyTitle').textContent = state.blockN ? '¡Completaste las flashcards del Bloque ' + state.blockN + '!' : '¡Has terminado este mazo!';
+        el('femptyText').textContent = 'Revisaste las ' + deck.length + ' tarjetas de este mazo. ¿Cuál es tu siguiente paso?';
+      }
+      const actBox = el('femptyActions');
+      if (actBox) {
+        const blk = state.blockN && typeof CLF !== 'undefined' && CLF.blockFor ? CLF.blockFor(state.blockN) : null;
+        if (blk) {
+          const nextBlk = CLF.blockFor(blk.n + 1);
+          const links = [
+            '<a class="btn btn-primary btn-sm" href="' + CLF.miniHref(blk) + '">🎯 Hacer Mini Simulacro · Bloque ' + blk.n + ' (10)</a>',
+            '<a class="btn btn-outline btn-sm" href="' + CLF.repasoHref(blk) + '">📖 Ver Repaso · ' + blk.repasoLabel + '</a>',
+            '<a class="btn btn-outline btn-sm" href="index.html?bloque=' + blk.n + '#bloque-' + blk.n + '">✅ Marcar Bloque ' + blk.n + '</a>'
+          ];
+          if (nextBlk) {
+            links.push('<a class="btn btn-secondary btn-sm" href="estudio.html#' + nextBlk.start + '">➡️ Ir al Bloque ' + nextBlk.n + ': ' + nextBlk.title + ' →</a>');
+          } else {
+            links.push('<a class="btn btn-secondary btn-sm" href="examen.html">🏆 Ir al Simulacro Final (65 preguntas) →</a>');
+          }
+          actBox.innerHTML = links.join('');
+        } else {
+          actBox.innerHTML = '';
+        }
+      }
+      return;
+    }
+    card.classList.remove('hidden');
+    actions.classList.remove('hidden');
+    empty.classList.add('hidden');
+    const c = deck[state.pos];
+    const status = state.known[c.id] ? ' · Sabida' : (state.review[c.id] ? ' · Por repasar' : '');
+    el('ftopic').textContent = 'Bloque ' + c.b + ' · ' + c.t + status;
+    el('btopic').textContent = 'Bloque ' + c.b + ' · ' + c.t + ' · Respuesta';
+    el('fq').textContent = c.q;
+    el('fa').innerHTML = c.a;
+    card.classList.remove('flipped');
+    el('fcount').textContent = 'Tarjeta ' + (state.pos + 1) + ' de ' + deck.length + ' · Bloque ' + c.b + ' (' + c.t + ')';
+    bar.style.width = ((state.pos + 1) / deck.length * 100) + '%';
+    el('btnPrev').disabled = state.pos === 0;
+    el('btnNextCard').disabled = state.pos >= deck.length - 1;
+  }
+
+  function next() {
+    if (state.pos < deck.length) {
+      state.pos++;
+      render();
+    }
+  }
+  function prev() {
+    if (state.pos > 0) {
+      state.pos--;
+      render();
+    }
+  }
+  function flip() {
+    if (deck.length && state.pos < deck.length) card.classList.toggle('flipped');
+  }
+
+  function mark(kind) {
+    if (!deck.length || state.pos >= deck.length) return;
+    const c = deck[state.pos];
+    if (kind === 'known') {
+      state.known[c.id] = true;
+      delete state.review[c.id];
+    } else {
+      state.review[c.id] = true;
+      delete state.known[c.id];
+    }
+    persist();
+    stats();
+    if (state.onlyReview) {
+      deck = deck.filter(x => x.id !== c.id);
+      if (state.pos >= deck.length) state.pos = deck.length;
+      render();
+      return;
+    }
+    next();
+  }
+
+  card.addEventListener('click', flip);
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); flip(); }
+  });
+  el('btnReviewCard').addEventListener('click', () => mark('review'));
+  el('btnKnown').addEventListener('click', () => mark('known'));
+  el('btnNextCard').addEventListener('click', next);
+  el('btnPrev').addEventListener('click', prev);
+  el('btnShuffle').addEventListener('click', () => {
+    state.shuffled = !state.shuffled;
+    el('btnShuffle').classList.toggle('active', state.shuffled);
+    buildDeck();
+  });
+  el('btnReview').addEventListener('click', () => {
+    state.onlyReview = !state.onlyReview;
+    buildDeck();
+  });
+  el('btnEmptyRepeat').addEventListener('click', () => {
+    state.pos = 0;
+    render();
+  });
+  el('btnEmptyReset').addEventListener('click', () => {
+    state.onlyReview = false;
+    clearScope();
+  });
+  el('btnScopeClear').addEventListener('click', () => {
+    state.onlyReview = false;
+    clearScope();
+  });
+  el('btnReset').addEventListener('click', () => {
+    if (!confirm('¿Reiniciar todas las marcas de las flashcards?')) return;
+    state.known = {};
+    state.review = {};
+    state.filter = 'Todas';
+    state.topics = [];
+    state.blockN = null;
+    state.onlyReview = false;
+    state.shuffled = false;
+    state.pos = 0;
+    persist();
+    updateUrl();
+    buildFilters();
+    buildDeck();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    if (e.key === ' ') { e.preventDefault(); flip(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    else if (e.key === '1') { e.preventDefault(); mark('review'); }
+    else if (e.key === '2') { e.preventDefault(); mark('known'); }
+  });
+
+  buildFilters();
+  buildDeck();
+})();
+</script>
+</body>
+</html>
