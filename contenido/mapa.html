@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa de servicios · AWS Cloud Practitioner CLF-C02</title>
+<meta name="description" content="Mapa conceptual interactivo de servicios AWS para CLF-C02: categorías, SQL vs NoSQL, fichas de servicio, combos de examen, qué no hace cada servicio, confusiones y conexiones.">
+<link rel="stylesheet" href="assets/estilo.css?v=20261027f">
+<link rel="stylesheet" href="assets/mapa.css?v=20261112g">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AWS</span>
+      <span>CLF-C02<span class="brand-sub">Centro de estudio</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="estudio.html">Estudiar</a>
+      <a href="flashcards.html">Flashcards</a>
+      <a href="examen.html">Simulacro</a>
+      <a href="repaso.html">Repaso</a>
+      <a href="mapa.html" class="active" aria-current="page">Mapa</a>
+    </div>
+  </div>
+</nav>
+
+<header class="map-hero">
+  <div class="container">
+    <span class="eyebrow orange">Mapa conceptual · CLF-C02</span>
+    <h1>Mapa de servicios AWS</h1>
+    <p class="lead">Elige una categoría o un combo, baja por la subcategoría correcta y abre la ficha. Cada ficha te dice qué es, qué buscar en el examen, qué <strong>no</strong> hace, con qué se confunde y cómo se conecta.</p>
+    <div class="map-search" role="search">
+      <input id="mapSearch" type="search" placeholder="Buscar servicio o palabra clave: RDS, NoSQL, TAM, 30 minutos…" aria-label="Buscar servicio o palabra clave">
+      <button type="button" class="clear" id="mapSearchClear" hidden>Limpiar</button>
+      <button type="button" id="mapSearchFocus">Buscar</button>
+    </div>
+  </div>
+</header>
+
+<main class="container map-main">
+  <div class="map-toolbar">
+    <div class="map-breadcrumb" id="mapBreadcrumb" aria-label="Ruta de navegación"></div>
+    <button type="button" class="map-back" id="mapBack" hidden>← Volver</button>
+  </div>
+  <div id="mapView" aria-live="polite"></div>
+  <p class="map-footer-note">La lista oficial CLF-C02 es orientativa y puede cambiar. Las fichas marcadas como “Complementario” aparecen en guías anteriores o material adicional del curso.</p>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div><strong style="color:#fff">Centro de Estudio CLF-C02</strong><br><span class="small">Material de estudio no oficial · No afiliado a Amazon Web Services.</span></div>
+    <div class="small"><a href="index.html">Panel</a> · <a href="estudio.html">Estudiar</a> · <a href="flashcards.html">Flashcards</a> · <a href="examen.html">Simulacro</a> · <a href="repaso.html">Repaso</a></div>
+  </div>
+</footer>
+
+<script src="assets/comun.js?v=20261027f"></script>
+<script src="assets/mapa-servicios.js?v=20261112g"></script>
+<script src="assets/mapa-catalogo.js?v=20261112g"></script>
+<script src="assets/mapa-catalogo2.js?v=20261112g"></script>
+<script src="assets/mapa-catalogo3.js?v=20261112g"></script>
+<script src="assets/mapa.js?v=20261112g"></script>
+</body>
+</html>

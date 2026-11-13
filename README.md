@@ -16,8 +16,15 @@ El contenido está ordenado por **peso en el examen** y combina lectura, recuper
 | `contenido/flashcards.html` | 156 tarjetas sincronizadas 1 a 1 con los 14 bloques (sin spoilers de temas futuros), barajado y seguimiento “Lo sé / Repasar” |
 | `contenido/examen.html` | Simulacro de 65 preguntas sobre un banco de 195, con pausa persistente, rotación, banderas, paleta, revisión y filtros; mini simulacros de 10 preguntas por bloque |
 | `contenido/repaso.html` | 20 secciones con tablas, cifras, 20 trampas y glosario de siglas para el repaso final |
+| `contenido/mapa.html` | Mapa conceptual interactivo: 21 categorías, 176 fichas de servicios y combos de examen con qué buscar, qué no hacen, confusiones y conexiones explicadas al pulsar |
 | `contenido/assets/estilo.css` | Hoja de estilos compartida |
 | `contenido/assets/comun.js` | Ruta de bloques, utilidades de progreso y navegación |
+| `contenido/assets/mapa.css` | Estilos del mapa conceptual |
+| `contenido/assets/mapa-servicios.js` | Datos base del mapa: Bases de datos, Planes de soporte y Combos |
+| `contenido/assets/mapa-catalogo.js` | Catálogo de Fundamentos, Cómputo, Contenedores, Serverless, Almacenamiento y Redes |
+| `contenido/assets/mapa-catalogo2.js` | Catálogo de Seguridad, Gestión y Costos |
+| `contenido/assets/mapa-catalogo3.js` | Catálogo de Analítica, IA, Integración, Negocio, Migración, Desarrollo, EUC, Frontend e IoT |
+| `contenido/assets/mapa.js` | Navegación, búsqueda y renderizado del mapa |
 | `contenido/assets/banco-preguntas.js` | Banco de 195 preguntas originales |
 
 ### Datos del examen objetivo
@@ -47,6 +54,7 @@ El contenido está ordenado por **peso en el examen** y combina lectura, recuper
    - Flashcards: botón **Reiniciar**.
    - Simulacro: descarta el intento guardado o usa **Empezar de nuevo**.
 7. Para imprimir el repaso: abre `repaso.html` y pulsa **Imprimir / Guardar PDF**.
+8. Para explorar servicios por categoría, abre `mapa.html`. Ya están disponibles las **21 categorías**, incluidas Bases de datos, Seguridad, Redes, Costos, Analítica, IA y los **25 combos de examen**.
 
 ### Flujo de estudio
 
@@ -79,7 +87,7 @@ También puedes usar gestos de deslizamiento en pantallas táctiles.
 | `2` | Marcar “Lo sé” |
 | `1` | Marcar “Repasar” |
 
-Para abrir un mazo concreto, usa los enlaces de cada bloque en `index.html` o la URL `flashcards.html?bloque=N`. Los bloques con dos temas cargan ambos, por ejemplo `flashcards.html?bloque=12&temas=Monitoreo,IA%20y%20datos`. El botón **Quitar filtro** vuelve al mazo completo.
+Para abrir un mazo concreto, usa los enlaces de cada bloque en `index.html` o la URL `flashcards.html?bloque=N`. Los bloques con dos temas cargan ambos, por ejemplo `flashcards.html?bloque=12&temas=Monitoreo%20y%20Gobernanza,IA%20y%20Anal%C3%ADtica`. El botón **Quitar filtro** vuelve al mazo completo.
 
 ### Simulacro
 
@@ -98,10 +106,10 @@ Para abrir un mazo concreto, usa los enlaces de cada bloque en `index.html` o la
 ### Mini simulacros por bloque
 
 - Cada bloque tiene un **Mini simulacro · 10** en la ruta del panel y en el checkpoint de las diapositivas. También puedes abrirlo con `examen.html?bloque=N`.
-- El mini usa 10 preguntas de un solo dominio del banco: 8 de opción múltiple y 2 de respuesta múltiple, con 10 minutos y el mismo sistema de pausa y reanudación.
+- El mini usa 10 preguntas priorizando las del bloque. Si el bloque tiene menos de 10, completa con preguntas de bloques anteriores ya estudiados, sin adelantar temas futuros.
+- No siempre son 8 de opción múltiple y 2 de respuesta múltiple: algunos bloques solo tienen una pregunta múltiple, así que puede haber 9 + 1. El resumen muestra una fila por cada dominio presente en las preguntas seleccionadas.
 - Sirve para una segunda pasada del bloque, no sustituye al simulacro completo. No consume la rotación de tres intentos.
 - El mini guarda su intento aparte, así que no descarta un simulacro completo que esté en pausa.
-- Al terminar verás el mismo resumen, los filtros de revisión y una única fila de dominio.
 
 ---
 
@@ -125,7 +133,7 @@ La ruta de 14 bloques está ordenada por rentabilidad, no por el orden del exame
 13. Well-Architected, CAF y migración (`s39–s42`)
 14. Costos, soporte y cierre (`s43–s49, s52–s54`)
 
-Con poco tiempo, los bloques **1–5 y 14** concentran la mayor cantidad de preguntas directas y de errores evitables.
+Con poco tiempo, los bloques **1–6 y 14** concentran la mayor cantidad de preguntas directas y de errores evitables.
 
 ---
 
@@ -172,9 +180,16 @@ Proyecto AWS/
     ├── flashcards.html
     ├── examen.html
     ├── repaso.html
+    ├── mapa.html
     └── assets/
         ├── estilo.css
         ├── comun.js
+        ├── mapa.css
+        ├── mapa-servicios.js
+        ├── mapa-catalogo.js
+        ├── mapa-catalogo2.js
+        ├── mapa-catalogo3.js
+        ├── mapa.js
         └── banco-preguntas.js
 ```
 
@@ -197,8 +212,9 @@ No hay archivos externos, CDN, fuentes remotas ni dependencias de JavaScript. Fu
 - Flashcards: edita el arreglo `RAW` en `flashcards.html`. Cada fila es `[tema, pregunta, respuesta]`.
 - Diapositivas: agrega o edita secciones `<section class="slide" data-title="..." data-note="...">` en `estudio.html`. Mantén los `id` (`sN`) y alinea el rótulo “Bloque N” y el rango de `CLF.BLOCKS` con la ruta.
 - Repaso: edita las secciones `<section class="cheat-section">` en `repaso.html`.
-- Estilos: `assets/estilo.css`.
-- Versiones: si cambias CSS o JavaScript, sube el parámetro `?v=` en las cinco páginas para evitar caché del navegador.
+- Mapa: edita las categorías, subcategorías y fichas en `assets/mapa-servicios.js` y en los catálogos `mapa-catalogo*.js`; la navegación y el buscador están en `assets/mapa.js`.
+- Estilos: `assets/estilo.css` y, para el mapa, `assets/mapa.css`.
+- Versiones: si cambias CSS o JavaScript, sube el parámetro `?v=` en las seis páginas para evitar caché del navegador.
 
 Si agregas preguntas o tarjetas, actualiza los textos que indican el total en el panel, el simulacro, las flashcards y este README.
 

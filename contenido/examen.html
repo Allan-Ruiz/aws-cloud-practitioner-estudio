@@ -20,6 +20,7 @@
       <a href="flashcards.html">Flashcards</a>
       <a href="examen.html">Simulacro</a>
       <a href="repaso.html">Repaso</a>
+      <a href="mapa.html">Mapa</a>
     </div>
   </div>
 </nav>
@@ -696,7 +697,7 @@
       else msg = 'Todavía hay margen en este bloque. Vuelve a las diapositivas y a las flashcards antes de repetir el mini simulacro.';
     } else if (pct >= 85) msg = 'Base sólida. Conviene mantener el repaso de las trampas y de los servicios fallados.';
     else if (pct >= 70) msg = 'Por encima del 70% de referencia. Los dominios con menor porcentaje siguen siendo los que más margen tienen.';
-    else if (pct >= 55) msg = 'Resultado cercano al 70%. Los bloques 1–5 y 14 concentran la mayoría de los errores en este rango; conviene revisarlos antes del siguiente intento.';
+    else if (pct >= 55) msg = 'Resultado cercano al 70%. Los bloques 1–6 y 14 concentran la mayoría de los errores en este rango; conviene revisarlos antes del siguiente intento.';
     else msg = 'El resultado indica que aún falta base. El orden con más retorno es responsabilidad compartida, IAM y servicios núcleo antes de repetir el simulacro.';
     el('scoreMsg').textContent = msg;
 
