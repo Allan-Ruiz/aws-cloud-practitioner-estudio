@@ -16,7 +16,7 @@ El contenido está ordenado por **peso en el examen** y combina lectura, recuper
 | `contenido/flashcards.html` | 156 tarjetas sincronizadas 1 a 1 con los 14 bloques (sin spoilers de temas futuros), barajado y seguimiento “Lo sé / Repasar” |
 | `contenido/examen.html` | Simulacro de 65 preguntas sobre un banco de 195, con pausa persistente, rotación, banderas, paleta, revisión y filtros; mini simulacros de 10 preguntas por bloque |
 | `contenido/repaso.html` | 20 secciones con tablas, cifras, 20 trampas y glosario de siglas para el repaso final |
-| `contenido/mapa.html` | Mapa conceptual interactivo: 21 categorías, 176 fichas de servicios y combos de examen con qué buscar, qué no hacen, confusiones y conexiones explicadas al pulsar |
+| `contenido/mapa.html` | Mapa conceptual interactivo: 21 categorías, 177 fichas de servicios y combos de examen con qué buscar, qué no hacen, confusiones y conexiones explicadas al pulsar |
 | `contenido/assets/estilo.css` | Hoja de estilos compartida |
 | `contenido/assets/comun.js` | Ruta de bloques, utilidades de progreso y navegación |
 | `contenido/assets/mapa.css` | Estilos del mapa conceptual |

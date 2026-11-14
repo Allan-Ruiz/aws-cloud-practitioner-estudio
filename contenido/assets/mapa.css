@@ -129,6 +129,8 @@
 .sub-card h3{font-size:1rem;margin:0 0 5px;display:flex;justify-content:space-between;gap:8px;align-items:center}
 .sub-card h3 span{font-size:.68rem;color:#6b7f93;font-weight:800;white-space:nowrap}
 .sub-card p{font-size:.82rem;color:var(--muted);margin:0 0 8px}
+.sub-card .services{font-size:.76rem;color:#00709f;font-weight:700;line-height:1.45;margin:0 0 8px}
+.sub-card .services strong{color:var(--ink-2)}
 .sub-card .when{font-size:.78rem;color:var(--ink-2);margin:0}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .svc-card{

@@ -142,13 +142,48 @@
       '<div class="map-blocks">' + blocks + '</div>';
   }
 
+  function closeEnough(a, b) {
+    if (Math.abs(a.length - b.length) > 1) return false;
+    let i = 0, j = 0, edits = 0;
+    while (i < a.length && j < b.length) {
+      if (a[i] === b[j]) {
+        i++;
+        j++;
+        continue;
+      }
+      if (++edits > 1) return false;
+      if (a.length > b.length) i++;
+      else if (b.length > a.length) j++;
+      else {
+        i++;
+        j++;
+      }
+    }
+    return edits + (a.length - i) + (b.length - j) <= 1;
+  }
+
+  function termMatches(term, token) {
+    if (token === term) return true;
+    if (term.length < 3) return false;
+    if (token.startsWith(term)) return true;
+    if (term.length < 4) return false;
+    if (token.includes(term)) return true;
+    return closeEnough(term, token);
+  }
+
   function textMatches(text, terms) {
     const tokens = normalize(text).split(/[^a-z0-9]+/).filter(Boolean);
-    return terms.every(term =>
-      term.length <= 3
-        ? tokens.includes(term)
-        : tokens.some(token => token.startsWith(term))
-    );
+    return terms.every(term => tokens.some(token => termMatches(term, token)));
+  }
+
+  function textQuality(text, terms) {
+    const tokens = normalize(text).split(/[^a-z0-9]+/).filter(Boolean);
+    return terms.reduce((score, term) => {
+      if (tokens.includes(term)) return score + 3;
+      if (tokens.some(token => token.startsWith(term))) return score + 2;
+      if (tokens.some(token => token.includes(term))) return score + 1;
+      return score;
+    }, 0);
   }
 
   function renderSearch() {
@@ -158,7 +193,8 @@
       const sub = cat ? subOf(cat, s.sub) : null;
       const fullText = [
         s.name, s.tagline, s.keyword, s.what, s.when, s.scopeNote,
-        cat && cat.title, sub && sub.title,
+        cat && cat.title, cat && cat.desc,
+        sub && sub.title, sub && sub.desc, sub && sub.services,
         (s.not || []).join(' '),
         (s.confuse || []).map(c => c.name + ' ' + c.why).join(' '),
         (s.connections || []).join(' ')
@@ -170,9 +206,10 @@
           : textMatches(((cat && cat.title) || '') + ' ' + ((sub && sub.title) || ''), terms)
             ? 2
             : 3;
-      return {s, cat, sub, score, match: textMatches(fullText, terms)};
+      const quality = textQuality([s.name, s.tagline, s.keyword].join(' '), terms);
+      return {s, cat, sub, score, quality, match: textMatches(fullText, terms)};
     }).filter(r => r.match).sort((a, b) =>
-      a.score - b.score || a.s.name.localeCompare(b.s.name, 'es')
+      a.score - b.score || b.quality - a.quality || a.s.name.localeCompare(b.s.name, 'es')
     );
 
     renderBreadcrumb([{label: 'Búsqueda', path: ''}]);
@@ -180,7 +217,7 @@
     if (!results.length) {
       view.innerHTML =
         '<div class="map-section-title"><div><span class="eyebrow sky">Búsqueda</span><h2>Sin resultados para “' + esc(query.trim()) + '”</h2>' +
-        '<p>Prueba con un nombre de servicio, una palabra clave o una categoría. También puedes recorrer las 21 categorías desde el mapa.</p></div></div>' +
+        '<p>Prueba con una parte del nombre, una palabra clave o una categoría. También puedes recorrer las 21 categorías desde el mapa.</p></div></div>' +
         '<div class="search-empty">También puedes volver al mapa y explorar por categoría.</div>';
       return;
     }
@@ -216,6 +253,7 @@
       return '<button type="button" class="sub-card" data-nav="' + esc(cat.id + '/' + sub.id) + '">' +
         '<h3>' + esc(sub.title) + '<span>' + n + ' ficha' + (n === 1 ? '' : 's') + '</span></h3>' +
         '<p>' + esc(sub.desc) + '</p>' +
+        '<p class="services"><strong>Servicios:</strong> ' + esc(sub.services) + '</p>' +
         '<p class="when"><strong>Cuándo:</strong> ' + esc(sub.when) + '</p>' +
       '</button>';
     }).join('');

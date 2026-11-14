@@ -103,12 +103,13 @@
     },
     costos: {
       id:'costos', block:'gestion', title:'Costos y facturación', status:'ready', officialCount:4,
-      desc:'Explorar, presupuestar, estimar, auditar y comparar el gasto.',
-      intro:'Cada herramienta de costos responde una pregunta distinta: cuánto gasté (Cost Explorer), cuánto debería gastar (Budgets), cuánto costará antes de crear (Pricing Calculator), cuál es el detalle (CUR, Cost and Usage Report) y cómo comparo con on-premises usando el costo total de propiedad (TCO).',
+      desc:'Explorar, presupuestar, estimar, auditar, ahorrar y comparar el gasto.',
+      intro:'Cada herramienta de costos responde una pregunta distinta: cuánto gasté (Cost Explorer), cuánto debería gastar (Budgets), cuánto costará antes de crear (Pricing Calculator), cuál es el detalle (CUR, Cost and Usage Report) y cómo comparo con on-premises usando el costo total de propiedad (TCO). También cubre los modelos de compra: On-Demand, Reserved Instances, Savings Plans y Spot.',
       subcategories:[
         {id:'analisis', title:'Análisis y detalle', desc:'Tendencias, filtros y datasets granulares.', when:'Entender el gasto o auditar la factura.', services:'Cost Explorer y Cost and Usage Report'},
         {id:'control', title:'Control y alertas', desc:'Presupuestos y umbrales.', when:'Avisar o limitar el gasto antes de que se descontrole.', services:'AWS Budgets'},
         {id:'estimacion', title:'Estimación y comparación', desc:'Costo futuro y TCO (costo total de propiedad).', when:'Diseñar una arquitectura o comparar con on-premises.', services:'Pricing Calculator y TCO'},
+        {id:'ahorro', title:'Ahorro y compromiso', desc:'On-Demand, Reserved Instances, Savings Plans y Spot.', when:'Elegir el modelo de compra según compromiso, flexibilidad y tolerancia a interrupciones.', services:'Savings Plans, Reserved Instances, Spot y On-Demand'},
         {id:'compra', title:'Compra de software', desc:'Marketplace y facturación consolidada.', when:'Adquirir software de terceros con el gasto de AWS.', services:'AWS Marketplace'}
       ]
     }
@@ -164,4 +165,32 @@
   add('costos',['analisis','cur','AWS Cost and Usage Report','Conjunto de datos detallado de costos y uso.','CUR / detalle / auditoría / S3 / Athena.','Cost and Usage Report genera el conjunto de datos más granular de costos y uso, que se puede consultar con Athena u otras herramientas.','Cuando el examen pide el detalle más completo para auditoría o análisis avanzado.','No es una visualización interactiva como Cost Explorer.','No es una alerta de presupuesto.','No es una estimación previa.'],[C('Cost Explorer','Cost Explorer visualiza; CUR entrega el detalle.'),C('Athena','Athena consulta el CUR almacenado en S3.'),C('Budgets','Budgets alerta; CUR audita.' )],['Amazon S3','Amazon Athena','AWS Cost Explorer'],['s46'],14);
   add('costos',['estimacion','tco','AWS TCO','Comparación de costo total con on-premises.','TCO / on-premises / costo total / comparación.','El cálculo de TCO compara el costo de ejecutar una carga on-premises con el costo de hacerlo en AWS, incluyendo hardware, energía, espacio y personal.','Cuando el examen pide justificar el ahorro o comparar el costo total de propiedad.','No es una calculadora de precios de servicios individuales.','No es la factura.','No es un presupuesto.'],[C('Pricing Calculator','Pricing Calculator estima servicios AWS; TCO compara con on-premises.'),C('Cost Explorer','Cost Explorer analiza gasto real; TCO compara escenarios.'),C('Budgets','Budgets controla; TCO justifica.' )],['AWS Pricing Calculator','AWS Cost Explorer','AWS Trusted Advisor'],['s47'],14);
   add('costos',['compra','marketplace','AWS Marketplace','Catálogo de software de terceros facturado con AWS.','Marketplace / software / terceros / suscripción.','Marketplace permite descubrir, comprar y desplegar software de terceros, con la compra incluida en la factura de AWS.','Cuando el examen pide adquirir software de terceros o una solución SaaS.','No es Service Catalog.','No es un servicio de soporte.','No es un descuento de AWS.'],[C('Service Catalog','Service Catalog publica productos internos; Marketplace vende software de terceros.'),C('AWS Budgets','Budgets controla el gasto; Marketplace factura el software.'),C('AWS Support','Support ayuda con AWS; el soporte del software lo da el vendedor.' )],['AWS Cost Explorer','AWS Budgets','AWS Organizations'],['s44'],14);
+
+  D.services['savings-plans'] = {
+    cat:'costos', sub:'ahorro', type:'concept', name:'Modelos de compra: Savings Plans, Reserved y Spot', scope:'CLF-C02',
+    tagline:'Pagar menos según el compromiso y la tolerancia a interrupciones.',
+    keyword:'On-Demand / Savings Plans / Reserved Instances / Spot / Dedicated Hosts / 1 o 3 años.',
+    what:'On-Demand se paga por uso, sin compromiso. Savings Plans y Reserved Instances ofrecen descuento a cambio de 1 o 3 años de compromiso; Compute Savings Plans es flexible entre familia, región, Fargate y Lambda. Spot usa capacidad libre con hasta 90% de descuento, pero puede interrumpirse. Dedicated Hosts reserva hardware físico para licencias o aislamiento.',
+    when:'Cuando el examen pide el modelo más económico para una carga según su duración, predictibilidad y tolerancia a interrupciones.',
+    not:[
+      'Savings Plans no es una instancia ni un recurso que se aprovisione.',
+      'Spot no sirve para cargas críticas que no toleran interrupciones.',
+      'Dedicated Hosts no es lo mismo que Dedicated Instances: el host da control del servidor físico.'
+    ],
+    confuse:[
+      C('Savings Plans vs Reserved Instances','Savings Plans compromete gasto por hora y puede cubrir Fargate o Lambda; Reserved Instances se limita a una familia y región de EC2.'),
+      C('Spot vs On-Demand','Spot usa capacidad libre y puede interrumpirse; On-Demand no tiene compromiso ni interrupción por capacidad.'),
+      C('Dedicated Hosts vs Dedicated Instances','Dedicated Host reserva el servidor físico; Dedicated Instances solo asegura que la instancia no comparte hardware.')
+    ],
+    connections:['Amazon EC2','AWS Fargate','AWS Lambda','AWS Cost Explorer','AWS Budgets','AWS Pricing Calculator'],
+    connectionInfo:{
+      'Amazon EC2':'Cubre instancias EC2 con Compute Savings Plans o EC2 Instance Savings Plans.',
+      'AWS Fargate':'Compute Savings Plans aplica también al cómputo de Fargate.',
+      'AWS Lambda':'Compute Savings Plans aplica al uso de Lambda cubierto por el compromiso.',
+      'AWS Cost Explorer':'Muestra la cobertura y utilización de Savings Plans y Reserved Instances.',
+      'AWS Budgets':'Puede vigilar la cobertura o utilización de Savings Plans y avisar si baja.',
+      'AWS Pricing Calculator':'Estima el costo con y sin compromiso antes de comprar.'
+    },
+    slides:['s20','s43','s44'], block:14
+  };
 })();
