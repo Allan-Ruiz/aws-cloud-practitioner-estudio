@@ -403,6 +403,13 @@
     navigate(nav.dataset.nav);
   });
 
+  if (breadcrumb) {
+    breadcrumb.addEventListener('click', e => {
+      const nav = e.target.closest('[data-nav]');
+      if (nav) navigate(nav.dataset.nav);
+    });
+  }
+
   if (back) back.addEventListener('click', goBack);
 
   if (search) {
