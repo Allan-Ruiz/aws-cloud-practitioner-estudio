@@ -14,7 +14,7 @@ El contenido está ordenado por **peso en el examen** y combina lectura, recuper
 | `contenido/index.html` | Panel principal: método en 3 pasos, siguiente bloque, ruta de 14 bloques con progreso y enlaces directos |
 | `contenido/estudio.html` | 69 diapositivas (5 de guía introductoria del examen + 64 distribuidas en 14 bloques de estudio) con contexto explicativo y checkpoint al final de cada bloque |
 | `contenido/flashcards.html` | 156 tarjetas sincronizadas 1 a 1 con los 14 bloques (sin spoilers de temas futuros), barajado y seguimiento “Lo sé / Repasar” |
-| `contenido/examen.html` | Simulacro de 65 preguntas sobre un banco de 195, con pausa persistente, rotación, banderas, paleta, revisión y filtros; mini simulacros de 10 preguntas por bloque |
+| `contenido/examen.html` | Simulacro de 65 preguntas sobre un banco de 195, con pausa persistente, rotación, banderas, paleta, revisión con alternativas y filtros; mini simulacros de 10 preguntas por bloque |
 | `contenido/repaso.html` | 20 secciones con tablas, cifras, 20 trampas y glosario de siglas para el repaso final |
 | `contenido/mapa.html` | Mapa conceptual interactivo: 21 categorías, 177 fichas de servicios y combos de examen con qué buscar, qué no hacen, confusiones y conexiones explicadas al pulsar |
 | `contenido/assets/estilo.css` | Hoja de estilos compartida |

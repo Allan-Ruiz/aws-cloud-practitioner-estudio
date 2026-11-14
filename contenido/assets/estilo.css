@@ -476,6 +476,17 @@ body.deck-body{background:#06131f;color:#e8f0f8;overflow:hidden;height:100vh}
 .review-item .ra{font-size:.86rem;color:var(--muted)}
 .review-item .rx{font-size:.85rem;margin-top:6px;color:var(--ink-2)}
 .review-item ul{margin:6px 0 0;padding-left:1.2em}
+.review-options{display:grid;gap:6px;margin:10px 0 0}
+.ro-item{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:#fbfdff;font-size:.86rem;line-height:1.4}
+.ro-item .letter{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--surface-2);color:var(--muted);font-size:.72rem;font-weight:900}
+.ro-item .text{flex:1;min-width:0}
+.ro-item .mark{display:block;margin-top:3px;font-size:.66rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+.ro-item.correct{background:var(--green-soft);border-color:#b9e8cb}
+.ro-item.correct .letter{background:var(--green);color:#fff}
+.ro-item.correct .mark{color:var(--green)}
+.ro-item.wrong{background:var(--red-soft);border-color:#f3b8b8}
+.ro-item.wrong .letter{background:var(--red);color:#fff}
+.ro-item.wrong .mark{color:var(--red)}
 
 /* ============================================================
    REPASO

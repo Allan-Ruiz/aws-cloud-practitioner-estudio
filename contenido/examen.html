@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simulacro · AWS Cloud Practitioner CLF-C02</title>
 <meta name="description" content="Simulacro cronometrado de 65 preguntas en español para el AWS Certified Cloud Practitioner CLF-C02, con banco de 195 preguntas, rotación por dominio y revisión.">
-<link rel="stylesheet" href="assets/estilo.css?v=20261027d">
+<link rel="stylesheet" href="assets/estilo.css?v=20261114a">
 </head>
 <body>
 
@@ -581,6 +581,29 @@
     return q.c.map(i => String.fromCharCode(65 + i)).join(', ');
   }
 
+  function escapeHtml(value) {
+    return String(value == null ? '' : value).replace(/[&<>"]/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'
+    }[c]));
+  }
+
+  function reviewOptions(q, a) {
+    return '<div class="review-options">' + q.o.map((text, i) => {
+      const isCorrect = q.c.includes(i);
+      const isSelected = a.includes(i);
+      const cls = 'ro-item' + (isCorrect ? ' correct' : '') + (isSelected ? (isCorrect ? ' selected' : ' wrong selected') : '');
+      const mark = isCorrect && isSelected
+        ? 'Correcta · Tu respuesta'
+        : (isCorrect ? 'Correcta' : (isSelected ? 'Tu respuesta' : ''));
+      return '<div class="' + cls + '">' +
+        '<span class="letter">' + String.fromCharCode(65 + i) + '</span>' +
+        '<span class="text">' + escapeHtml(text) +
+          (mark ? '<span class="mark">' + mark + '</span>' : '') +
+        '</span>' +
+      '</div>';
+    }).join('') + '</div>';
+  }
+
   function finishExam(auto) {
     if (!active) return;
     const left = currentRemaining();
@@ -747,6 +770,7 @@
         blkTag +
         '<span class="tag">' + tag + '</span>' + flagTag + '</div>' +
         '<div class="ra">Tu respuesta: <strong>' + answerLetters(a) + '</strong> · Correcta: <strong>' + correctLetters(q) + '</strong></div>' +
+        reviewOptions(q, a) +
         '<div class="rx"><strong>Por qué:</strong> ' + q.e + '</div>';
       wrap.appendChild(div);
     });
